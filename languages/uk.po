@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2022-12-23 08:37+0000\n"
+"PO-Revision-Date: 2023-03-14 13:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.6.3; wp-6.1.1\n"
 "X-Domain: tehnokrat"
 
-#: functions.php:1352
+#: functions.php:1506
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr ""
@@ -29,25 +29,15 @@ msgstr "ПРО КОМПАНІЮ"
 msgid "Aleksandr Levashov "
 msgstr "Олександр Левашов"
 
-#: functions.php:1552 woocommerce/single-product/title.php:32
+#: functions.php:1711 woocommerce/single-product/title.php:32
 msgid "all models"
 msgstr "всі моделі"
 
-#: functions.php:1544
+#: functions.php:1703
 msgid "all products"
 msgstr "усі товари"
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "As soon as the item is in stock, we will send you a message."
-msgstr "Як тільки товар буде в наявності, ми надішлемо Вам повідомлення"
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Back"
-msgstr "Назад"
-
-#: functions.php:1538
+#: functions.php:1697
 msgid "Buy item"
 msgstr "Купити товар"
 
@@ -60,45 +50,29 @@ msgstr "КАТЕГОРІЇ"
 msgid "Characteristics"
 msgstr "Характеристики"
 
-#: functions.php:1543
+#: functions.php:1702
 msgid "Choose a bank"
 msgstr "Виберіть банк"
 
-#: functions.php:1549
+#: functions.php:1708
 msgid "Choose a model"
 msgstr "Виберіть модель"
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "City"
-msgstr "Місто"
-
-#: functions.php:1553
+#: functions.php:1712
 msgid "color"
 msgstr "колiр"
 
-#: functions.php:1551
+#: functions.php:1710
 msgid "Configuration"
 msgstr "Конфігурація"
 
-#: functions.php:1550 woocommerce/single-product/description.php:21
+#: functions.php:1709 woocommerce/single-product/description.php:21
 msgid "Description"
 msgstr "Опис"
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:84
 msgid "Done."
 msgstr ""
-
-#: js/trade-in-pop-up.min.js:131
-msgid "Failed to send request. Please reload the page and try again."
-msgstr ""
-"Неможливо надіслати запит. Будь ласка, перезавантажте сторінку і спробуйте "
-"ще раз."
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Full name"
-msgstr "ПІБ"
 
 #: components/shortcodes/src/templates/bestsellers.php:21
 msgid "Go"
@@ -116,7 +90,7 @@ msgstr ""
 msgid "https://webcodist.com/"
 msgstr ""
 
-#: woocommerce/checkout/form-login.php:32
+#: woocommerce/checkout/form-login.php:24
 msgid ""
 "If you have shopped with us before, please enter your details below. If you "
 "are a new customer, please proceed to the Billing section."
@@ -124,15 +98,15 @@ msgstr ""
 "Якщо Ви вже оформляли замовлення на нашому сайті, будь ласка, авторизуйтесь. "
 "Якщо ви є новим клієнтом, будь ласка, заповніть \"Форму замовлення\"."
 
-#: functions.php:1539
+#: functions.php:1698
 msgid "In installments"
 msgstr "В розстрочку"
 
-#: functions.php:1545
+#: functions.php:1704
 msgid "in stock"
 msgstr "в наявності"
 
-#: functions.php:1542
+#: functions.php:1701
 msgid "Installment plan"
 msgstr "Розстрочка"
 
@@ -161,15 +135,20 @@ msgstr ""
 msgid "Line %d. Product name field is empty."
 msgstr ""
 
-#: functions.php:1548
+#: functions.php:1707
 msgid "Model"
 msgstr "Модель"
 
-#: functions.php:1541
+#: functions.php:1714
+msgid "Mono Pay part"
+msgstr ""
+"Монобанк «Покупка частинами»\n"
+
+#: functions.php:1700
 msgid "more"
 msgstr "докладніше"
 
-#: functions.php:1547
+#: functions.php:1706
 msgid "Not available"
 msgstr "Немає в наявності"
 
@@ -177,20 +156,19 @@ msgstr "Немає в наявності"
 msgid "Order form"
 msgstr "Форма замовлення"
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Phone number"
-msgstr "Номер телефону"
-
-#: js/trade-in-pop-up.min.js:42
-msgid "Photo size must not exceed 4 MB"
-msgstr "Розмір фотографії не повинен перевищувати 4 МБ"
+#: functions.php:1713
+msgid "Pay part"
+msgstr "Доступна оплата частинами"
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:18
 msgid "Plugin \"E-Commerce Data Interchange\" is not active."
 msgstr ""
 
-#: functions.php:1546
+#: functions.php:1715
+msgid "Privat Pay part"
+msgstr "Приват «Миттєва розстрочка»"
+
+#: functions.php:1705
 msgid "Product in stock"
 msgstr "Товар в наявності"
 
@@ -207,44 +185,17 @@ msgstr "ТОВАРИ ТА ПОСЛУГИ"
 msgid "Recommended products"
 msgstr "Рекомендовані товари"
 
-#: functions.php:1540
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
+#: functions.php:1699
 msgid "Report Admission"
 msgstr "Повідомити про надходження"
-
-#: js/trade-in-pop-up.min.js:125
-msgid ""
-"Request sent successfully. The answer will be sent to you by e-mail within 2 "
-"hours (during business hours)."
-msgstr ""
-"Запит надіслано успішно. Відповідь буде надіслано Вам на електронну пошту "
-"протягом 2 годин (в робочий час)."
 
 #: header.php:105 header.php:178 header-home.php:56 header-home.php:129
 msgid "search"
 msgstr "пошук"
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Something went wrong. Please repeat your request."
-msgstr "Щось пішло не так. Повторіть, будь ласка, запит."
-
 #. Name of the theme
 msgid "TEHNOKRAT"
 msgstr "ТЕХНОКРАТ"
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Thanks for your order"
-msgstr "Спасибі за замовлення"
-
-#: js/trade-in-pop-up.min.js:37
-msgid "The photo must be in .jpg, .png or .gif format"
-msgstr "Фотографія має бути у форматі .jpg, .png або .gif"
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:91
 #, php-format
@@ -254,15 +205,6 @@ msgstr ""
 #: components/upload-product-translations/src/class-upload-product-translations.php:78
 msgid "Updating translation..."
 msgstr ""
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "We will contact you as soon as the item is available."
-msgstr "Ми зв'яжемося з вами, як тільки товар буде доступний."
-
-#: js/trade-in-pop-up.min.js:31 js/trade-in-pop-up.min.js:87
-msgid "You can add up to 10 files"
-msgstr "Можна додати до 10 файлів"
 
 #: components/woocommerce/src/class-woocommerce-shortlinks.php:85
 msgid "Короткая ссылка на заказ"

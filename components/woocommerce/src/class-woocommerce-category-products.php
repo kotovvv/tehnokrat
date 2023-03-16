@@ -85,6 +85,15 @@ final class Woocommerce_Category_Products {
 		} else {
 			wp_log_warning( 'The cache of products in the category was not completely cleared.' );
 		}
+
+		// Delete WP Super Cache cache files.
+		global $cache_path;
+
+		if ( $cache_path && function_exists( 'prune_super_cache' ) ) {
+			do_action( 'wp_cache_cleared' );
+
+			prune_super_cache( $cache_path, true );
+		}
 	}
 
 	/**
@@ -327,6 +336,8 @@ final class Woocommerce_Category_Products {
 			'model'        => $product->get_sku(),
 			'description2' => $this->get_description( $product ),
 			'modification' => strval( get_field( 'modification' ) ),
+			'part' => intval(get_field('part', $product->get_id())),
+			'partprivat' => intval(get_field('partprivat', $product->get_id())) ,
 			'priceUAH'     => floatval( $product->get_price() ),
 			'priceUSD'     => $tehnokrat->get_price_in_usd( $product->get_price() ),
 			'in_stock'     => ( $product->get_price() && 'outofstock' !== $product->get_stock_status() ? 1 : 0 ),

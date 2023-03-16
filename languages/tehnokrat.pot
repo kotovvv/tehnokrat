@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-23 08:34+0000\n"
+"POT-Creation-Date: 2023-03-14 12:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.6.3; wp-6.0.3\n"
 "X-Domain: tehnokrat"
 
-#: functions.php:1352
+#: functions.php:1506
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr ""
@@ -29,25 +29,15 @@ msgstr ""
 msgid "Aleksandr Levashov "
 msgstr ""
 
-#: functions.php:1552 woocommerce/single-product/title.php:32
+#: functions.php:1711 woocommerce/single-product/title.php:32
 msgid "all models"
 msgstr ""
 
-#: functions.php:1544
+#: functions.php:1703
 msgid "all products"
 msgstr ""
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "As soon as the item is in stock, we will send you a message."
-msgstr ""
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Back"
-msgstr ""
-
-#: functions.php:1538
+#: functions.php:1697
 msgid "Buy item"
 msgstr ""
 
@@ -60,42 +50,28 @@ msgstr ""
 msgid "Characteristics"
 msgstr ""
 
-#: functions.php:1543
+#: functions.php:1702
 msgid "Choose a bank"
 msgstr ""
 
-#: functions.php:1549
+#: functions.php:1708
 msgid "Choose a model"
 msgstr ""
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "City"
-msgstr ""
-
-#: functions.php:1553
+#: functions.php:1712
 msgid "color"
 msgstr ""
 
-#: functions.php:1551
+#: functions.php:1710
 msgid "Configuration"
 msgstr ""
 
-#: functions.php:1550 woocommerce/single-product/description.php:21
+#: functions.php:1709 woocommerce/single-product/description.php:21
 msgid "Description"
 msgstr ""
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:84
 msgid "Done."
-msgstr ""
-
-#: js/trade-in-pop-up.min.js:131
-msgid "Failed to send request. Please reload the page and try again."
-msgstr ""
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Full name"
 msgstr ""
 
 #: components/shortcodes/src/templates/bestsellers.php:21
@@ -114,21 +90,21 @@ msgstr ""
 msgid "https://webcodist.com/"
 msgstr ""
 
-#: woocommerce/checkout/form-login.php:32
+#: woocommerce/checkout/form-login.php:24
 msgid ""
 "If you have shopped with us before, please enter your details below. If you "
 "are a new customer, please proceed to the Billing section."
 msgstr ""
 
-#: functions.php:1539
+#: functions.php:1698
 msgid "In installments"
 msgstr ""
 
-#: functions.php:1545
+#: functions.php:1704
 msgid "in stock"
 msgstr ""
 
-#: functions.php:1542
+#: functions.php:1701
 msgid "Installment plan"
 msgstr ""
 
@@ -157,15 +133,19 @@ msgstr ""
 msgid "Line %d. Product name field is empty."
 msgstr ""
 
-#: functions.php:1548
+#: functions.php:1707
 msgid "Model"
 msgstr ""
 
-#: functions.php:1541
+#: functions.php:1714
+msgid "Mono Pay part"
+msgstr ""
+
+#: functions.php:1700
 msgid "more"
 msgstr ""
 
-#: functions.php:1547
+#: functions.php:1706
 msgid "Not available"
 msgstr ""
 
@@ -173,20 +153,19 @@ msgstr ""
 msgid "Order form"
 msgstr ""
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Phone number"
-msgstr ""
-
-#: js/trade-in-pop-up.min.js:42
-msgid "Photo size must not exceed 4 MB"
+#: functions.php:1713
+msgid "Pay part"
 msgstr ""
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:18
 msgid "Plugin \"E-Commerce Data Interchange\" is not active."
 msgstr ""
 
-#: functions.php:1546
+#: functions.php:1715
+msgid "Privat Pay part"
+msgstr ""
+
+#: functions.php:1705
 msgid "Product in stock"
 msgstr ""
 
@@ -203,41 +182,16 @@ msgstr ""
 msgid "Recommended products"
 msgstr ""
 
-#: functions.php:1540
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
+#: functions.php:1699
 msgid "Report Admission"
-msgstr ""
-
-#: js/trade-in-pop-up.min.js:125
-msgid ""
-"Request sent successfully. The answer will be sent to you by e-mail within 2 "
-"hours (during business hours)."
 msgstr ""
 
 #: header.php:105 header.php:178 header-home.php:56 header-home.php:129
 msgid "search"
 msgstr ""
 
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Something went wrong. Please repeat your request."
-msgstr ""
-
 #. Name of the theme
 msgid "TEHNOKRAT"
-msgstr ""
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "Thanks for your order"
-msgstr ""
-
-#: js/trade-in-pop-up.min.js:37
-msgid "The photo must be in .jpg, .png or .gif format"
 msgstr ""
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:91
@@ -247,15 +201,6 @@ msgstr ""
 
 #: components/upload-product-translations/src/class-upload-product-translations.php:78
 msgid "Updating translation..."
-msgstr ""
-
-#: components/widgets/assets/js/widget-product-variation-selector.js:2
-#: components/widgets/assets/js/widget-one-product.js:2
-msgid "We will contact you as soon as the item is available."
-msgstr ""
-
-#: js/trade-in-pop-up.min.js:31 js/trade-in-pop-up.min.js:87
-msgid "You can add up to 10 files"
 msgstr ""
 
 #: components/woocommerce/src/class-woocommerce-shortlinks.php:85

@@ -2239,10 +2239,23 @@ footer .developer:hover {
 	font-size: 22px;
 	font-weight: 500;
 	line-height: 26px;
-	margin-bottom: 25px;
+	margin-bottom: 25px
+}
+.text h2 {
+	color: #343434;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 110%;
 	text-align: left;
 }
-.text h2, .text h3, .text h4, .text h5, .text h6, .text h7, .text h8, .text h9, .text h10 {
+.text h3 {
+	color: #343434;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 110%;
+	text-align: left;
+}
+.text h4, .text h5, .text h6, .text h7, .text h8, .text h9, .text h10 {
 	color: #343434;
 	font-size: 14px;
 	font-weight: 400;

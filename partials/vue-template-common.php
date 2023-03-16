@@ -99,12 +99,6 @@ global $wp_query;
                    v-bind:class="[{ hid: isBuyInInstallmentsVisible }, 'buy']"
                    @click="showProductCard"
                 ><p>Купить товар</p></a>
-                <a href="javascript:void(0)"
-                   class="cr"
-                   @mouseenter="buyInInstallmentsEnter"
-                   @mouseleave="buyInInstallmentsLeave"
-                   @click="buyInInstallments"
-                ><p><span>В рассрочку</span></p><img loading="lazy" decoding="async" src="<?= $tehnokrat->get_url( '/img/percentage2.png' ) ?>"></a>
             </template>
 			<a v-else class="buy_pred" href="javascript:void(0)" @click="showProductCard">Сообщить о поступлении</a>
 		</div>

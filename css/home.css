@@ -4310,7 +4310,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .product .product-item .items .description .title .sum-link .link .buy {
-    width: 100%;/*83%;*/
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -4361,7 +4361,7 @@ Copyright (c) 2015 Daniel Eden
 .product .product-item .items .description .title .sum-link .link .cr {
     cursor: pointer;
     width: 100%;
-    display: none;/*flex;*/
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     text-align: left;
@@ -4524,6 +4524,7 @@ Copyright (c) 2015 Daniel Eden
 .product .product-item .items .description .title .sum-link .trade-but:hover svg path {
     fill: #738dbb
 }
+
 /* part buttons*/
 .product .product-item .items .description .title .part, .product .product-item .items .description .title-accses .part{
 	display:flex;
@@ -4581,7 +4582,6 @@ Copyright (c) 2015 Daniel Eden
 	height: auto;
     width: 26px;
 }
-
 
 .product .product-item .items .description .title-accses .accses .more-prod-but{
     display: none;
@@ -4722,7 +4722,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .product .product-item .items .description .title-accses .sum-link .link .buy {
-    width: 83%;
+    width: 100%;
     height: 100%;
     cursor: pointer;
     display: flex;
