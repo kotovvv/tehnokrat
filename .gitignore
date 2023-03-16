@@ -1,0 +1,11 @@
+*.png
+*.svg
+*.jpg
+*.ttf
+*.wof
+*.woff2
+*.eot
+*.po~
+*.pot~
+*.mo
+/vendor

@@ -1,0 +1,128 @@
+{
+    "key": "group_5f8b3eb31948e",
+    "title": "Технократ. Настройки фидов",
+    "fields": [
+        {
+            "key": "field_5f8bf3546a9ae",
+            "label": "Адреса фидов",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-dsa-feed.csv\" target=\"_blank\">Открыть фид <strong>Google DSA<\/strong> в новой вкладке<\/a>\r\n\r\n<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-yml-feed-google\" target=\"_blank\">Открыть фид <strong>Google<\/strong> в новой вкладке<\/a>\r\n\r\n<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-yml-feed-multisearch\" target=\"_blank\">Открыть фид <strong>multisearch.io<\/strong> в новой вкладке<\/a>\r\n\r\n<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-yml-feed-hotline\" target=\"_blank\">Открыть фид <strong>hotline.ua<\/strong> в новой вкладке<\/a>\r\n\r\n<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-yml-feed-priceua\" target=\"_blank\">Открыть фид <strong>price.ua<\/strong> в новой вкладке<\/a>\r\n\r\n<a href=\"https:\/\/tehnokrat.ua\/ua\/woocommerce-yml-feed-nadavi\" target=\"_blank\">Открыть фид <strong>nadavi.net<\/strong> в новой вкладке<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5aeac508aeee4",
+            "label": "Категории для фида \"Google\"",
+            "name": "categories_for_google",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "product_cat",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5aeac60d417cf",
+            "label": "Надбавка цены для фида \"Розетки\", %",
+            "name": "rozeka_fee",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5c58099dc7014",
+            "label": "Установить статус всех товаров \"В наличии\"",
+            "name": "rozetka_all_available",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5c580a3ec7015",
+            "label": "Установить цену товаров дешевле $10 в $2000",
+            "name": "rozetka_set_price_to_2000",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tehnokrat_feeds"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1667651301
+}

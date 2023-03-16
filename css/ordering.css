@@ -1,0 +1,1384 @@
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+.slick-list:focus {
+    outline: none
+}
+
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand
+}
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block
+}
+
+.slick-track:before, .slick-track:after {
+    content: "";
+    display: table
+}
+
+.slick-track:after {
+    clear: both
+}
+
+.slick-loading .slick-track {
+    visibility: hidden
+}
+
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    display: none
+}
+
+[dir="rtl"] .slick-slide {
+    float: right
+}
+
+.slick-slide img {
+    display: block
+}
+
+.slick-slide.slick-loading img {
+    display: none
+}
+
+.slick-slide.dragging img {
+    pointer-events: none
+}
+
+.slick-initialized .slick-slide {
+    display: block
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent
+}
+
+.slick-arrow.slick-hidden {
+    display: none
+}
+
+@keyframes sl {
+    0% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0)
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+.status_popup {
+    opacity: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: all 0.0s;
+    -moz-transition: all 0.0s;
+    -ms-transition: all 0.0;
+    -o-transition: all 0.0s;
+    transition: all 0.0s
+}
+
+.status_popup .status_popup_content {
+    overflow: hidden;
+    width: 90%;
+    max-height: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid #dedede;
+    box-shadow: 0 0 29px rgba(0, 0, 0, 0.11);
+    position: absolute;
+    padding: 30px 20px 10px;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.0s;
+    -moz-transition: all 0.0s;
+    -ms-transition: all 0.0s;
+    -o-transition: all 0.0s;
+    transition: all 0.0s;
+    text-align: center
+}
+
+.status_popup .status_popup_content .close {
+    position: absolute;
+    background: url(../img/close.png) no-repeat 50%;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    box-sizing: content-box;
+    z-index: 3;
+    cursor: pointer;
+    display: none
+}
+
+.status_popup .status_popup_content h3 {
+    text-align: center;
+    color: #343434;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px
+}
+
+.status_popup .status_popup_content .load {
+    display: flex;
+    justify-content: center;
+    animation: sl 0.8s linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite
+}
+
+.status_popup .status_popup_content .load svg {
+    height: 40px
+}
+
+.status_popup .status_popup_content p {
+    text-align: center;
+    color: #565656;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 10px 0
+}
+
+.status_popup .status_popup_content .ok {
+    display: none;
+    border-radius: 30px;
+    background-color: #8ebb2b;
+    border: 2px solid #8ebb2b;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+    padding: 7px 20px;
+    margin-top: 20px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.status_popup .status_popup_content .ok:hover {
+    background-color: transparent;
+    color: #77bd00
+}
+
+.status_popup .status_popup_content .dop-text {
+    display: block;
+    text-align: center;
+    color: #565656;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 14px;
+    margin: 20px 0 0 !important
+}
+
+.status_popup .other {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1
+}
+
+.status_popup.active {
+    opacity: 1;
+    z-index: 8;
+    -webkit-transition: all 0.0s;
+    -moz-transition: all 0.0s;
+    -ms-transition: all 0.0s;
+    -o-transition: all 0.0s;
+    transition: all 0.0s
+}
+
+.status_popup.active .status_popup_content {
+    z-index: 8;
+    -webkit-overflow-scrolling: touch
+}
+
+.status_popup.mclose .status_popup_content .close {
+    display: block
+}
+
+.status_popup.mclose .status_popup_content .ok {
+    display: inline-block
+}
+
+.status_popup.mclose .status_popup_content .load {
+    display: none
+}
+
+.status_popup.mclose .status_popup_content .dop-text {
+    display: none
+}
+
+.status_popup.mclose .other {
+    display: block
+}
+
+.woocommerce-additional-fields{
+    margin-top: 20px;
+}
+#customer_details{
+    margin-bottom: 40px;
+}
+.woocommerce-page .woocommerce table.shop_table .product-name{
+    display: flex;
+    margin: 0;
+    width: 100%;
+    padding-right: 10px;
+}
+.woocommerce-page .woocommerce table.shop_table .product-name strong{
+    padding-left: 10px;
+}
+.woocommerce-page .woocommerce table.shop_table .product-name img{
+    width: 60px;
+    height: fit-content;
+}
+.woocommerce-page .woocommerce table.shop_table .product-total{
+    vertical-align: top;
+    min-width: 90px;
+}
+.woocommerce-checkout .woocommerce-form p{
+    color: #50575e;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+    line-height: 20px;
+}
+.woocommerce-checkout .woocommerce .woocommerce-form .button{
+    margin-top: 10px !important;
+    padding: 3px 20px !important;
+}
+.woocommerce-checkout .woocommerce-form .lost_password a{
+    color: #8ebb2b;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0;
+    line-height: 20px;
+}
+@media screen and (min-width: 568px) {
+    .status_popup.active .status_popup_content {
+        width: 360px
+    }
+
+    .status_popup.active .status_popup_content p {
+        margin: 20px 0 10px
+    }
+}
+
+header .hed-cont .right .for-ba .bask img {
+    cursor: default !important
+}
+
+.order-page {
+    padding: 40px 0 20px
+}
+
+.woocommerce-checkout h1{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.order-page h3 {
+    color: #000000;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 30px
+}
+
+.order-page form {
+    margin: 60px 30px 0
+}
+
+.order-page form .prod .prod-items .item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 15px
+}
+
+.order-page form .prod .prod-items .item:after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #e7e7e7;
+    position: absolute;
+    bottom: 0;
+    left: 0
+}
+
+.order-page form .prod .prod-items .item .for-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%
+}
+
+.order-page form .prod .prod-items .item .for-img img {
+    max-width: 100%
+}
+
+.order-page form .prod .prod-items .item .name {
+    flex-basis: 68%;
+    color: #010101;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px
+}
+
+.order-page form .prod .prod-items .item .pri {
+    flex-basis: 100%;
+    text-align: right
+}
+
+.order-page form .prod .prod-items .item .pri span {
+    color: #010101;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px
+}
+
+.order-page form .prod .prod-items .item .pri .cl {
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 100;
+    color: #212121
+}
+
+.order-page form .prod .tot {
+    margin-top: 30px;
+    text-align: right
+}
+
+.order-page form .prod .tot ul {
+    text-align: left
+}
+
+.order-page form .prod .tot ul li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between
+}
+
+.order-page form .prod .tot ul li p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    flex-basis: 58%
+}
+
+.order-page form .prod .tot ul li span {
+    color: #000000;
+    display: inline-block;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    flex-basis: 40%
+}
+
+.order-page form .prod .tot ul .bb {
+    margin-top: 20px
+}
+
+.order-page form .prod .tot ul .bb p, .order-page form .prod .tot ul .bb span {
+    font-size: 16px;
+    font-weight: 500
+}
+
+.order-page form .prod .tot a {
+    margin-top: 20px;
+    display: inline-block;
+    color: #777777;
+    position: relative;
+    padding-right: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.order-page form .prod .tot a i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.order-page form .prod .tot a:hover {
+    color: #555555
+}
+
+.order-page form .prod .tot a:hover i {
+    right: -10px
+}
+
+.order-page form .data {
+    margin-top: 40px
+}
+
+.order-page form .data .gr p {
+    color: #484848;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 36px;
+    margin-bottom: 20px
+}
+
+.order-page form .data .gr div {
+    margin-bottom: 10px
+}
+
+.order-page form .data .gr div label {
+    color: #767676;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px
+}
+
+.order-page form .data .gr div .jcf-radio {
+    margin-top: -2px;
+    border: 1px solid #d9d9d9;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%
+}
+
+.order-page form .data .gr div .jcf-radio:hover {
+    border: 1px solid #8ebb2b
+}
+
+.order-page form .data .gr div .jcf-checked {
+    border: 1px solid #8ebb2b
+}
+
+.order-page form .data .gr div .jcf-checked span {
+    background: #8ebb2b
+}
+
+.order-page form .data .inp {
+    margin-top: 20px
+}
+
+.order-page form .data .inp input {
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    color: #767676;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.order-page form .data .inp input:hover, .order-page form .data .inp input:focus {
+    border: 1px solid #5e5e5e
+}
+
+.order-page form .data .inp input::-webkit-input-placeholder {
+    color: #afafaf;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300
+}
+
+.order-page form .data .inp input::-moz-placeholder {
+    color: #afafaf;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300
+}
+
+.order-page form .data .inp input:-moz-placeholder {
+    color: #afafaf;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300
+}
+
+.order-page form .data .inp input:-ms-input-placeholder {
+    color: #afafaf;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300
+}
+
+.order-page form .data .inp input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.order-page form .data .inp input:focus::-moz-placeholder {
+    color: transparent
+}
+
+.order-page form .data .inp input:focus:-moz-placeholder {
+    color: transparent
+}
+
+.order-page form .data .inp input:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+.order-page form .data .inp input[type='submit'] {
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: #8ebb2b;
+    border: 2px solid #8ebb2b;
+    color: #ffffff;
+    width: inherit;
+    height: inherit;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.order-page form .data .inp input[type='submit']:hover {
+    background-color: transparent;
+    color: #77bd00
+}
+
+.order-page form .data .inp .error {
+    border: 1px solid #b10101
+}
+
+.order-page form .data .inp .pay-part .t {
+    color: #767676;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .pay-part .num {
+    position: relative
+}
+
+.order-page form .data .inp .pay-part .num:before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    background: url("../img/priv-img.png");
+    background-size: contain
+}
+
+.order-page form .data .inp .pay-part .num input[type='tel'] {
+    padding: 0 10px 0 40px
+}
+
+.order-page form .data .inp .pay-part .num input[type='button'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    cursor: pointer;
+    background-size: contain !important;
+    background: url("../img/but-bac.svg") no-repeat 50% 50%;
+    border: none
+}
+
+.order-page form .data .inp .pay-part .lim {
+    position: relative
+}
+
+.order-page form .data .inp .pay-part .lim:before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    background: url("../img/priv-img.png");
+    background-size: contain
+}
+
+.order-page form .data .inp .pay-part .lim input[type='text'] {
+    padding: 0 10px 0 40px
+}
+
+.order-page form .data .inp .pay-part .lim input[type='button'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 3px;
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
+    margin: 0;
+    background-size: contain !important;
+    background: url("../img/but-bac.svg") no-repeat 50% 50%;
+    border: none
+}
+
+.order-page form .data .inp .pay-part .part {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px
+}
+
+.order-page form .data .inp .pay-part .part p {
+    color: #767676;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .pay-part .part #num {
+    margin-left: 16px;
+    background: #8EBB2B;
+    width: 40px;
+    height: 36px;
+    border-radius: 3px;
+    background-size: cover;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 20px;
+    text-align: center;
+    padding-top: 7px
+}
+
+.order-page form .data .inp .pay-part .part .range {
+    margin-top: 10px;
+    flex-basis: 100%;
+    position: relative
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range {
+    margin: 0;
+    width: 100%
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-track {
+    margin: 0 20px 0 10px
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-wrapper {
+    border-radius: 0;
+    height: 8px;
+    background: #d2d2d2
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-mark {
+    position: absolute;
+    overflow: hidden;
+    background: #c9c9c9;
+    width: 1px;
+    height: 7px;
+    top: 8px;
+    margin: 0 0 0 5px
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-handle {
+    height: 22px;
+    cursor: pointer;
+    top: -8px;
+    width: 22px;
+    display: block;
+    border-radius: 50%;
+    margin: 0;
+    background: #8ebb2b;
+    position: relative
+}
+
+.order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-handle.jcf-active-handle {
+    border: none
+}
+
+.order-page form .data .inp .pay-part .part .range ul {
+    display: flex;
+    justify-content: space-between
+}
+
+.order-page form .data .inp .pay-part .part .range ul li {
+    color: #767676;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 20px;
+    text-align: center;
+    width: 20px
+}
+
+.order-page form .data .inp .pay-part .part .range ul li:first-child {
+    margin-left: 2%
+}
+
+.order-page form .data .inp .pay-part .part .range ul li:nth-child(2) {
+    margin-left: -10%
+}
+
+.order-page form .data .inp .pay-part .part .range ul li:nth-child(3) {
+    margin-right: 2%
+}
+
+.order-page form .data .inp .pay-part .first-pay, .order-page form .data .inp .pay-part .month-pay {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+
+.order-page form .data .inp .pay-part .first-pay .name, .order-page form .data .inp .pay-part .month-pay .name {
+    flex-basis: 48%;
+    color: #767676;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .pay-part .first-pay .sum, .order-page form .data .inp .pay-part .month-pay .sum {
+    text-align: right;
+    flex-basis: 48%;
+    color: #767676;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .pay-part .first-pay .sum span, .order-page form .data .inp .pay-part .month-pay .sum span {
+    color: #767676;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .pay-part .first-pay .des, .order-page form .data .inp .pay-part .month-pay .des {
+    flex-basis: 100%;
+    color: #767676;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    margin-bottom: 5px
+}
+
+.order-page form .data .inp .submit {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: 20px 0;
+    float: right;
+    display: block;
+    width: fit-content;
+    border-radius: 30px;
+    background-color: #8ebb2b;
+    border: 2px solid #8ebb2b;
+    color: #ffffff;
+    height: inherit;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 5px 20px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.order-page form .data .inp .submit:hover {
+    background-color: transparent;
+    color: #77bd00
+}
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message {
+    background: none;
+    color: #767676;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    margin: 0
+}
+#react-app{
+    display: none;
+}
+
+h1 {
+    color: #000000;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 0 10px;
+    margin-bottom: 40px;
+}
+#vue-app{
+    width: 100vw;
+}
+.woocommerce-page .woocommerce form .form-row label{
+    color: #767676;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+}
+.woocommerce-page .woocommerce-checkout h3{
+    color: #484848;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 36px;
+}
+.woocommerce-page .woocommerce form .form-row{
+    padding: 0;
+}
+.woocommerce-page .woocommerce table.shop_table{
+    border: none;
+}
+.woocommerce-page .woocommerce table.shop_table th, .woocommerce-page .woocommerce table.shop_table td{
+    color: #484848;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px 0;
+    line-height: 18px;
+    vertical-align: bottom;
+    border: none;
+}
+.woocommerce-page .woocommerce table.shop_table thead th{
+    font-weight: 500;
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.woocommerce-page .woocommerce table.shop_table tfoot th, .woocommerce-page .woocommerce table.shop_table tfoot td{
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+/* .cart_item .product-name{
+    width: 71%;
+}*/
+#add_payment_method #payment ul.payment_methods li img, .woocommerce-cart #payment ul.payment_methods li img, .woocommerce-checkout #payment ul.payment_methods li img{
+    width: 120px;
+}
+
+.woocommerce-order-pay .woocommerce table.shop_table td{
+    vertical-align: top;
+}
+
+.woocommerce-order-pay .input-radio{
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    background: #fff;
+    border: 1px solid #777;
+    border-radius: 9px;
+    margin: 0 3px 0 0;
+    height: 16px;
+    width: 16px;
+    padding: 0;
+}
+.woocommerce-page .woocommerce table.shop_table td{
+    vertical-align: top;
+}
+.woocommerce-page .woocommerce table.shop_table .product-total{
+    min-width: 100px;
+}
+.woocommerce-order-pay #payment .input-radio{
+    transition: all 0.3s;
+}
+.woocommerce-order-pay #payment .input-radio:checked{
+    background: #7b8691;
+    border: 4px solid #f5f5f5;
+}
+@media screen and (min-width: 568px) {
+    .order-page form .prod .prod-items .item .for-img {
+        flex-basis: 20%
+    }
+
+    .order-page form .prod .prod-items .item .name {
+        flex-basis: 40%
+    }
+
+    .order-page form .prod .prod-items .item .pri {
+        flex-basis: 36%
+    }
+}
+
+@media screen and (min-width: 768px) {
+    h1{
+        padding: 0 90px 0;
+    }
+    .order-page {
+        padding-bottom: 40px
+    }
+    .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1{
+        width: 100%;
+    }
+    .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2{
+        width: 100%;
+    }
+    .woocommerce-page .woocommerce-checkout{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, min-content);
+        grid-gap: 0 20px;
+    }
+    .woocommerce-page .woocommerce .col2-set, .woocommerce-page .woocommerce-page .col2-set{
+        grid-column: 1/2;
+        grid-row: 1/4;
+    }
+    .woocommerce-page #order_review_heading{
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+    .order-page form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative !important;
+        align-items: flex-start;
+        margin: 50px 30px 0
+    }
+
+    .order-page form:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #cecece
+    }
+
+    .order-page form .data {
+        order: -1;
+        flex-basis: 45%;
+        margin-top: 0;
+        padding: 30px 20px 0 0;
+        position: relative
+    }
+
+    .order-page form .data:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #cecece
+    }
+
+    .order-page form .data .inp .pay-part .lim {
+        position: relative;
+        width: 60%
+    }
+
+    .order-page form .data .inp .pay-part .lim input[type='button'] {
+        left: inherit
+    }
+
+    .order-page form .data .inp .pay-part .num input[type='button'] {
+        left: inherit
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .name, .order-page form .data .inp .pay-part .month-pay .name {
+        flex-basis: 40%
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .sum, .order-page form .data .inp .pay-part .month-pay .sum {
+        flex-basis: 40%;
+        text-align: left
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .des, .order-page form .data .inp .pay-part .month-pay .des {
+        flex-basis: 100%
+    }
+
+    .order-page form .woocommerce-checkout-review-order {
+        flex-basis: 55%
+    }
+
+    .order-page form .prod {
+        flex-basis: 55%;
+        position: relative;
+        padding: 30px 0 0 20px
+    }
+
+    .order-page form .prod:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #cecece
+    }
+
+    .order-page form .prod .tot {
+        margin-left: 80px
+    }
+
+    .order-page form .prod:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #cecece
+    }
+
+    .order-page form .woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout {
+        order: -1;
+        flex-basis: 100%
+    }
+
+    .woocommerce-page .woocommerce table.shop_table .product-total {
+        min-width: 100px;
+    }
+    .woocommerce-order-pay #order_review{
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+    }
+    .woocommerce-order-pay .shop_table {
+        flex-basis: 55%;
+    }
+    .woocommerce-order-pay #payment{
+        flex-basis: 40%;
+    }
+    .woocommerce-page .woocommerce table.shop_table .product-name img {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    h1 {
+        padding: 0 110px 0;
+    }
+
+    .woocommerce-checkout h1{
+        text-align: left
+    }
+    .woocommerce-page .woocommerce table.shop_table th, .woocommerce-page .woocommerce table.shop_table td{
+        font-size: 16px;
+    }
+    .order-page h3 {
+        font-size: 30px;
+        text-align: left
+    }
+
+    .order-page form .data {
+        padding: 50px 40px 0 0
+    }
+
+    .order-page form .data .inp .pay-part .part {
+        justify-content: space-between
+    }
+
+    .order-page form .data .inp .pay-part .part p {
+        flex-basis: 35%
+    }
+
+    .order-page form .data .inp .pay-part .part #num {
+        flex-basis: auto;
+        margin: 0
+    }
+
+    .order-page form .data .inp .pay-part .part .range {
+        flex-basis: 50%;
+        margin-top: 3px
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range {
+        margin: 0;
+        width: 100%
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-track {
+        margin: 0 20px 0 10px
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-wrapper {
+        border-radius: 0;
+        height: 8px;
+        background: #d2d2d2
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-mark {
+        position: absolute;
+        overflow: hidden;
+        background: #c9c9c9;
+        width: 1px;
+        height: 7px;
+        top: 8px;
+        margin: 0 0 0 5px
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-handle {
+        height: 16px;
+        cursor: pointer;
+        top: -8px;
+        width: 12px;
+        display: block;
+        border-radius: 0;
+        margin: 0;
+        background: #8ebb2b;
+        position: relative
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-handle:before {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        top: 16px;
+        left: 0;
+        border-top: 8px solid #8ebb2b;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent
+    }
+
+    .order-page form .data .inp .pay-part .part .range .jcf-range .jcf-range-handle.jcf-active-handle {
+        border: none
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .name, .order-page form .data .inp .pay-part .month-pay .name {
+        flex-basis: 32%
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .sum, .order-page form .data .inp .pay-part .month-pay .sum {
+        flex-basis: 24%;
+        text-align: left
+    }
+
+    .order-page form .data .inp .pay-part .first-pay .des, .order-page form .data .inp .pay-part .month-pay .des {
+        flex-basis: 40%
+    }
+
+    .order-page form .prod {
+        padding: 50px 0 0 40px
+    }
+
+    .order-page form .prod .prod-items .item .name {
+        flex-basis: 38%
+    }
+
+    .order-page form .prod .tot {
+        margin-left: 160px
+    }
+}
+
+@media screen and (min-width: 1280px) {
+        .woocommerce-page .woocommerce-checkout {
+            grid-gap: 0 40px;
+        }
+    .woocommerce-checkout h1{
+        margin-top: 80px;
+    }
+    h1 {padding: 0 140px;}
+    .order-page {
+        padding-top: 60px
+    }
+
+    .order-page .container {
+        padding: 0 100px
+    }
+
+    .order-page h3 {
+        font-size: 34px
+    }
+
+    .order-page form .woocommerce-checkout-review-order {
+        flex-basis: 50%
+    }
+
+    .order-page form .prod {
+        padding: 50px 0 0 30px;
+        flex-basis: 50%
+    }
+
+    .order-page form .prod .tot {
+        margin-left: 130px
+    }
+
+    .order-page form .data {
+        padding: 50px 30px 0 0;
+        flex-basis: 50%
+    }
+
+    .order-page form .data .inp {
+        margin-top: 40px
+    }
+
+    .order-page form .data .inp input {
+        height: 55px
+    }
+
+    .order-page form .data .inp input[type='submit'] {
+        padding: 10px 30px
+    }
+
+    .order-page form .data .inp .pay-part .num:before, .order-page form .data .inp .pay-part .lim:before {
+        top: 17px;
+        width: 24px;
+        height: 24px
+    }
+
+    .order-page form .data .inp .pay-part .num:after, .order-page form .data .inp .pay-part .lim:after {
+        top: 19px;
+        right: 19px
+    }
+
+    .order-page form .data .inp .pay-part .num input[type='button'], .order-page form .data .inp .pay-part .lim input[type='button'] {
+        width: 55px;
+        height: 55px
+    }
+
+    .order-page form .data .inp .pay-part .part p {
+        flex-basis: 28%
+    }
+
+    .order-page form .data .gr p {
+        margin-bottom: 25px
+    }
+
+    .order-page form .data .gr div {
+        margin-bottom: 15px
+    }
+}
+
+@media screen and (min-width: 1360px) {
+    .order-page .container {
+        width: 1000px;
+        padding: 0
+    }
+    h1{
+        width: 1000px;
+        padding: 0 30px;
+        margin: 0 auto 40px;
+    }
+
+    .order-page form .data .inp .pay-part .part p {
+        flex-basis: 33%
+    }
+
+    .order-page form .data .inp .first-pay .sum, .order-page form .data .inp .month-pay .sum {
+        flex-basis: 18%
+    }
+
+    .order-page form .data .inp .first-pay .desc, .order-page form .data .inp .month-pay .desc {
+        flex-basis: 42%
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .woocommerce {
+        padding: 0 140px !important;
+    }
+}
+@media screen and (min-width: 1360px){
+    .woocommerce {
+        width: 1000px !important;
+        padding: 0 30px 0 !important;
+    }
+}

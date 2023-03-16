@@ -1,0 +1,154 @@
+{
+    "key": "group_5f8b3d48ab351",
+    "title": "Технократ. Цвета",
+    "fields": [
+        {
+            "key": "field_6399ae859ae20",
+            "label": "Цвета ярлыков",
+            "name": "label_colors",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 2,
+            "collapsed": "field_58a2bcf743c5b",
+            "button_label": "Добавить",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6399ae859ae21",
+                    "label": "Наименование ярлыка",
+                    "name": "label_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6399ae859ae20"
+                },
+                {
+                    "key": "field_6399ae859ae22",
+                    "label": "Код цвета",
+                    "name": "label_hex_code",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "#93D500",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "parent_repeater": "field_6399ae859ae20"
+                }
+            ]
+        },
+        {
+            "key": "field_58a2bcca43c5a",
+            "label": "Соответствие цветов",
+            "name": "colors_mapping",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "collapsed": "field_58a2bcf743c5b",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_58a2bcf743c5b",
+                    "label": "Имя цвета",
+                    "name": "color_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_58a2bcca43c5a"
+                },
+                {
+                    "key": "field_58a2bd1c43c5c",
+                    "label": "Код цвета",
+                    "name": "hex_code",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": false,
+                    "return_format": "string",
+                    "parent_repeater": "field_58a2bcca43c5a"
+                }
+            ],
+            "rows_per_page": 20
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tehnokrat_colors"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1671019916
+}

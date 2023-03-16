@@ -1,0 +1,241 @@
+{
+    "key": "group_5f8b3c6b7e44a",
+    "title": "Технократ. СМС уведомления",
+    "fields": [
+        {
+            "key": "field_5aa67376dbca0",
+            "label": "Ключ API",
+            "name": "sms_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa67d553b365",
+            "label": "API URL",
+            "name": "sms_api_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "https:\/\/api.unisender.com\/ru\/api\/sendSms?format=json",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5aa67ca33b364",
+            "label": "Альфа-имя",
+            "name": "sms_alpha_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa673b9dbca1",
+            "label": "Сообщение \"Заказ принят\" в рабочее время",
+            "name": "sms_order_processing_text_working_hours",
+            "type": "textarea",
+            "instructions": "Возможные переменные: {order_id} - номер заказа, {customer_name} - имя клиента",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "{customer_name}, ваш заказ №{order_id} принят. Мы свяжемся с вами в течении 15 минут.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5aa67528dbca2",
+            "label": "Сообщение \"Заказ принят\" не в рабочее время",
+            "name": "sms_order_processing_text_not_working_hours",
+            "type": "textarea",
+            "instructions": "Возможные переменные: {order_id} - номер заказа, {customer_name} - имя клиента",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "{customer_name}, ваш заказ №{order_id} принят. Мы свяжемся с вами в ближайшее время.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5997020e7afee",
+            "label": "Просьба об отзыве",
+            "name": "sms_ask_for_feedback",
+            "type": "textarea",
+            "instructions": "Возможные переменные: {order_id} - номер заказа, {customer_name} - имя клиента",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "{customer_name}, для нас очень важно Ваше мнение! Пожалуйста оставьте отзыв об опыте работы с компанией \"ТЕХНОКРАТ\" на нашем сайте.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5beb2234ceea8",
+            "label": "Сообщение \"Предзаказ\"",
+            "name": "sms_pre_order_message",
+            "type": "textarea",
+            "instructions": "Возможные переменные: {product_id} - ID товара, {product_name} - имя товара, {product_url} - URL товара, {customer_name} - имя клиента, {customer_city} - адрес клиента, {customer_phone} - номер телефона клиента",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 3,
+            "default_value": "{customer_name}, {product_name} доступен к заказу по адресу {product_url}.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5e0cfa7110fc2",
+            "label": "Массовая рассылка",
+            "name": "sms_bulk_messages",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "collapsed": "field_5e0cfb0db33ad",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5e0cff0ebdbd3",
+                    "label": "ID",
+                    "name": "id",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e0cfb0db33ad",
+                    "label": "Наименование",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e0cfb51b33ae",
+                    "label": "Текст сообщения",
+                    "name": "text",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tehnokrat_sms"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1662216954
+}

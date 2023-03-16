@@ -1,0 +1,65 @@
+{
+    "key": "group_5f8b3f3fb992b",
+    "title": "Технократ. Шорткоды",
+    "fields": [
+        {
+            "key": "field_5db9d4f9c1b7c",
+            "label": "Топ продаж",
+            "name": "shortcode_bestsellers",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5db9d714a855f",
+                    "label": "Товары",
+                    "name": "products",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "product"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 1,
+                    "multiple": 1,
+                    "return_format": "id",
+                    "show_column": 0,
+                    "show_column_weight": 1000,
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tehnokrat_shortcodes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1602963290
+}
