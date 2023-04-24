@@ -3962,13 +3962,14 @@ Copyright (c) 2015 Daniel Eden
 	margin-right:5px;
 	cursor:poiner;
 }
-.product .product-item .one-product .about-product .part span i{
+.product .product-item .one-product .about-product .part span i,.product .product-item .one-product .about-product .part span .i{
 	opacity:0;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 	position: absolute;
     left: 0;
     top: 45px;
-	width: max-content;
-    background: #e7e7e7;
+	width: 300px;
+    background: #f4f4f4;
     font-size: 12px;
     color: #575757;
     font-style: normal;
@@ -3979,11 +3980,19 @@ Copyright (c) 2015 Daniel Eden
     margin-bottom: 10px;
     flex-basis: 100%;
 	transition:all 0.3s;
-	z-index:2;  
+	z-index:2;
+	visibility:hidden;
 }
-.product .product-item .one-product .about-product .part span:hover i{
+.product .product-item .one-product .about-product .part span:hover i, .product .product-item .one-product .about-product .part span:hover .i{
 	opacity:1;
+	visibility:visible;
 }
+.product .product-item .one-product .about-product .part span .i h7{font-size: 14px;color: #343434;font-weight: 500;line-height: 18px;margin-bottom:10px;text-align:left;}
+.product .product-item .one-product .about-product .part span .i p{padding-top: 0; margin: 10px 0 5px;font-size: 12px;color: #575757;font-weight: 300;line-height: 18px;text-align:left;}
+.product .product-item .one-product .about-product .part span .i a{padding: 5px 12px;transition: all 0.5s;background: #77BC01;border: 1px solid #77BC01;border-radius: 20px;display: inline-block;margin-top: 15px;color: #fff;font-size: 12px;text-align:left;}
+.product .product-item .one-product .about-product .part span .i a:hover{background: initial;color: #77BC01;}
+.product .product-item .one-product .about-product .part span .i li{margin: 0 0 2px;font-size: 12px;color: #575757;font-weight: 300;line-height: 18px;text-align:left;}
+
 .product .product-item .items .description .title .part img{
 	height: auto;
     width: 30px;

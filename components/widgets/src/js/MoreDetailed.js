@@ -8,7 +8,9 @@
 import React from 'react'
 
 const MoreDetailed = ({ productName, productIndex, currentVariation, variationIndex = 0 }) => {
-	const goTo = () => {
+	const goTo = (e) => {
+		e.preventDefault();
+
 		if (undefined !== currentVariation) {
 			window.dataLayer && dataLayer.push({
 				'ecommerce': {
@@ -35,8 +37,10 @@ const MoreDetailed = ({ productName, productIndex, currentVariation, variationIn
 			window.location.href = currentVariation.url
 		}
 	}
+const href_url = (undefined !== currentVariation)?currentVariation.url:''
 
-	return <a className="more-prod-but" onClick={goTo}>
+
+	return <a className="more-prod-but" href={href_url} onClick={goTo}>
 		<span>{tehnokrat.strings['more']}</span>
 		<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path

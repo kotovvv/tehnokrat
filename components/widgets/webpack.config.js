@@ -15,7 +15,7 @@ module.exports = {
   //externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     filename: "js/[name].js",
-    path: path.resolve(__dirname, "../assets"),
+    path: path.resolve(__dirname, "assets"),
   },
   module: {
     // exclude node_modules

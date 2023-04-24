@@ -4539,6 +4539,7 @@ Copyright (c) 2015 Daniel Eden
 	padding-top: 15px;
 	margin-bottom:10px;
 	flex-basis:100%;
+	text-align:left;
 }
 .product .product-item .items .description .title .part span, .product .product-item .items .description .title-accses .part span{
 	position:relative;
@@ -4552,28 +4553,38 @@ Copyright (c) 2015 Daniel Eden
 	margin-right:5px;
 	cursor:pointer;
 }
-.product .product-item .items .description .title .part span i, .product .product-item .items .description .title-accses .part span i{
+.product .product-item .items .description .title .part span .i, .product .product-item .items .description .title-accses .part span .i, .product .product-item .items .description .title .part span i, .product .product-item .items .description .title-accses .part span i{
 	opacity:0;
 	position: absolute;
     left: 0;
     top: 45px;
-	width: max-content;
-    background: #e7e7e7;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+	width: 300px;
+    background: #f4f4f4;
     font-size: 12px;
     color: #575757;
     font-style: normal;
     font-weight: 400;
     line-height: 11px;
-    padding: 7px;
+    padding: 12px;
     border-radius: 10px;
     margin-bottom: 10px;
     flex-basis: 100%;
 	transition:all 0.3s;
 	z-index:2;
+	visibility:hidden;
+	text-align:left;
 }
-.product .product-item .items .description .title .part span:hover i, .product .product-item .items .description .title-accses .part span:hover i{
+.product .product-item .items .description .title .part span:hover .i, .product .product-item .items .description .title-accses .part span:hover .i, .product .product-item .items .description .title .part span:hover i, .product .product-item .items .description .title-accses .part span:hover i{
 	opacity:1;
+	visibility:visible;
 }
+.product .product-item .items .description .title .part span .i h4, .product .product-item .items .description .title-accses .part span .i h7{font-size: 14px;color: #343434;font-weight: 500;line-height: 18px;margin-bottom:10px;text-align:left;}
+.product .product-item .items .description .title .part span .i p, .product .product-item .items .description .title-accses .part span .i p{padding-top: 0; margin: 10px 0 5px;font-size: 12px;color: #575757;font-weight: 300;line-height: 18px;text-align:left;}
+.product .product-item .items .description .title .part span .i a, .product .product-item .items .description .title-accses .part span .i a{padding: 5px 12px;transition: all 0.5s;background: #77BC01;border: 1px solid #77BC01;border-radius: 20px;display: inline-block;margin-top: 15px;color: #fff;font-size: 12px;text-align:left;}
+.product .product-item .items .description .title .part span .i a:hover, .product .product-item .items .description .title-accses .part span .i a:hover{background: initial;color: #77BC01;}
+.product .product-item .items .description .title .part span .i li, .product .product-item .items .description .title-accses .part span .i li{margin: 0 0 2px;font-size: 12px;color: #575757;font-weight: 300;line-height: 18px;text-align:left;}
+
 .product .product-item .items .description .title .part img , .product .product-item .items .description .title-accses .part img{
 	height: auto;
     width: 30px;

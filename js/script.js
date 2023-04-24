@@ -143,7 +143,7 @@ jQuery(document).ready(function($){
         lessLink: '<a href="#" class="readmore">Скрыть под робнее</a>'
     });*/
 
-	$('.text .text-content article').readmore({
+	/*$('.text .text-content article').readmore({
         collapsedHeight: 200,
         moreLink: '<a class="readmore" href="javascript:void(0)">Читать подробнее</a>',
         lessLink: '<a class="readmore" href="javascript:void(0)">Скрыть подробнее</a>',
@@ -153,7 +153,7 @@ jQuery(document).ready(function($){
                 $('html, body').animate({scrollTop: element.offset().top}, {duration: 100});
             }
         }
-    });
+    });*/
 
     $('.mobile-menu').on('click', function () {
         $('.menuMibi').addClass('active');
@@ -211,6 +211,27 @@ jQuery(document).ready(function($){
     } else {
         $('.wrapper-js').css('padding-top', header_height+20);
     }
+	
+	var acc = document.getElementsByClassName("more-but");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+	
+	$( ".accordion" ).accordion({
+		active: false,
+        collapsible: true,
+        heightStyle: "content"
+    });
 });
 
 

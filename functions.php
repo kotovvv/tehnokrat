@@ -240,6 +240,7 @@ final class Tehnokrat
 		}, 10, 3);
 		//kotovvv
 		add_filter('woocommerce_available_payment_gateways', [$this, 'payment_gateway_disable_product']);
+		add_action('woocommerce_before_thankyou', [$this, 'put_html_in_order'],50);
 
 		//		add_filter( 'sanitize_title', [ $this, 'remove_cyrillic_symbols' ], - PHP_INT_MAX );
 		add_action('after_setup_theme', [$this, 'setup_theme']);
@@ -442,11 +443,19 @@ final class Tehnokrat
 					unset($available_gateways['installment']);
 				}
 			}
-
 		}
 		return $available_gateways;
 	}
 
+	public function put_html_in_order($order)
+	{
+		if ($order->payment_method == "monobank") { ?>
+<div class="mono-vid"><img class="iphone-mask" style="" src="/wp-content/uploads/2023/03/iphone-teh.png">
+    <video style="width: 100%;z-index: 0;position: relative;" autoplay="" loop="" muted="" playsinline="" controls="">
+				<source src="/wp-content/uploads/2023/03/Mono.mp4" type="video/mp4">
+			</video></div>
+			<?php }
+	}
 
 	public function setup_theme()
 	{
@@ -1017,7 +1026,7 @@ final class Tehnokrat
 					) : $item_meta->get_product();
 					//$item_meta      = new WC_Order_Item_Meta( $item, $product );
 					//$item_meta_html = $item_meta->display( true, true );
-?>
+			?>
 					<tr class="<?php echo apply_filters(
 												'woocommerce_admin_order_item_class',
 												'',

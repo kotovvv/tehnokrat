@@ -127,6 +127,7 @@ abstract class Abstract_Page {
 			$media = $style[3] ?? 'all';
 
 			wp_register_style( $handle, $src, $deps, $ver, $media );
+			// wp_enqueue_style( $handle, $src, $deps, $ver, $media );
 		}
 	}
 
@@ -295,7 +296,8 @@ abstract class Abstract_Page {
 			$ver       = $script[2] ?? $this->version;
 			$in_footer = $script[3] ?? true;
 
-			wp_register_script( $handle, $src, $deps, $ver, $in_footer );
+			// wp_register_script( $handle, $src, $deps, $ver, $in_footer );
+			wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
 		}
 	}
 

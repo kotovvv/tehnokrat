@@ -9,3 +9,4 @@
 *.pot~
 *.mo
 /vendor
+node_modules

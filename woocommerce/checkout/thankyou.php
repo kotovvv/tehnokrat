@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php
 	if ( $order ) :
 
-		do_action( 'woocommerce_before_thankyou', $order->get_id() );
+		do_action( 'woocommerce_before_thankyou', $order );
 		?>
 
 		<?php if ( $order->has_status( 'failed' ) ) : ?>
