@@ -239,8 +239,10 @@ final class Tehnokrat
 			return $value;
 		}, 10, 3);
 		//kotovvv
+		add_filter('woocommerce_get_breadcrumb', [$this, 'change_breadcrumb']);
+		add_filter('woocommerce_breadcrumb_defaults', [$this, 'wcc_change_breadcrumb_delimiter']);
 		add_filter('woocommerce_available_payment_gateways', [$this, 'payment_gateway_disable_product']);
-		add_action('woocommerce_before_thankyou', [$this, 'put_html_in_order'],50);
+		add_action('woocommerce_before_thankyou', [$this, 'put_html_in_order'], 50);
 
 		//		add_filter( 'sanitize_title', [ $this, 'remove_cyrillic_symbols' ], - PHP_INT_MAX );
 		add_action('after_setup_theme', [$this, 'setup_theme']);
@@ -424,13 +426,37 @@ final class Tehnokrat
 	}
 
 
+	public
+	function wcc_change_breadcrumb_delimiter($defaults)
+	{
+		// Change the breadcrumb delimeter from '/' to '>'
+		$defaults['delimiter'] = ' <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M6.47004 0.995698L8.20321 2.91665L0.526319 2.91665C0.235791 2.91665 2.13759e-07 3.17799 2.13759e-07 3.5C2.13759e-07 3.82201 0.235791 4.08335 0.526319 4.08335L8.20321 4.08335L6.47004 6.0043C6.36715 6.11805 6.31583 6.26739 6.31583 6.41673C6.31583 6.56606 6.36715 6.7154 6.47004 6.82915C6.67557 7.05695 7.00873 7.05695 7.21426 6.82915L9.84585 3.91243C10.0514 3.68492 10.0514 3.31508 9.84585 3.08757L7.21426 0.170847C7.00873 -0.0569491 6.67557 -0.0569491 6.47004 0.170847C6.26452 0.398352 6.26452 0.768193 6.47004 0.995698Z" fill="#77BC01"/> </svg> ';
+		$defaults['wrap_before'] = '<ul class="breadcrumbs">';
+		$defaults['wrap_after']  = '</ul>';
+		$defaults['before']      = '<li>';
+		$defaults['after']       = '</li>';
+
+		return $defaults;
+	}
+
+	public function change_breadcrumb($crumbs)
+	{
+		foreach ($crumbs as $crumb) {
+			$crumb[0] =	trim(preg_replace('/\[.*\]/', '', $crumb[0]));
+		}
+
+		return $crumbs;
+	}
 	public function payment_gateway_disable_product($available_gateways)
 	{
 		$uset_monobank = false;
 		$uset_privatbank = false;
 		// Make sure it's only on front end
 		if (is_admin()) return false;
-		if (empty(WC()->cart->get_cart())) {
+		if (!did_action('wp_loaded')) {
+			return false;
+		}
+		if (!method_exists(WC()->cart, 'get_cart')) {
 			return false;
 		} else {
 			foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
@@ -440,7 +466,7 @@ final class Tehnokrat
 				}
 				if (get_field('partprivat', $cart_item['product_id']) == 0 && $uset_privatbank == false) {
 					$uset_privatbank = true;
-					unset($available_gateways['installment']);
+					unset($available_gateways['privat_join']);
 				}
 			}
 		}
@@ -451,10 +477,11 @@ final class Tehnokrat
 	{
 		if ($order->payment_method == "monobank") { ?>
 <div class="mono-vid"><img class="iphone-mask" style="" src="/wp-content/uploads/2023/03/iphone-teh.png">
-    <video style="width: 100%;z-index: 0;position: relative;" autoplay="" loop="" muted="" playsinline="" controls="">
-				<source src="/wp-content/uploads/2023/03/Mono.mp4" type="video/mp4">
-			</video></div>
-			<?php }
+  <video style="width: 100%;z-index: 0;position: relative;" autoplay="" loop="" muted="" playsinline="" controls="">
+    <source src="/wp-content/uploads/2023/03/Mono.mp4" type="video/mp4">
+  </video>
+</div>
+<?php }
 	}
 
 	public function setup_theme()
@@ -1027,18 +1054,18 @@ final class Tehnokrat
 					//$item_meta      = new WC_Order_Item_Meta( $item, $product );
 					//$item_meta_html = $item_meta->display( true, true );
 			?>
-					<tr class="<?php echo apply_filters(
+<tr class="<?php echo apply_filters(
 												'woocommerce_admin_order_item_class',
 												'',
 												$item,
 												$the_order
 											); ?>">
-						<td class="qty"><?php echo esc_html($item->get_quantity()); ?></td>
-						<td class="name">
-							<?php if ($product) : ?>
-								<?php echo (wc_product_sku_enabled() && $product->get_sku()) ? $product->get_sku() . ' - ' : ''; ?>
-								<a href="<?php echo get_edit_post_link($product->get_id()); ?>">
-									<?php
+  <td class="qty"><?php echo esc_html($item->get_quantity()); ?></td>
+  <td class="name">
+    <?php if ($product) : ?>
+    <?php echo (wc_product_sku_enabled() && $product->get_sku()) ? $product->get_sku() . ' - ' : ''; ?>
+    <a href="<?php echo get_edit_post_link($product->get_id()); ?>">
+      <?php
 									echo apply_filters(
 										'woocommerce_order_item_name',
 										$item->get_name(),
@@ -1046,20 +1073,20 @@ final class Tehnokrat
 										false
 									);
 									?>
-								</a>
-							<?php else : ?>
-								<?php echo apply_filters(
+    </a>
+    <?php else : ?>
+    <?php echo apply_filters(
 									'woocommerce_order_item_name',
 									$item->get_name(),
 									$item,
 									false
 								); ?>
-							<?php endif; ?>
-							<?php if (!empty($item_meta_html)) : ?>
-								<?php echo wc_help_tip($item_meta_html); ?>
-							<?php endif; ?>
-						</td>
-					</tr>
+    <?php endif; ?>
+    <?php if (!empty($item_meta_html)) : ?>
+    <?php echo wc_help_tip($item_meta_html); ?>
+    <?php endif; ?>
+  </td>
+</tr>
 <?php
 				}
 
@@ -1638,9 +1665,13 @@ final class Tehnokrat
 	 */
 	public function language_selector(): void
 	{
-		if ('ua' === get_request_locale()) {
+		echo '<div class="lang">';
+		the_widget('qTranslateXWidget', array('type' => 'custom', 'format' => '%c', 'hide-title' => true, 'widget-css-off' => true));
+		echo '</div>';
+		/* if ('ua' === get_request_locale()) {
 			$ru_url = str_replace(UA_SITE_URL, RU_SITE_URL, REQUESTED_URL);
 			$ua_url = REQUESTED_URL;
+
 		} else {
 			$ru_url = REQUESTED_URL;
 			$ua_url = str_replace(RU_SITE_URL, UA_SITE_URL, REQUESTED_URL);
@@ -1658,7 +1689,7 @@ final class Tehnokrat
 			'ua' !== get_request_locale() ? 'active' : '',
 			$ru_url
 		);
-		echo '</div>';
+		echo '</div>'; */
 	}
 
 	/**
@@ -1712,6 +1743,8 @@ final class Tehnokrat
 			'Pay part'         => __('Pay part', 'tehnokrat'),
 			'Mono Pay part'         => __('Mono Pay part', 'tehnokrat'),
 			'Privat Pay part'         => __('Privat Pay part', 'tehnokrat'),
+			//'curLang' => qtrans_getLanguage(),
+			'underProduct' => '<ul class="info-links"><li><a target="_blank" href="' . get_permalink(22560) . '">' . get_the_title(22560) . '</a></li><li><a target="_blank" href="' . get_permalink(3843) . '">' . get_the_title(3843) . '</a></li></ul>',
 		);
 	}
 

@@ -27,20 +27,20 @@ const App = () => {
 	)
 
 	return createPortal(<div className={className}>
-			<ProductImage
-				label={currentVariation.label}
-				imageSrc={currentVariation.image}
-				gallery={currentVariation.gallery}
-			/>
-			{currentVariation.model.length > 0 && <span className="model">{currentVariation.model}</span>}
-			<p className="title">
-				{currentProduct.name}
-				{currentVariation.modification && currentVariation.modification.length &&
+		<ProductImage
+			label={currentVariation.label}
+			imageSrc={currentVariation.image}
+			gallery={currentVariation.gallery}
+		/>
+		{currentVariation.model.length > 0 && <span className="model">{currentVariation.model}</span>}
+		<p className="title">
+			{currentProduct.name}
+			{currentVariation.modification && currentVariation.modification.length &&
 				<span>{currentVariation.modification}</span>}
-			</p>
-			<AddToCart productName={currentProduct.name} currentVariation={currentVariation} inStock={inStock}/>
-
-		</div>,
+		</p>
+		<AddToCart productName={currentProduct.name} currentVariation={currentVariation} inStock={inStock} />
+		<div dangerouslySetInnerHTML={{ __html: tehnokrat.strings.underProduct }}></div>
+	</div>,
 		document.getElementById('widget-one-product')
 	)
 }

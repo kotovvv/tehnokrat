@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * The Template for displaying product archives, including the main shop page which is a post type archive
+ *
+ * @see https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce/Templates
+ * @version 3.4.0
+ */
+
+get_header(); ?>
+
+<?php
+$o_cat = get_queried_object();
+// var_dump(get_queried_object_id());
+?>
+<?php woocommerce_breadcrumb() ?>
+
+<section class="page-title">
+	<div class="container">
+		<h1><?php echo $o_cat->name ?></h1>
+	</div>
+</section>
+
+<section class="product">
+	<div class="container">
+		<div id="widget-product-variation-selector" class="product-item"></div>
+	</div>
+</section>
+<div class="container">
+<?php if (have_rows('reqs', $o_cat)) : ?>
+	<!-- section links под товарами над article -->
+	<div class="links-section">
+		<h2><?php the_field('r_title', $o_cat) ?></h2>
+		<div class="links-items">
+			<?php while (have_rows('reqs', $o_cat)) : the_row(); ?>
+				<a href="<?php the_sub_field('url'); ?>"><?php the_sub_field('title'); ?></a>
+			<?php endwhile; ?>
+		</div>
+	</div>
+<?php endif; ?>
+
+	<?php if (have_rows('faq', $o_cat)) : ?>
+		<!-- section faq под быстрыми ссылками над article -->
+		<div class="faq">
+			<h2><?php the_field('faq_title', $o_cat) ?></h2>
+			<div class="faq-items">
+				<?php while (have_rows('faq', $o_cat)) : the_row(); ?>
+					<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+						<p class="faq-item-title" itemprop="name">
+							<?php the_sub_field('q'); ?></p>
+						<div class="faq-item-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+							<p itemprop="text"><?php the_sub_field('a'); ?></p>
+						</div>
+					</div>
+				<?php endwhile; ?>
+			</div>
+		</div>
+	<?php endif; ?>
+
+
+
+	<!-- section price table под быстрыми ссылками над article -->
+	<div class="price-table">
+		<h2>Ціни на cмартфони Apple iPhone </h2>
+		<table>
+			<tr>
+				<th>Сматрфон</th>
+				<th>Ціна</th>
+			</tr>
+			<tr>
+				<td>iPhone 13</td>
+				<td>30 160 грн</td>
+			</tr>
+			<tr>
+				<td>iPhone 13</td>
+				<td>30 160 грн</td>
+			</tr>
+			<tr>
+				<td>iPhone 13</td>
+				<td>30 160 грн</td>
+			</tr>
+			<tr>
+				<td>iPhone 13</td>
+				<td>30 160 грн</td>
+			</tr>
+			<tr>
+				<td>iPhone 13</td>
+				<td>30 160 грн</td>
+			</tr>
+		</table>
+	</div>
+</div>
+	<script>
+		var acc = document.getElementsByClassName("faq-item-title");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.maxHeight) {
+					panel.style.maxHeight = null;
+				} else {
+					panel.style.maxHeight = panel.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
+
+	<section class="text">
+		<div class="container">
+			<div class="text-content">
+				<article>
+					<?php
+					if ($_term = get_term_by('slug', $GLOBALS['term'], 'product_cat')) {
+						printf(
+							'<div class="title">%s</div>%s',
+							get_field('title_' . get_request_locale(), "product_cat_{$_term->term_id}"),
+							get_field('text_' . get_request_locale(), "product_cat_{$_term->term_id}")
+						);
+					}
+					?>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<?php get_footer(); ?>

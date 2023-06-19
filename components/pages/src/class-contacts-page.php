@@ -11,6 +11,7 @@ class Contacts_Page extends Abstract_Page {
 		wp_enqueue_script( "{$this->identifier}-maps-googleapis" );
 		wp_enqueue_script( "{$this->identifier}-readmore" );
 		wp_enqueue_script( "{$this->identifier}-contacts-page" );
+		wp_enqueue_script("{$this->identifier}-main");
 
 		wp_localize_script( "{$this->identifier}-script", "{$this->identifier}_script", [
 			'mapIcon' => get_template_directory_uri() . '/img/map-icon.png',

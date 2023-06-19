@@ -19,6 +19,7 @@ class Reviews_Page extends Abstract_Page {
 		wp_enqueue_script( "{$this->identifier}-vue" );
 		wp_enqueue_script( "{$this->identifier}-reviews" );
 		wp_enqueue_script( "{$this->identifier}-rating" );
+		wp_enqueue_script("{$this->identifier}-main");
 		wp_localize_script(
 			"{$this->identifier}-script",
 			"{$this->identifier}",

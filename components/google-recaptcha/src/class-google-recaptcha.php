@@ -37,7 +37,6 @@ final class Google_Recaptcha {
 	 */
 	protected function __construct() {
 		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-
 		wp_register_script(
 			'google-recaptcha',
 			'https://www.google.com/recaptcha/api.js?render=' . $this->get_site_key(),

@@ -62,8 +62,8 @@ const NotifyProductInStockPopup = ({ productName, currentVariation, closePopup }
 				<div className="product_pred_popup_content"
 					 style={{ paddingTop: headerHeight + 20 + 'px' }}>
 					<i className="close" onClick={close} style={{ top: headerHeight + 10 + 'px' }}/>
-					<h2>{wp.i18n.__('Report Admission', 'tehnokrat')}</h2>
-					<h3>{productName}</h3>
+					<p className="h2">{wp.i18n.__('Report Admission', 'tehnokrat')}</p>
+					<p className="h3">{productName}</p>
 					<p>{currentVariation.title1}</p>
 					<form onSubmit={createPreOrder}>
 						<div className="item">

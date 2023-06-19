@@ -45,7 +45,7 @@ const ProductTemplateWithMultipleAttributes = memo(({
 						}
 					</li>
 					<li>
-						<h6>{tehnokrat.strings['Model']}</h6>
+						<p className="h6">{tehnokrat.strings['Model']}</p>
 						<span>{selectedModel.current ? selectedModel.current : '-'}</span>
 					</li>
 					<li>
@@ -67,11 +67,11 @@ const ProductTemplateWithMultipleAttributes = memo(({
 			</div>
 
 			<div className="title">
-				<h2>
+				<p className="h2">
 					{productName}
 					{undefined !== currentVariation && currentVariation.modification && currentVariation.modification.length &&
 					<span>{currentVariation.modification}</span>}
-				</h2>
+				</p>
 				<MoreDetailed
 					productName={productName}
 					productIndex={productIndex}

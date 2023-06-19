@@ -101,6 +101,7 @@ global $wp_query;
                 ><p>Купить товар</p></a>
             </template>
 			<a v-else class="buy_pred" href="javascript:void(0)" @click="showProductCard">Сообщить о поступлении</a>
+			<p>11111111111111111111111111</p>
 		</div>
 		<a v-if="$parent.currentVariation.tradeIn" class="trade-but" href="/trade-in/">
 			Trade-in

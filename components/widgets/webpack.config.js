@@ -9,7 +9,7 @@ module.exports = {
     "widget-product-variation-selector": [path.resolve(__dirname, "src", "js", "index.js")],
     "widget-one-product": [path.resolve(__dirname, "src", "js", "indexOneProduct.js")],
   },
-  mode: "production",// development, production
+  mode: "development",// development, production
   target: 'web', // in order too ignore built-in modules like path, fs, node etc.
 
   //externals: [nodeExternals()], // in order to ignore all modules in node_modules folder

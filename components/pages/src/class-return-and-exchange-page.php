@@ -14,5 +14,6 @@ class Return_And_Exchange_Page extends Abstract_Page {
 		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( "{$this->identifier}-readmore" );
 		wp_enqueue_script( "{$this->identifier}-trade-in" );
+		wp_enqueue_script("{$this->identifier}-main");
 	}
 }

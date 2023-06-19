@@ -23,7 +23,7 @@ const Description = ({ description, selectedAttributesValues }) => {
 	}, [description, selectedAttributesValues])
 
 	return <React.Fragment>
-		<h6>{Object.keys(selectedAttributesValues).length < 2 ? tehnokrat.strings['Description'] : tehnokrat.strings['Configuration']}</h6>
+		<p className="h6">{Object.keys(selectedAttributesValues).length < 2 ? tehnokrat.strings['Description'] : tehnokrat.strings['Configuration']}</p>
 		<div dangerouslySetInnerHTML={{ __html: selectedDescription }}/>
 	</React.Fragment>
 }

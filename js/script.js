@@ -18,7 +18,41 @@ window.addEventListener('beforeunload', (event) => {
 jQuery(document).ready(function($){
     var footer_height = $('.footer_js').height();
     $('.wrapper-js').css('padding-bottom', footer_height);
-	
+
+    $('.all-product .filter .filter-open').on('click', function () {
+        $('.all-product .filter .filter-cont').addClass('active');
+    });
+
+    $('.all-product .filter .close').on('click', function () {
+        $('.all-product .filter .filter-cont').removeClass('active');
+    });
+
+    var proditem_height = $(".product-item .product-cont").height();
+    $('.product-item').css('min-height', proditem_height+40);
+
+    $(".product-item").on({
+        touchstart: function () {
+            $(this).addClass('active');
+        },
+        touchend: function () {
+            $(this).removeClass('active');
+        }
+    });
+
+    $(".product-item").on({
+        mouseenter: function () {
+            $(this).addClass('active');
+        },
+        mouseleave: function () {
+            $(this).removeClass('active');
+        }
+    });
+
+    jcf.replace($('.filter-item .checkbox-item input[type=checkbox]'));
+    jcf.replace($('.filter-item input[type=range]'));
+
+
+
     // $('.color').find('li').on('click', function () {
     //     $('.color').find('li').removeClass('active');
     //     $(this).addClass('active');
@@ -232,12 +266,28 @@ jQuery(document).ready(function($){
         collapsible: true,
         heightStyle: "content"
     });
+
+    var pi = document.getElementsByClassName("product-item");
+    var j;
+    for (j = 0; j < pi.length; j++) {
+        pi[j].addEventListener("mouseover", function() {
+            this.classList.toggle("active");
+            var pichild = pi.querySelector('.features');
+            if (pichild.style.maxHeight){
+                pichild.style.maxHeight = null;
+            } else { 
+                pichild.style.maxHeight = pichild.scrollHeight + "px";
+            }
+        });
+    }
+
+
+
+
 });
-
-
-
-
+   
 jQuery(window).resize(function(){
+
     var $ = jQuery;
 
     var footer_height = $('.footer_js').height();
@@ -248,5 +298,8 @@ jQuery(window).resize(function(){
 
     $('.up_order').css('height', wind_height);
     $('.up_order').css('width', wind_width);
+
+    var proditem_height = $(".all-product .product-cont").height();
+    $('.all-product .product-item').css('min-height', proditem_height+40);
 
 });

@@ -28,14 +28,15 @@ Number.prototype.format = function (n, x, s, c) {
 
 		$('.slider').slick({
 			dots: true,
-			prevArrow: tehnokrat_script.slickPrevArrow,
-			nextArrow: tehnokrat_script.slickNextArrow
+			//prevArrow: tehnokrat_script.slickPrevArrow,
+			//nextArrow: tehnokrat_script.slickNextArrow
 		});
 
 		$(document.body).on('updated_wc_div updated_checkout', function () {
 			jcf.replaceAll();
 		});
-
+jcf.destroy( '[name="typedisplay"]') 
+jcf.destroy( '[name="sortcost"]') 
 		$('.exit').on('click', function () {
 			$('.menuMibi').removeClass('active');
 			$('body').removeClass('popup');

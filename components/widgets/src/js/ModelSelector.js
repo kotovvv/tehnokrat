@@ -8,7 +8,7 @@ const classNames = require('classnames')
 
 const ModelSelector = ({ models, selectedModel, setSelectedModel }) => {
 	return <>
-		<h6>{tehnokrat.strings['Choose a model']}</h6>
+		<p className="h6">{tehnokrat.strings['Choose a model']}</p>
 		<ul>
 			{models.map((model, index) => {
 				return <li className={classNames({ active: model === selectedModel })} key={index}>

@@ -172,7 +172,7 @@ const Selectors = ({
 			className={attributes[0].startsWith('#') ? 'color' : 'attribute'}
 			key={i}
 		>
-			<h5>{variationsAttributesTitles[i]}</h5>
+			<p className="h5">{variationsAttributesTitles[i]}</p>
 			<ul className={attributes[0].startsWith('#') ? 'color' : 'attribute'}>
 				{attributes.map((value, ii) =>
 					<li

@@ -27,6 +27,7 @@ class Trade_In_Page extends Abstract_Page {
 		wp_enqueue_script( "{$this->identifier}-jcf" );
 		wp_enqueue_script( "{$this->identifier}-jcf.file" );
 		wp_enqueue_script( "{$this->identifier}-jcf.checkbox" );
+		wp_enqueue_script("{$this->identifier}-main");
 
 		wp_localize_script(
 			"{$this->identifier}-trade-in",

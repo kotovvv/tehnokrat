@@ -54,7 +54,7 @@ final class Options_Page {
 	/**
 	 * Options_Page::__wakeup
 	 */
-	protected function __wakeup() {
+	public function __wakeup() {
 	}
 
 	/**

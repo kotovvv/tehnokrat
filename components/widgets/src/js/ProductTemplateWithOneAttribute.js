@@ -30,11 +30,11 @@ const ProductTemplateWithOneAttribute = memo(({
 		<div className="description clearfix">
 			<div className="title-accses">
 				<div className="accses">
-					<h4>
+					<p className="h4">
 						{productName}
 						{undefined !== currentVariation && currentVariation.modification && currentVariation.modification.length &&
 						<span>{currentVariation.modification}</span>}
-					</h4>
+					</p>
 					<MoreDetailed
 						productName={productName}
 						productIndex={productIndex}
@@ -49,7 +49,7 @@ const ProductTemplateWithOneAttribute = memo(({
 							selectedAttributesValues={selectedAttributesValues.current}
 							setSelectedAttributesValues={select}
 						/>
-						<h6>{tehnokrat.strings['Description']}</h6>
+						<p className="h6">{tehnokrat.strings['Description']}</p>
 						<p>
 							<span dangerouslySetInnerHTML={{ __html: currentVariation?.description2 }}/>
 							<MoreDetailed

@@ -11,5 +11,6 @@ class Exchange_Page extends Abstract_Page {
 		wp_enqueue_script( "{$this->identifier}-match-height" );
 		wp_enqueue_script( "{$this->identifier}-readmore" );
 		wp_enqueue_script( "{$this->identifier}-script" );
+		wp_enqueue_script("{$this->identifier}-main");
 	}
 }

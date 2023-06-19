@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying product content in the single-product.php template
  *
@@ -15,7 +16,7 @@
  * @version 3.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
@@ -24,10 +25,10 @@ global $product;
  *
  * @hooked wc_print_notices - 10
  */
-do_action( 'woocommerce_before_single_product' );
+do_action('woocommerce_before_single_product');
 
 ?>
-<section id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
+<section id="product-<?php the_ID(); ?>" <?php wc_product_class('', $product); ?>>
 	<div class="container">
 		<div class="product-item">
 			<div class="one-product">
@@ -40,7 +41,7 @@ do_action( 'woocommerce_before_single_product' );
 					 * @hooked woocommerce_template_single_description - 10
 					 * @hooked WC_Structured_Data::generate_product_data() - 60
 					 */
-					do_action( 'woocommerce_single_product_summary' );
+					do_action('woocommerce_single_product_summary');
 					?>
 				</div>
 			</div>
@@ -49,23 +50,24 @@ do_action( 'woocommerce_before_single_product' );
 </section>
 
 <div class="container">
-	<?= do_shortcode( '[tehnokrat_accessories]<h4>' . __( 'Recommended products', 'tehnokrat' ) . '</h4>[/tehnokrat_accessories]' ) ?>
+	<?= do_shortcode('[tehnokrat_accessories]<p class="h4">' . __('Recommended products', 'tehnokrat') . '</p>[/tehnokrat_accessories]') ?>
 </div>
 
-<section class="text">
-	<div class="container">
-		<div class="text-content">
-			<article>
-				<?php
-				printf(
-					'<h1>%s</h1>%s',
-					get_field( 'title_' . get_request_locale(), get_the_ID() ),
-					get_field( 'text_' . get_request_locale(), get_the_ID() )
-				);
-				?>
-			</article>
+<?php do_action('woocommerce_after_single_product'); ?>
+<?php if (get_field('text_' . get_request_locale(), get_the_ID())) : ?>
+	<section class="text">
+		<div class="container">
+			<div class="text-content">
+				<article>
+					<?php
+					printf(
+						'<div class="title">%s</div>%s',
+						get_field('title_' . get_request_locale(), get_the_ID()),
+						get_field('text_' . get_request_locale(), get_the_ID())
+					);
+					?>
+				</article>
+			</div>
 		</div>
-	</div>
-</section>
-
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+	</section>
+<?php endif; ?>
