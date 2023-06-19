@@ -29,12 +29,21 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
     let selectedAttr = []
     let attrs = document.querySelectorAll('input[name=attr]:checked');
     [...attrs].map(el => {
-      // let atr = el.getAttribute('atr')
+      let atr = el.getAttribute('atr')
       let value = el.value
-      stateFilter.attrbs[el.getAttribute('atr')].name
-      selectedAttr[el.getAttribute('atr')].push(el.value)
+      if (selectedAttr.length === 0) {
+        selectedAttr.push({ id: atr, name: stateFilter.attrbs[atr].name, values: [value] })
+      } else {
+        let temp = selectedAttr.find(fe => fe.id === atr)
+        if (temp != undefined) {
+          temp.values.push(value)
+        } else {
+          selectedAttr.push({ id: atr, name: stateFilter.attrbs[atr].name, values: [value] })
+        }
+      }
+
     })
-    console.log(selectedAttr)
+    changeFilter({ ...stateFilter, selected: selectedAttr })
   }
 
   useEffect(() => {
@@ -112,7 +121,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
 
           </div>
         </div>
-        {stateFilter.selected != undefined ?
+        {stateFilter.selected != undefined && stateFilter.selected.length > 0 ?
           <div className="filter-section chosen-items">
             <p className="title">
               <svg width="22" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,14 +134,14 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               </svg>
               Ви обрали:</p>
             <ul>
-              <li>Оперативна памʼять:  8 Gb <a className="del"><svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.33333 1L3.66667 3.66667M3.66667 3.66667L1 6.33333M3.66667 3.66667L6.33333 6.33333M3.66667 3.66667L1 1" stroke="#343434" strokeLinecap="round" strokeLinejoin="round"></path>
-              </svg>
-              </a></li>
-              <li>Накопичувач:  256 Gb <a className="del"><svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.33333 1L3.66667 3.66667M3.66667 3.66667L1 6.33333M3.66667 3.66667L6.33333 6.33333M3.66667 3.66667L1 1" stroke="#343434" strokeLinecap="round" strokeLinejoin="round"></path>
-              </svg>
-              </a></li>
+              {stateFilter.selected.map(el => {
+                return el.values.map(v => {
+                  return <li key={el.id + v}>{el.name}:  {v} <button className="del" onClick={() => (document.querySelector('input[value="' + v + '"]').click())}><svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.33333 1L3.66667 3.66667M3.66667 3.66667L1 6.33333M3.66667 3.66667L6.33333 6.33333M3.66667 3.66667L1 1" stroke="#343434" strokeLinecap="round" strokeLinejoin="round"></path>
+                  </svg>
+                  </button></li>
+                })
+              })}
             </ul>
           </div> : ""}
         <div className="filter-section">

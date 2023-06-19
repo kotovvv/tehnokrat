@@ -29,15 +29,41 @@ const Blocks = memo(({ inStock, inSort, container }) => {
 
   //get products for category selected
   let filtered_products = products.filter(e => { return e.name === stateFilter.catName })[0].variations
-  console.log(filtered_products)
 
-  //absent products in bottom
-  //let filtered_products = product_cat
+  const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
+    ? filtered_products[0].description2.filter((title, index) => (index % 2 === 0))
+    : [tehnokrat.strings['color']]
+  let titleAttr = []
+  for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
+    let attrs = []
+    filtered_products.map(variation => {
+      if (!attrs.includes(variation.attributes2[i])) {
+        attrs.push(variation.attributes2[i])
+      }
+    })
+    if (attrs.length) {
+      titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs })
+    }
+  }
+  setFilter({
+    ...stateFilter,
+    attrbs: titleAttr,
+  })
 
   useEffect(() => {
+    let store = []
+    if (stateFilter.selected != undefined && stateFilter.selected.length > 0) {
+      stateFilter.selected.map(atr => {
+        atr.values.map(v => {
+          store = store.concat.filtered_products.filter(el => el.title2.includes(v))
+        })
+        // filtered_products = store
+      })
+    }
+
     // if need sort
     if (inSort) {
-      filtered_products = filtered_products.sort((a, b) => {
+      store = filtered_products.sort((a, b) => {
         if (inSort === 'upcost') {
           return a.priceUAH - b.priceUAH;
         }
@@ -47,33 +73,18 @@ const Blocks = memo(({ inStock, inSort, container }) => {
       })
     }
 
-    const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
-      ? filtered_products[0].description2.filter((title, index) => (index % 2 === 0))
-      : [tehnokrat.strings['color']]
-    let titleAttr = []
-    for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
-      let attrs = []
-      filtered_products.map(variation => {
-        if (!attrs.includes(variation.attributes2[i])) {
-          attrs.push(variation.attributes2[i])
-        }
-      })
-      if (attrs.length) {
-        titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs })
-      }
-    }
-    const min = Math.min(...filtered_products.map(item => item.priceUAH))
-    const max = Math.max(...filtered_products.map(item => item.priceUAH))
-    setFilter({
-      ...stateFilter,
-      min: min,
-      max: max,
-      attrbs: titleAttr,
-    })
+    const min = Math.min(...store.map(item => item.priceUAH))
+    const max = Math.max(...store.map(item => item.priceUAH))
+    // setFilter({
+    //   ...stateFilter,
+    //   min: min,
+    //   max: max,
+    //   attrbs: titleAttr,
+    // })
 
-    filtered_products = absentDown(filtered_products)
+    filtered_products = absentDown(store)
 
-  }, [filtered_products, inSort])
+  }, [stateFilter, inSort])
 
   return createPortal(
     <div className="all-product">
