@@ -4,32 +4,37 @@ import ProductCat from './ProductCat'
 import Filter from './Filter'
 
 
-const Blocks = memo(({ inStock, inSort, container }) => {
-  const products = useRef(JSON.parse(tehnokrat.products).sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  })).current
+//get all products and sort name
+const products = JSON.parse(tehnokrat.products).sort((a, b) => {
+  const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
+})
 
+function absentDown(prod) {
+  return prod.sort((a, b) => b.in_stock - a.in_stock)
+}
+
+const Blocks = memo(({ inStock, inSort, container }) => {
+
+  //state for filter
   const [stateFilter, setFilter] = useState(
-    { catName: products[0].name, })
+    //store first category products
+    { catName: products[0].name })
   const changeFilter = obj => {
     setFilter(obj)
   }
 
-  function absentDown(prod) {
-    return prod.sort((a, b) => b.in_stock - a.in_stock)
-  }
-
-  //get products for category selected
+  //get products for store category selected
   let filtered_products = products.filter(e => { return e.name === stateFilter.catName })[0].variations
 
+  //atributes for products
   const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
     ? filtered_products[0].description2.filter((title, index) => (index % 2 === 0))
     : [tehnokrat.strings['color']]
@@ -45,25 +50,25 @@ const Blocks = memo(({ inStock, inSort, container }) => {
       titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs })
     }
   }
-  setFilter({
-    ...stateFilter,
-    attrbs: titleAttr,
-  })
+
+  // set filter min max price selected products
+
 
   useEffect(() => {
-    let store = []
-    if (stateFilter.selected != undefined && stateFilter.selected.length > 0) {
-      stateFilter.selected.map(atr => {
-        atr.values.map(v => {
-          store = store.concat.filtered_products.filter(el => el.title2.includes(v))
-        })
-        // filtered_products = store
-      })
-    }
+    //if need filter products
+    // if (stateFilter.selected != undefined && stateFilter.selected.length > 0) {
+    //   let store = []
+    //   stateFilter.selected.map(atr => {
+    //     atr.values.map(v => {
+    //       store = store.concat.filtered_products.filter(el => el.title2.includes(v))
+    //     })
+    //     filtered_products = store
+    //   })
+    // }
 
-    // if need sort
+    // if need sort products
     if (inSort) {
-      store = filtered_products.sort((a, b) => {
+      filtered_products = filtered_products.sort((a, b) => {
         if (inSort === 'upcost') {
           return a.priceUAH - b.priceUAH;
         }
@@ -73,23 +78,26 @@ const Blocks = memo(({ inStock, inSort, container }) => {
       })
     }
 
-    const min = Math.min(...store.map(item => item.priceUAH))
-    const max = Math.max(...store.map(item => item.priceUAH))
-    // setFilter({
-    //   ...stateFilter,
-    //   min: min,
-    //   max: max,
-    //   attrbs: titleAttr,
-    // })
+    // get min max price selected products
+    // const min = Math.min(...filtered_products.map(item => item.priceUAH))
+    // const max = Math.max(...filtered_products.map(item => item.priceUAH))
 
-    filtered_products = absentDown(store)
+    setFilter({
+      ...stateFilter,
+      min: min,
+      max: max,
+      attrbs: titleAttr,
+    })
 
-  }, [stateFilter, inSort])
+    //outstock products bottom of list
+    filtered_products = absentDown(filtered_products)
+
+  }, [inSort, filtered_products])
 
   return createPortal(
     <div className="all-product">
       <Filter stateFilter={stateFilter} changeFilter={changeFilter} />
-      <div className="product-items">{filtered_products.map((product, i) => {
+      <div className="product-items">{filtered_products.map(product => {
         return <ProductCat key={product.id}
           product={product} inStock={inStock}
         />
