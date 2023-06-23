@@ -1745,6 +1745,9 @@ final class Tehnokrat
 			'Privat Pay part'         => __('Privat Pay part', 'tehnokrat'),
 			//'curLang' => qtrans_getLanguage(),
 			'underProduct' => '<ul class="info-links"><li><a target="_blank" href="' . get_permalink(22560) . '">' . get_the_title(22560) . '</a></li><li><a target="_blank" href="' . get_permalink(3843) . '">' . get_the_title(3843) . '</a></li></ul>',
+			'Ви обрали' => __('Ви обрали','tehnokrat'),
+			'Модельний ряд' => __('Модельний ряд','tehnokrat'),
+			'Фільтр' => __('Фільтр','tehnokrat'),
 		);
 	}
 

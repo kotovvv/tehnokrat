@@ -3,132 +3,178 @@ import { createPortal } from 'react-dom'
 import ProductCat from './ProductCat'
 import Filter from './Filter'
 
-
-
-
 function absentDown(prod) {
-  return prod.sort((a, b) => b.in_stock - a.in_stock)
+  return prod.sort((a, b) => b.in_stock - a.in_stock);
 }
 
 const Blocks = memo(({ inStock, inSort, container }) => {
-
-
-  const [stateFilProd, setFilProd] = useState([])
-  //get all products and sort name
-  const products = useRef(JSON.parse(tehnokrat.products).sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  })).current
+  // get all products and sort name
+  const products = useRef(
+    JSON.parse(tehnokrat.products).sort((a, b) => {
+      const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    })
+  ).current;
 
   //state for filter
   const [stateFilter, setFilter] = useState(
     //store first category products
-    { catName: products[0].name, selected: [] })
-  const changeFilter = obj => {
-    setFilter(obj)
-  }
+    { catName: products[0].name, selected: [] }
+  );
+  const [isLoading, setLoading] = useState(true);
 
-  //state for filter
-  const [stateAtrVal, setAtrVal] = useState([])
+  const changeFilter = (obj) => {
+    setFilter(obj);
+  };
 
   //get products for store category selected
-  const getCatProducts = () => { return products.filter(e => { return e.name === stateFilter.catName })[0].variations }
+  let filtered_products = products.filter((e) => {
+    return e.name === stateFilter.catName;
+  })[0].variations;
 
-  //array names atributes for products
-  const variationsAttributesTitles = () => {
-    return Array.isArray(stateFilProd[0].description2)
-      ? stateFilProd[0].description2.filter((title, index) => (index % 2 === 0))
-      : [tehnokrat.strings['color']]
-  }
+  //atributes for products
+  const variationsAttributesTitles = Array.isArray(
+    filtered_products[0].description2
+  )
+    ? filtered_products[0].description2.filter(
+      (title, index) => index % 2 === 0
+    )
+    : [tehnokrat.strings["color"]];
 
-  const getAtrVal = () => {
-    let titleAttr = []
-
-    for (let i = 0; i < stateFilProd[0].attributes2.length; i++) {
-      let attrs = []
-      stateFilProd.map(variation => {
-        if (!attrs.includes(variation.attributes2[i])) {
-          attrs.push(variation.attributes2[i])
-        }
-      })
-      if (attrs.length) {
-        titleAttr.push({ name: variationsAttributesTitles()[i], attrs: attrs })
+  let titleAttr = [];
+  for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
+    let attrs = [];
+    filtered_products.map((variation) => {
+      if (!attrs.includes(variation.attributes2[i])) {
+        attrs.push(variation.attributes2[i]);
       }
+    });
+    if (attrs.length) {
+      titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs });
     }
-    setAtrVal(titleAttr)
+  }
+
+  //if need filter products
+  if (stateFilter.selected !== undefined && stateFilter.selected.length > 0) {
+    let store = [];
+    stateFilter.selected.forEach((atr) => {
+      atr.values.forEach((v) => {
+        const items = filtered_products.filter((el) =>
+          el.attributes2.includes(v)
+        );
+        store = [...store, ...items];
+      });
+
+      let newStore = Array.from(new Set(store));
+
+      if (atr.name === "Ємність накопичувача") {
+        newStore = newStore.filter((item) =>
+          atr.values.includes(item.attributes2[1])
+        );
+      }
+
+      filtered_products = newStore;
+      console.log("filtered_products", filtered_products);
+    });
   }
 
   useEffect(() => {
-    setFilProd(getCatProducts())
-    console.log('33333333333333')
-    console.log(stateFilProd)
-
-    // getAtrVal()
-  }, [])
-
-  useEffect(() => {
-    setFilProd(getCatProducts())
-    // getAtrVal()
-    //if need filter products
-    if (stateFilter.selected != undefined && stateFilter.selected.length > 0) {
-      let store = []
-      stateFilter.selected.map(atr => {
-        atr.values.map(v => {
-          store = store.concat.stateFilProd.filter(el => el.title2.includes(v))
-        })
-        setFilProd(store)
-      })
-    }
-    // get min max price selected products
-    const min = Math.min(...stateFilProd.map(item => item.priceUAH))
-    const max = Math.max(...stateFilProd.map(item => item.priceUAH))
-
-    // setFilter({
-    //   ...stateFilter,
-    //   min: min,
-    //   max: max,
-    //   attrbs: titleAttr,
-    // })
-
-    //outstock products bottom of list
-    setFilProd(absentDown(stateFilProd))
-
-  }, [stateFilter])
-
-
-  useEffect(() => {
+    // if need sort products
     if (inSort) {
-      setFilProd(stateFilProd.sort((a, b) => {
-        if (inSort === 'upcost') {
+      filtered_products = filtered_products.sort((a, b) => {
+        if (inSort === "upcost") {
           return a.priceUAH - b.priceUAH;
         }
-        if (inSort === 'downcost') {
+        if (inSort === "downcost") {
           return b.priceUAH - a.priceUAH;
         }
-      }))
+      });
     }
-  }, [inSort])
+
+    // get min max price selected products
+    const min = Math.min(...filtered_products.map((item) => item.priceUAH));
+    const max = Math.max(...filtered_products.map((item) => item.priceUAH));
+
+    setFilter({
+      ...stateFilter,
+      min: min,
+      max: max,
+      attrbs: titleAttr,
+    });
+    setLoading(false);
+
+    //outstock products bottom of list
+    filtered_products = absentDown(filtered_products);
+  }, [inSort]);
+
+  useEffect(() => {
+
+    const proditem_height = jQuery(".product-item .product-cont").height();
+    jQuery('.product-item').css('min-height', proditem_height + 40);
+
+    jQuery(".product-item").on({
+      touchstart: function () {
+        jQuery(this).addClass('active');
+      },
+      touchend: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    jQuery(".product-item").on({
+      mouseenter: function () {
+        jQuery(this).addClass('active');
+      },
+      mouseleave: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    const pi = document.getElementsByClassName("product-item");
+
+    let j;
+    for (j = 0; j < pi.length; j++) {
+      pi[j].addEventListener("mouseover", function () {
+        this.classList.toggle("active");
+        let pichild = this.querySelector('.features');
+        if (pichild.style.maxHeight) {
+          pichild.style.maxHeight = null;
+        } else {
+          pichild.style.maxHeight = pichild.scrollHeight + "px";
+        }
+      });
+    }
+
+  }, [filtered_products]);
 
   return createPortal(
-    <div className="all-product">
-      <Filter stateFilter={stateFilter} changeFilter={changeFilter} stateAtrVal={stateAtrVal} products={products} />
-      <div className="product-items">{stateFilProd.map(product => {
-        return <ProductCat key={product.id}
-          product={product} inStock={inStock}
-        />
-      })}
-      </div>
-    </div>
-    ,
+    <>
+      {!isLoading && (
+        <div className="all-product">
+          <Filter stateFilter={stateFilter} changeFilter={changeFilter} />
+          <div className="product-items">
+            {filtered_products.map((product) => {
+              return (
+                <ProductCat
+                  key={product.id}
+                  product={product}
+                  inStock={inStock}
+                />
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>,
     container
-  )
-})
+  );
+});
 
-export default Blocks
+export default Blocks;

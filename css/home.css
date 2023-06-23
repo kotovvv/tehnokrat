@@ -5340,6 +5340,61 @@ Copyright (c) 2015 Daniel Eden
 .all-product .filter .price .jcf-range .jcf-range-wrapper{
     margin: 10px 0;
 }
+.all-product .filter .price input[type="number"]::-webkit-outer-spin-button,
+.all-product .filter .price input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.all-product .filter .price .slider{
+    height: 5px;
+    position: relative;
+    background: #ddd;
+    border-radius: 5px;
+    flex-basis: 100%;
+}
+.all-product .filter .price .slider .progress{
+    height: 100%;
+    left: 0%;
+    right: 0%;
+    position: absolute;
+    border-radius: 5px;
+    background: #FF5400;
+}
+.all-product .filter .price .range-input{
+    position: relative;
+    flex-basis: 100%;
+}
+.all-product .filter .price .range-input input{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+.all-product .filter .price input[type="range"]::-webkit-slider-thumb{
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #FF5400;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+.all-product .filter .price input[type="range"]::-moz-range-thumb{
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    background: #FF5400;
+    pointer-events: auto;
+    -moz-appearance: none;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
 .all-product .filter .filter-item .jcf-checkbox{
     border: 1px solid #343434;
     width: 21px;

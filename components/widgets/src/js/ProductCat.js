@@ -9,44 +9,7 @@ const ProductCat = ({ product, inStock }) => {
       : [tehnokrat.strings['color']]
   const attributes = product.title2.substr(1, product.title2.length - 2).split('|')
 
-  useEffect(() => {
 
-    const proditem_height = jQuery(".product-item .product-cont").height();
-    jQuery('.product-item').css('min-height', proditem_height + 40);
-
-    jQuery(".product-item").on({
-      touchstart: function () {
-        jQuery(this).addClass('active');
-      },
-      touchend: function () {
-        jQuery(this).removeClass('active');
-      }
-    });
-
-    jQuery(".product-item").on({
-      mouseenter: function () {
-        jQuery(this).addClass('active');
-      },
-      mouseleave: function () {
-        jQuery(this).removeClass('active');
-      }
-    });
-
-    const pi = document.getElementsByClassName("product-item");
-    let j;
-    // for (j = 0; j < pi.length; j++) {
-    //   pi[j].addEventListener("mouseover", function () {
-    //     this.classList.toggle("active");
-    //     let pichild = pi.querySelector('.features');
-    //     if (pichild.style.maxHeight) {
-    //       pichild.style.maxHeight = null;
-    //     } else {
-    //       pichild.style.maxHeight = pichild.scrollHeight + "px";
-    //     }
-    //   });
-    // }
-
-  }, [product]);
 
   return <div className="product-item">
     <div className="product-cont">
