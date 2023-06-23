@@ -1,7 +1,10 @@
-import React, { useEffect, useState, useRef, useMemo, memo } from 'react'
+import React, { useRef, useState, memo, useEffect, useCallback } from "react";
 import { createPortal } from 'react-dom'
 import ProductCat from './ProductCat'
 import Filter from './Filter'
+import Pagination from "./components/common/Pagination";
+
+import { paginate, range } from "./utils";
 
 function absentDown(prod) {
   return prod.sort((a, b) => b.in_stock - a.in_stock);
@@ -9,7 +12,7 @@ function absentDown(prod) {
 
 const Blocks = memo(({ inStock, inSort, container }) => {
   // get all products and sort name
-  const products = useRef(
+  const prods = useRef(
     JSON.parse(tehnokrat.products).sort((a, b) => {
       const nameA = a.name.toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -23,15 +26,38 @@ const Blocks = memo(({ inStock, inSort, container }) => {
     })
   ).current;
 
+  // Transform in_stock prop in productsList
+  function transformData(data) {
+    const newProds = [];
+    data.forEach(item => {
+      const variations = item.variations.map((el, i) => {
+        if (i % 2 === 0) {
+          el.in_stock = 0;
+          return el;
+        }
+        return el;
+      })
+      newProds.push({ name: item.name, variations });
+    })
+
+    return newProds;
+  }
+  const products = transformData(prods);
+  // --- end
+
   //state for filter
   const [stateFilter, setFilter] = useState(
     //store first category products
     { catName: products[0].name, selected: [] }
   );
   const [isLoading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [titleAttr, setAttr] = useState();
+  const pageSize = 6;
 
   const changeFilter = (obj) => {
     setFilter(obj);
+    setCurrentPage(1);
   };
 
   //get products for store category selected
@@ -40,12 +66,8 @@ const Blocks = memo(({ inStock, inSort, container }) => {
   })[0].variations;
 
   //atributes for products
-  const variationsAttributesTitles = Array.isArray(
-    filtered_products[0].description2
-  )
-    ? filtered_products[0].description2.filter(
-      (title, index) => index % 2 === 0
-    )
+  const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
+    ? filtered_products[0].description2.filter((title, index) => index % 2 === 0)
     : [tehnokrat.strings["color"]];
 
   let titleAttr = [];
@@ -57,16 +79,24 @@ const Blocks = memo(({ inStock, inSort, container }) => {
       }
     });
     if (attrs.length) {
+      // setAttr({ name: variationsAttributesTitles[i], attrs: attrs })
       titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs });
     }
   }
+
+
+  // Ranged by progress bar
+  let ranged_products = range(filtered_products, {
+    minPrice: stateFilter?.setMin,
+    maxPrice: stateFilter?.setMax,
+  });
 
   //if need filter products
   if (stateFilter.selected !== undefined && stateFilter.selected.length > 0) {
     let store = [];
     stateFilter.selected.forEach((atr) => {
       atr.values.forEach((v) => {
-        const items = filtered_products.filter((el) =>
+        const items = ranged_products.filter((el) =>
           el.attributes2.includes(v)
         );
         store = [...store, ...items];
@@ -74,33 +104,46 @@ const Blocks = memo(({ inStock, inSort, container }) => {
 
       let newStore = Array.from(new Set(store));
 
-      if (atr.name === "Ємність накопичувача") {
+      const capacityItem = stateFilter.attrbs[1].name;
+
+      if (atr.name === capacityItem) {
         newStore = newStore.filter((item) =>
           atr.values.includes(item.attributes2[1])
         );
       }
 
-      filtered_products = newStore;
-      console.log("filtered_products", filtered_products);
+      ranged_products = newStore;
     });
   }
 
   useEffect(() => {
     // if need sort products
-    if (inSort) {
-      filtered_products = filtered_products.sort((a, b) => {
-        if (inSort === "upcost") {
-          return a.priceUAH - b.priceUAH;
-        }
-        if (inSort === "downcost") {
-          return b.priceUAH - a.priceUAH;
-        }
-      });
-    }
+    //   if (inSort) {
+    //     ranged_products = ranged_products.sort((a, b) => {
+    //       if (inSort === "upcost") {
+    //         return a.priceUAH - b.priceUAH;
+    //       } else {
+    //         return b.priceUAH - a.priceUAH;
+    //       }
+    //     });
+    //   }
 
     // get min max price selected products
-    const min = Math.min(...filtered_products.map((item) => item.priceUAH));
-    const max = Math.max(...filtered_products.map((item) => item.priceUAH));
+
+    function getMinPrice(array) {
+      return Math.min(...array.map((item) => item.priceUAH));
+    }
+
+    function getMaxPrice(array) {
+      return Math.max(...array.map((item) => item.priceUAH));
+    }
+
+    const min = ranged_products.length
+      ? getMinPrice(ranged_products)
+      : getMinPrice(filtered_products);
+    const max = ranged_products.length
+      ? getMaxPrice(ranged_products)
+      : getMaxPrice(filtered_products);
 
     setFilter({
       ...stateFilter,
@@ -110,49 +153,36 @@ const Blocks = memo(({ inStock, inSort, container }) => {
     });
     setLoading(false);
 
-    //outstock products bottom of list
-    filtered_products = absentDown(filtered_products);
-  }, [inSort]);
+    //   //outstock products bottom of list
+    //   ranged_products = absentDown(ranged_products);
+  }, [stateFilter.catName]);
 
   useEffect(() => {
+    setCurrentPage(1);
+  }, [stateFilter?.setMin, stateFilter?.setMax, stateFilter.selected]);
 
-    const proditem_height = jQuery(".product-item .product-cont").height();
-    jQuery('.product-item').css('min-height', proditem_height + 40);
-
-    jQuery(".product-item").on({
-      touchstart: function () {
-        jQuery(this).addClass('active');
-      },
-      touchend: function () {
-        jQuery(this).removeClass('active');
+  if (inSort) {
+    ranged_products = ranged_products.sort((a, b) => {
+      if (inSort === "upcost") {
+        return a.priceUAH - b.priceUAH;
+      } else {
+        return b.priceUAH - a.priceUAH;
       }
     });
+  }
+  //outstock products bottom of list
+  ranged_products = absentDown(ranged_products);
 
-    jQuery(".product-item").on({
-      mouseenter: function () {
-        jQuery(this).addClass('active');
-      },
-      mouseleave: function () {
-        jQuery(this).removeClass('active');
-      }
-    });
+  const count = ranged_products.length;
+  const productsCrop = paginate(ranged_products, currentPage, pageSize);
 
-    const pi = document.getElementsByClassName("product-item");
+  const handleChangePage = (pageIndex) => {
+    setCurrentPage(pageIndex);
+  };
 
-    let j;
-    for (j = 0; j < pi.length; j++) {
-      pi[j].addEventListener("mouseover", function () {
-        this.classList.toggle("active");
-        let pichild = this.querySelector('.features');
-        if (pichild.style.maxHeight) {
-          pichild.style.maxHeight = null;
-        } else {
-          pichild.style.maxHeight = pichild.scrollHeight + "px";
-        }
-      });
-    }
-
-  }, [filtered_products]);
+  const handlePageChangeByArrows = (number) => {
+    setCurrentPage((prevState) => prevState + number);
+  };
 
   return createPortal(
     <>
@@ -160,7 +190,7 @@ const Blocks = memo(({ inStock, inSort, container }) => {
         <div className="all-product">
           <Filter stateFilter={stateFilter} changeFilter={changeFilter} />
           <div className="product-items">
-            {filtered_products.map((product) => {
+            {productsCrop.map((product) => {
               return (
                 <ProductCat
                   key={product.id}
@@ -172,6 +202,13 @@ const Blocks = memo(({ inStock, inSort, container }) => {
           </div>
         </div>
       )}
+      <Pagination
+        itemsCount={count}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onChangePage={handleChangePage}
+        onChangePageByArrows={handlePageChangeByArrows}
+      />
     </>,
     container
   );

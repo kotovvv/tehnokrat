@@ -15,22 +15,30 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
     })
   ).current;
 
-
   // To make controlled inputs
   const [inputValues, setInputValues] = useState({
-    input1: stateFilter.min,
-    input2: stateFilter.max,
+    input1: stateFilter.min || 0,
+    input2: stateFilter.max || 0,
     range1: stateFilter.min,
     range2: stateFilter.max,
   });
 
-  const handleInputChange = (e, inputNumber) => {
+  useEffect(() => {
+    changeFilter(({
+      ...stateFilter,
+      setMin: inputValues.input1,
+      setMax: inputValues.input2
+    }))
+  }, [inputValues]);
+
+  const handleTextChange = (e, inputNumber) => {
     const { value } = e.target;
     setInputValues((prevState) => ({
       ...prevState,
       [`input${inputNumber}`]: parseInt(value),
-      [`range${inputNumber}`]: parseInt(value),
+      // [`range${inputNumber}`]: parseInt(value),
     }));
+
   };
 
   const handleRangeChange = (e, rangeNumber) => {
@@ -47,6 +55,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
     e.preventDefault();
     const setmin = document.getElementById("setmin").value;
     const setmax = document.getElementById("setmax").value;
+
     changeFilter({ ...stateFilter, setMin: setmin, setMax: setmax });
   }
 
@@ -60,6 +69,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
       selected: [],
     });
   }
+
   function checkAttr() {
     let selectedAttr = [];
     let attrs = document.querySelectorAll("input[name=attr]:checked");
@@ -89,6 +99,10 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
   }
 
   useEffect(() => {
+
+  }, [inputValues.input1, inputValues.input2])
+
+  useEffect(() => {
     jcf.destroy('[name="slider"]')
     jcf.replace(jQuery(".filter-item .checkbox-item input[type=checkbox]"));
 
@@ -97,27 +111,30 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
       range = document.querySelector(".price .slider .progress");
     let priceGap = 10;
 
-    priceInput.forEach((input) => {
-      input.addEventListener("input", (e) => {
-        let minPrice = parseInt(priceInput[0].value),
-          maxPrice = parseInt(priceInput[1].value);
+    // priceInput.forEach((input) => {
+    //   input.addEventListener("input", (e) => {
 
-        if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-          if (e.target.className === "input-min") {
-            rangeInput[0].value = minPrice;
-            range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
-          } else {
-            rangeInput[1].value = maxPrice;
-            range.style.right =
-              100 - (maxPrice / rangeInput[1].max) * 100 + "%";
-          }
-        }
-      });
-    });
+    //     let minPrice = parseInt(priceInput[0].value),
+    //       maxPrice = parseInt(priceInput[1].value);
+
+    // if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+    //   if (e.target.className === "input-min") {
+    //     rangeInput[0].value = minPrice;
+    //     range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+    //   } else {
+    //     rangeInput[1].value = maxPrice;
+    //     range.style.right =
+    //       100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+    //   }
+    // }
+    //   });
+    // });
+
     rangeInput.forEach((input) => {
       input.addEventListener("input", (e) => {
         let minVal = parseInt(rangeInput[0].value),
           maxVal = parseInt(rangeInput[1].value);
+
         if (maxVal - minVal < priceGap) {
           if (e.target.className === "range-min") {
             rangeInput[0].value = maxVal - priceGap;
@@ -141,13 +158,12 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               (rangeInput[1].max - rangeInput[1].min)) *
             100 +
             "%";
-
-          // range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-          // range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
         }
       });
     });
+
   }, [stateFilter]);
+
 
   return (
     <div className="filter">
@@ -412,7 +428,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
                 value={input1}
                 max={stateFilter.max}
                 step="10"
-                onChange={(e) => handleInputChange(e, 1)}
+                onChange={(e) => handleTextChange(e, 1)}
               />
               <input
                 type="number"
@@ -422,7 +438,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
                 value={input2}
                 max={stateFilter.max}
                 step="10"
-                onChange={(e) => handleInputChange(e, 2)}
+                onChange={(e) => handleTextChange(e, 2)}
               />
               <input type="button" value="Ok" onClick={setPrice} />
             </div>
@@ -431,8 +447,8 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
             </div>
             <div className="range-input">
               <input
-                name="slider"
                 type="range"
+                name="slider"
                 className="range-min"
                 min={stateFilter.min}
                 max={stateFilter.max}
@@ -441,8 +457,8 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
                 onChange={(e) => handleRangeChange(e, 1)}
               />
               <input
-                name="slider"
                 type="range"
+                name="slider"
                 className="range-max"
                 min={stateFilter.min}
                 max={stateFilter.max}
