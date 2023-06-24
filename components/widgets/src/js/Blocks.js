@@ -73,14 +73,21 @@ const Blocks = memo(({ inStock, inSort, container }) => {
   let titleAttr = [];
   for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
     let attrs = [];
+    let colors = []
     filtered_products.map((variation) => {
       if (!attrs.includes(variation.attributes2[i])) {
         attrs.push(variation.attributes2[i]);
       }
+      if (variation.attributes2[i].startsWith("#")) {
+        let colorName = variation.title2.split("|")[0].slice(1)
+        if (!colors.find((el) => { el[colorName] })) {
+          colors.push({ [variation.attributes2[i]]: colorName });
+        }
+      }
+
     });
     if (attrs.length) {
-      // setAttr({ name: variationsAttributesTitles[i], attrs: attrs })
-      titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs });
+      titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs, colors: colors });
     }
   }
 
@@ -117,6 +124,7 @@ const Blocks = memo(({ inStock, inSort, container }) => {
   }
 
   useEffect(() => {
+    jcf.destroyAll('.range-input')
     // if need sort products
     //   if (inSort) {
     //     ranged_products = ranged_products.sort((a, b) => {

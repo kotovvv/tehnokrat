@@ -6220,10 +6220,31 @@ Copyright (c) 2015 Daniel Eden
         padding: 0
     }
 
-    .product .product-item .items .description .title .color li a {
+    .product .product-item .items .description .title .color li a{
         width: 20px;
         height: 20px
     }
+
+
+.filter-item  .color label,
+.chosen-items .color i {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #999;
+}
+
+.filter-item  .color label i {
+  position: absolute;
+  width: max-content;
+  left: 25px;
+}
+
+.filter-item  .color {
+  display: flex;
+}
 
     .product .product-item .items .description .title .color li a:after {
         width: 25px;

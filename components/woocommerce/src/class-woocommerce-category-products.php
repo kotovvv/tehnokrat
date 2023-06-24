@@ -203,10 +203,10 @@ final class Woocommerce_Category_Products {
 			fwrite(
 				$cache_file,
 				sprintf(
-					'{"name":%s,"variations":',
-					wp_json_encode( $chunk['name'] )
-					// '{"name":%s,"url":"%s","variations":',
-//					wp_json_encode( $chunk['name'] ),get_category_link((int)wp_json_encode( $chunk['url'] ))
+					// '{"name":%s,"variations":',
+					// wp_json_encode( $chunk['name'] )
+					'{"name":%s,"url":"%s","variations":',
+					wp_json_encode( $chunk['name'] ),get_category_link((int)wp_json_encode( $chunk['url'] ))
 				)
 			);
 
@@ -280,7 +280,7 @@ final class Woocommerce_Category_Products {
 
 			$this->cache_chunks[ $index ] = array(
 				'name'   => $product_name,
-				// 'url' => $categories['level_3']->term_id,
+				'url' => $categories['level_3']->term_id,
 				'stream' => fopen( $this->get_cache_filename( $index ), 'w+' ),
 			);
 

@@ -103,7 +103,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
   }, [inputValues.input1, inputValues.input2])
 
   useEffect(() => {
-    jcf.destroy('[name="slider"]')
+
     jcf.replace(jQuery(".filter-item .checkbox-item input[type=checkbox]"));
 
     const rangeInput = document.querySelectorAll(".price .range-input input"),
@@ -333,8 +333,15 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               {stateFilter.selected.map((el) => {
                 return el.values.map((v) => {
                   return (
-                    <li key={el.id + v}>
-                      {el.name}: {v}{" "}
+                    <li key={el.id + v} className={v.startsWith("#")
+                      ? "color"
+                      : ''
+                    }>
+                      {el.name}:&nbsp;{v.startsWith("#") ? <i style={{
+                        backgroundColor: v.startsWith('#')
+                          ? v : 'inherit'
+                      }}></i> : v}
+
                       <button
                         className="del"
                         onClick={() =>
@@ -448,7 +455,6 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
             <div className="range-input">
               <input
                 type="range"
-                name="slider"
                 className="range-min"
                 min={stateFilter.min}
                 max={stateFilter.max}
@@ -458,7 +464,6 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               />
               <input
                 type="range"
-                name="slider"
                 className="range-max"
                 min={stateFilter.min}
                 max={stateFilter.max}
@@ -501,8 +506,8 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
                                   : "inherit",
                               }}
                             >
-                              {/* {value.startsWith("#") === false && value} */}
-                              {value}
+                              {value.startsWith("#") === false && value}
+                              {value.startsWith("#") ? <i> {ats.colors.find((el) => el[value])[value]}</i> : ''}
                             </label>
                           </div>
                         );
