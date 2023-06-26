@@ -11,7 +11,7 @@ const ProductCat = ({ product, inStock }) => {
 
 
 
-  return <div className="product-item">
+  return <div className={product.in_stock ? 'product-item ' : 'product-item not-available'}>
     <div className="product-cont">
       {product.label.length > 0 &&
         <span className="pl" style={{ backgroundColor: tehnokrat.label_colors[product.label] }}>{product.label}</span>
@@ -31,7 +31,7 @@ const ProductCat = ({ product, inStock }) => {
             {
               variationsAttributesTitles.map((el, idx) => {
                 return <li key={idx}>
-                  <span>{el}</span>{product.description2[idx * 2 + 1]}
+                  <span>{el}: </span>{product.description2[idx * 2 + 1]}
                 </li>
               })
             }

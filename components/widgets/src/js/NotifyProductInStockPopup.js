@@ -57,18 +57,18 @@ const NotifyProductInStockPopup = ({ productName, currentVariation, closePopup }
 	}
 
 	return createPortal(<>
-			{undefined === result &&
+		{undefined === result &&
 			<section className="product_pred_popup active">
 				<div className="product_pred_popup_content"
-					 style={{ paddingTop: headerHeight + 20 + 'px' }}>
-					<i className="close" onClick={close} style={{ top: headerHeight + 10 + 'px' }}/>
+					style={{ paddingTop: headerHeight + 20 + 'px' }}>
+					<i className="close" onClick={close} style={{ top: headerHeight + 10 + 'px' }} />
 					<p className="h2">{wp.i18n.__('Report Admission', 'tehnokrat')}</p>
 					<p className="h3">{productName}</p>
-					<p>{currentVariation.title1}</p>
+					{/* <p>{currentVariation.title1}</p> */}
 					<form onSubmit={createPreOrder}>
 						<div className="item">
 							<div className="for-img">
-								<img loading="lazy" decoding="async" src={currentVariation.image} alt=""/>
+								<img loading="lazy" decoding="async" src={currentVariation.image} alt="" />
 								<div className="op">
 									<p>
 										{wp.i18n.__('As soon as the item is in stock, we will send you a message.', 'tehnokrat')}
@@ -104,28 +104,28 @@ const NotifyProductInStockPopup = ({ productName, currentVariation, closePopup }
 							<div className="buttons">
 								<div className="lb">
 									<a className="back" onClick={close}>
-										<i className="icon-left-open-big"/>{wp.i18n.__('Back', 'tehnokrat')}
+										<i className="icon-left-open-big" />{wp.i18n.__('Back', 'tehnokrat')}
 									</a>
 								</div>
 								<div className="bb">
-									<input type="submit" value={wp.i18n.__('Report Admission', 'tehnokrat')}/>
+									<input type="submit" value={wp.i18n.__('Report Admission', 'tehnokrat')} />
 								</div>
 							</div>
 						</div>
 					</form>
 				</div>
 			</section>
-			}
-			{true === result &&
+		}
+		{true === result &&
 			<section className="thank_popup active">
 				<div className="thank_popup_content clearfix">
-					<i className="close" onClick={close}/>
+					<i className="close" onClick={close} />
 					<h3>{wp.i18n.__('Thanks for your order', 'tehnokrat')}</h3>
 					<p>{wp.i18n.__('We will contact you as soon as the item is available.', 'tehnokrat')}</p>
 				</div>
 			</section>
-			}
-		</>,
+		}
+	</>,
 		document.body
 	)
 }

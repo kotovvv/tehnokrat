@@ -10,7 +10,7 @@ function absentDown(prod) {
   return prod.sort((a, b) => b.in_stock - a.in_stock);
 }
 
-const Blocks = memo(({ inStock, inSort, container }) => {
+const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   // get all products and sort name
   const prods = useRef(
     JSON.parse(tehnokrat.products).sort((a, b) => {
@@ -123,6 +123,52 @@ const Blocks = memo(({ inStock, inSort, container }) => {
       ranged_products = newStore;
     });
   }
+  useEffect(() => {
+    jQuery('.all-product .filter .filter-open').on('click', function () {
+      jQuery('.all-product .filter .filter-cont').addClass('active');
+    });
+
+    jQuery('.all-product .filter .close').on('click', function () {
+      jQuery('.all-product .filter .filter-cont').removeClass('active');
+    });
+
+    // jcf.replace(jQuery('.filter-item .checkbox-item input[type=checkbox]'));
+
+    // const proditem_height = jQuery(".product-item .product-cont").height();
+    // jQuery('.product-item').css('height', proditem_height + 40);
+
+    jQuery(".product-item").on({
+      touchstart: function () {
+        jQuery(this).addClass('active');
+      },
+      touchend: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    jQuery(".product-item").on({
+      mouseenter: function () {
+        jQuery(this).addClass('active');
+      },
+      mouseleave: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    const pi = document.getElementsByClassName("product-item");
+    let j;
+    for (j = 0; j < pi.length; j++) {
+      pi[j].addEventListener("mouseover", function () {
+        this.classList.toggle("active");
+        let pichild = this.querySelector('.features');
+        if (pichild.style.maxHeight) {
+          pichild.style.maxHeight = null;
+        } else {
+          pichild.style.maxHeight = pichild.scrollHeight + "px";
+        }
+      });
+    }
+  })
 
   useEffect(() => {
     jcf.destroyAll('.range-input')
@@ -198,7 +244,7 @@ const Blocks = memo(({ inStock, inSort, container }) => {
     <>
       {!isLoading && (
         <div className="all-product">
-          <Filter stateFilter={stateFilter} changeFilter={changeFilter} />
+          <Filter stateFilter={stateFilter} changeFilter={changeFilter} inDisplay={inDisplay} />
           <div className="product-items">
             {productsCrop.map((product) => {
               return (

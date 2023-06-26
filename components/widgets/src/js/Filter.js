@@ -98,9 +98,9 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
     changeFilter({ ...stateFilter, selected: selectedAttr });
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, [inputValues.input1, inputValues.input2])
+  // }, [inputValues.input1, inputValues.input2])
 
   useEffect(() => {
 
@@ -333,14 +333,15 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               {stateFilter.selected.map((el) => {
                 return el.values.map((v) => {
                   return (
-                    <li key={el.id + v} className={v.startsWith("#")
-                      ? "color"
-                      : ''
-                    }>
-                      {el.name}:&nbsp;{v.startsWith("#") ? <i style={{
+                    <li key={el.id + v}>
+                      {el.name}:&nbsp;
+                      {v.startsWith("#") ? stateFilter.attrbs[0].colors.find((el) => el[v])[v] : v}
+
+                      {/* {v.startsWith("#") ? <i style={{
                         backgroundColor: v.startsWith('#')
                           ? v : 'inherit'
-                      }}></i> : v}
+                      }}></i> : v} */}
+
 
                       <button
                         className="del"

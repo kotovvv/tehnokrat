@@ -62,6 +62,7 @@ const App = () => {
 
 				<Blocks inStock={inStock}
 					inSort={inSort}
+					inDisplay={inDisplay}
 					container={document.getElementById('widget-product-variation-selector')} />
 			</>
 		}
