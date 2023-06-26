@@ -263,7 +263,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
               let act = e.name === stateFilter.catName ? "active" : "";
               return (
                 <a
-                  href="!#"
+                  href={e.url}
                   key={e.name}
                   className={act}
                   data-name={e.name}
@@ -424,7 +424,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
             </svg>
             Фільтр
           </p>
-          <div className="filter-item price">
+          {/* <div className="filter-item price">
             <p className="filter-title">Ціна</p>
             <div className="price-input">
               <input
@@ -472,7 +472,7 @@ const Filter = memo(({ stateFilter, changeFilter }) => {
                 onChange={(e) => handleRangeChange(e, 2)}
               />
             </div>
-          </div>
+          </div> */}
           <div className="filter-item">
             {stateFilter.attrbs !== undefined &&
               stateFilter.attrbs.map((ats, inx) => {

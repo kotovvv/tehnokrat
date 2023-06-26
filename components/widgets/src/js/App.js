@@ -61,6 +61,7 @@ const App = () => {
 				<Sort inSort={inSort} switchInSort={switchInSort} container={document.getElementById('only-in-stock-products-switcher')} />
 
 				<Blocks inStock={inStock}
+					inSort={inSort}
 					container={document.getElementById('widget-product-variation-selector')} />
 			</>
 		}

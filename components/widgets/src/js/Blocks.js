@@ -93,10 +93,11 @@ const Blocks = memo(({ inStock, inSort, container }) => {
 
 
   // Ranged by progress bar
-  let ranged_products = range(filtered_products, {
-    minPrice: stateFilter?.setMin,
-    maxPrice: stateFilter?.setMax,
-  });
+  let ranged_products = filtered_products
+  // range(filtered_products, {
+  //   minPrice: stateFilter?.setMin,
+  //   maxPrice: stateFilter?.setMax,
+  // });
 
   //if need filter products
   if (stateFilter.selected !== undefined && stateFilter.selected.length > 0) {
@@ -182,6 +183,7 @@ const Blocks = memo(({ inStock, inSort, container }) => {
   ranged_products = absentDown(ranged_products);
 
   const count = ranged_products.length;
+  console.log(ranged_products)
   const productsCrop = paginate(ranged_products, currentPage, pageSize);
 
   const handleChangePage = (pageIndex) => {
