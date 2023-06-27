@@ -53,7 +53,7 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   const [isLoading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   // const [titleAttr, setAttr] = useState();
-  const pageSize = 6;
+  const pageSize = 9;
 
   const changeFilter = (obj) => {
     setFilter(obj);
