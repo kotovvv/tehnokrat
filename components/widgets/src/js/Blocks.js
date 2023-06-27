@@ -79,9 +79,16 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
         attrs.push(variation.attributes2[i]);
       }
       if (variation.attributes2[i].startsWith("#")) {
-        let colorName = variation.title2.split("|")[0].slice(1)
-        if (!colors.find((el) => { el[colorName] })) {
-          colors.push({ [variation.attributes2[i]]: colorName });
+        if (variation.title2.includes('|')) {
+          let colorName = variation.title2.split("|")[0].slice(1)
+          if (!colors.find((el) => { el[colorName] })) {
+            colors.push({ [variation.attributes2[i]]: colorName });
+          }
+        } else {
+          let colorName = variation.title2.slice(1, -1)
+          if (!colors.find((el) => { el[colorName] })) {
+            colors.push({ [variation.attributes2[i]]: colorName });
+          }
         }
       }
 
@@ -103,6 +110,7 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   if (stateFilter.selected !== undefined && stateFilter.selected.length > 0) {
     let store = [];
     stateFilter.selected.forEach((atr) => {
+      store = [];
       atr.values.forEach((v) => {
         const items = ranged_products.filter((el) =>
           el.attributes2.includes(v)
@@ -112,15 +120,15 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
 
       let newStore = Array.from(new Set(store));
 
-      const capacityItem = stateFilter.attrbs[1].name;
+      // const capacityItem = stateFilter.attrbs[1].name;
 
-      if (atr.name === capacityItem) {
-        newStore = newStore.filter((item) =>
-          atr.values.includes(item.attributes2[1])
-        );
-      }
-
+      // if (atr.name === capacityItem) {
+      //   newStore = newStore.filter((item) =>
+      //     atr.values.includes(item.attributes2[1])
+      //   );
+      // }
       ranged_products = newStore;
+      console.log(ranged_products)
     });
   }
   useEffect(() => {
@@ -229,7 +237,6 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   ranged_products = absentDown(ranged_products);
 
   const count = ranged_products.length;
-  console.log(ranged_products)
   const productsCrop = paginate(ranged_products, currentPage, pageSize);
 
   const handleChangePage = (pageIndex) => {
