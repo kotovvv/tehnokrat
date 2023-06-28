@@ -12,7 +12,7 @@ function absentDown(prod) {
 
 const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   // get all products and sort name
-  const prods = useRef(
+  const products = useRef(
     JSON.parse(tehnokrat.products).sort((a, b) => {
       const nameA = a.name.toUpperCase(); // ignore upper and lowercase
       const nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -27,22 +27,22 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   ).current;
 
   // Transform in_stock prop in productsList
-  function transformData(data) {
-    const newProds = [];
-    data.forEach(item => {
-      const variations = item.variations.map((el, i) => {
-        if (i % 2 === 0) {
-          el.in_stock = 0;
-          return el;
-        }
-        return el;
-      })
-      newProds.push({ name: item.name, variations });
-    })
+  // function transformData(data) {
+  //   const newProds = [];
+  //   data.forEach(item => {
+  //     const variations = item.variations.map((el, i) => {
+  //       if (i % 2 === 0) {
+  //         el.in_stock = 0;
+  //         return el;
+  //       }
+  //       return el;
+  //     })
+  //     newProds.push({ name: item.name, variations });
+  //   })
 
-    return newProds;
-  }
-  const products = transformData(prods);
+  //   return newProds;
+  // }
+  // const products = transformData(prods);
   // --- end
 
   //state for filter
@@ -237,6 +237,7 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   ranged_products = absentDown(ranged_products);
 
   const count = ranged_products.length;
+
   const productsCrop = paginate(ranged_products, currentPage, pageSize);
 
   const handleChangePage = (pageIndex) => {
