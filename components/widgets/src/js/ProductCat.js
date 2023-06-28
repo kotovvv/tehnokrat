@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import AddToCart from './AddToCart'
 import Part from './Part'
 
-const ProductCat = ({ product, inStock }) => {
+const ProductCat = ({ product }) => {
   const variationsAttributesTitles =
     Array.isArray(product.description2)
       ? product.description2.filter((title, index) => (index % 2 === 0))
@@ -11,7 +11,7 @@ const ProductCat = ({ product, inStock }) => {
 
 
 
-  return <div className={product.in_stock ? 'product-item ' : 'product-item not-available'}>
+  return <div className={product.in_stock === 1 ? 'product-item ' : 'product-item not-available'}>
     <div className="product-cont">
       {product.label.length > 0 &&
         <span className="pl" style={{ backgroundColor: tehnokrat.label_colors[product.label] }}>{product.label}</span>
@@ -23,7 +23,7 @@ const ProductCat = ({ product, inStock }) => {
       </div>
       <a href={product.url}
         className="name">{product.title1}</a>
-      <AddToCart productName={product.title1} currentVariation={product} inStock={inStock} />
+      <AddToCart productName={product.title1} currentVariation={product} inStock={true} />
 
       {variationsAttributesTitles.length > 0 ?
         <div className="features">

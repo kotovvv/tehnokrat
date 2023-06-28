@@ -128,7 +128,7 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
       //   );
       // }
       ranged_products = newStore;
-      console.log(ranged_products)
+
     });
   }
   useEffect(() => {
@@ -165,17 +165,17 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
 
     const pi = document.getElementsByClassName("product-item");
     let j;
-    for (j = 0; j < pi.length; j++) {
-      pi[j].addEventListener("mouseover", function () {
-        this.classList.toggle("active");
-        let pichild = this.querySelector('.features');
-        if (pichild.style.maxHeight) {
-          pichild.style.maxHeight = null;
-        } else {
-          pichild.style.maxHeight = pichild.scrollHeight + "px";
-        }
-      });
-    }
+    // for (j = 0; j < pi.length; j++) {
+    //   pi[j].addEventListener("mouseover", function () {
+    //     this.classList.toggle("active");
+    //     let pichild = this.querySelector('.features');
+    //     if (pichild.style.maxHeight) {
+    //       pichild.style.maxHeight = null;
+    //     } else {
+    //       pichild.style.maxHeight = pichild.scrollHeight + "px";
+    //     }
+    //   });
+    // }
   })
 
   useEffect(() => {
@@ -251,14 +251,13 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
     <>
       {!isLoading && (
         <div className="all-product">
-          <Filter stateFilter={stateFilter} changeFilter={changeFilter} inDisplay={inDisplay} />
+          <Filter stateFilter={stateFilter} changeFilter={changeFilter} inDisplay={inDisplay} products={products} />
           <div className="product-items">
             {productsCrop.map((product) => {
               return (
                 <ProductCat
                   key={product.id}
                   product={product}
-                  inStock={inStock}
                 />
               );
             })}

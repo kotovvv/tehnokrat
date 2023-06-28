@@ -1,19 +1,6 @@
 import React, { memo, useRef, useEffect, useState } from 'react'
 
-const Filter = memo(({ stateFilter, changeFilter }) => {
-  const products = useRef(
-    JSON.parse(tehnokrat.products).sort((a, b) => {
-      const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    })
-  ).current;
+const Filter = memo(({ stateFilter, changeFilter, products }) => {
 
   // To make controlled inputs
   const [inputValues, setInputValues] = useState({
