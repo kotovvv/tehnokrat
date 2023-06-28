@@ -3,8 +3,10 @@ import { createPortal } from 'react-dom'
 
 
 const TypeDisplay = memo(({ inDisplay, switchInDisplay, container }) => {
+
   return createPortal(<div className="type-display">
-    <input id="bloks" type="radio" name="typedisplay" value="bloks" checked={inDisplay === 'bloks'} onChange={switchInDisplay} />
+    <a href={new URL(window.location.origin + window.location.pathname + '?pl=bloks')}><input id="bloks" type="radio" name="typedisplay" value="bloks" checked={inDisplay === 'bloks'} onChange={switchInDisplay} />
+    </a>
     <label className="bloks" htmlFor="bloks" ><svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="9" height="9" fill="white"></rect>
       <rect x="14" width="9" height="9" fill="white"></rect>

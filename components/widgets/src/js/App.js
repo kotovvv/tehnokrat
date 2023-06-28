@@ -7,6 +7,12 @@ import Sort from './Sort'
 import Cookies from 'js-cookie'
 
 const App = () => {
+	new URL(window.location.href).searchParams.get('pl')
+	const pl = new URLSearchParams(window.location.search).get('pl');
+	if (pl) {
+		document.body.classList.add('bloks')
+
+	}
 	const [inSort, setInSort] = useState('')
 	const switchInSort = (e) => {
 		setInSort(e.target.value)
@@ -22,7 +28,7 @@ const App = () => {
 	}
 
 	const [inDisplay, setInDisplay] = useState(
-		Cookies.get('onlyInDisplay') ?? 'lines')
+		pl ?? (Cookies.get('onlyInDisplay') ?? 'lines'))
 
 	const switchInDisplay = (e) => {
 		Cookies.set('onlyInDisplay', e.target.value, { expires: 365 })
