@@ -48,7 +48,7 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   //state for filter
   const [stateFilter, setFilter] = useState(
     //store first category products
-    { catName: products[0].name, selected: [] }
+    { catName: '', selected: [] }
   );
   const [isLoading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,41 +61,52 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
   };
 
   //get products for store category selected
-  let filtered_products = products.filter((e) => {
-    return e.name === stateFilter.catName;
-  })[0].variations;
-
-  //atributes for products
-  const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
-    ? filtered_products[0].description2.filter((title, index) => index % 2 === 0)
-    : [tehnokrat.strings["color"]];
-
+  let filtered_products = []
   let titleAttr = [];
-  for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
-    let attrs = [];
-    let colors = []
-    filtered_products.map((variation) => {
-      if (!attrs.includes(variation.attributes2[i])) {
-        attrs.push(variation.attributes2[i]);
-      }
-      if (variation.attributes2[i].startsWith("#")) {
-        if (variation.title2.includes('|')) {
-          let colorName = variation.title2.split("|")[0].slice(1)
-          if (!colors.find((el) => { el[colorName] })) {
-            colors.push({ [variation.attributes2[i]]: colorName });
-          }
-        } else {
-          let colorName = variation.title2.slice(1, -1)
-          if (!colors.find((el) => { el[colorName] })) {
-            colors.push({ [variation.attributes2[i]]: colorName });
+  if (stateFilter.catName === '') {
+    products.forEach((cat) => {
+      cat.variations.forEach(el => {
+        filtered_products.push(el)
+      });
+    })
+  } else {
+    filtered_products = products.filter((e) => {
+      return e.name === stateFilter.catName;
+    })[0].variations;
+
+    //atributes for products
+    const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
+      ? filtered_products[0].description2.filter((title, index) => index % 2 === 0)
+      : [tehnokrat.strings["color"]];
+
+
+    for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
+      let attrs = [];
+      let colors = []
+      filtered_products.map((variation) => {
+        if (!attrs.includes(variation.attributes2[i])) {
+          attrs.push(variation.attributes2[i]);
+        }
+        if (variation.attributes2[i].startsWith("#")) {
+          if (variation.title2.includes('|')) {
+            let colorName = variation.title2.split("|")[0].slice(1)
+            if (!colors.find((el) => { el[colorName] })) {
+              colors.push({ [variation.attributes2[i]]: colorName });
+            }
+          } else {
+            let colorName = variation.title2.slice(1, -1)
+            if (!colors.find((el) => { el[colorName] })) {
+              colors.push({ [variation.attributes2[i]]: colorName });
+            }
           }
         }
-      }
 
-    });
-    if (attrs.length) {
-      titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs, colors: colors });
+      });
+      if (attrs.length) {
+        titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs, colors: colors });
+      }
     }
+
   }
 
 
