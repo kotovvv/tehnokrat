@@ -2,29 +2,41 @@
 /* @global $content */
 /* @global $products */
 ?>
+<div class="top-prod-new">
+  <?= $content ?>
+  <div class="product-items">
+    <?php foreach ($products as $product) : ?>
+    <div class="product-item">
+      <div class="product-cont">
+        <div class="product-img">
+          <img class="prod-image" src="<?= esc_attr($product['image_src']) ?>" alt="<?= esc_attr($product['title']) ?>">
+        </div>
+        <a href="<?= esc_url($product['permalink']) ?>" class="name"><?= esc_html($product['title']) ?></a>
+        <div class="sum-link clearfix">
+          <div class="link w-cr">
+            <a class="buy">
+              <p><?= __('Go', 'tehnokrat') ?></p>
+            </a>
+          </div>
+          <div class="sum">
+            <p><?= $product['price_uah'] ?><span> грн</span></p>
+            <span>$<?= $product['price_usd'] ?></span>
+          </div>
+        </div>
 
-<section class="top-prod">
-	<?= $content ?>
-	<div class="top-slider">
-		<?php foreach ( $products as $product ) : ?>
-			<div>
-				<div class="for-img">
-					<?php if ( $product['label'] && $product['label_color'] ) : ?>
-						<span class="pl" style="background: <?= $product['label_color'] ?>">
-                            <?= $product['label'] ?>
-                        </span>
-					<?php endif; ?>
-					<img src="<?= esc_attr( $product['image_src'] ) ?>" alt="<?= esc_attr( $product['title'] ) ?>"/>
-				</div>
-				<p class="name"><?= esc_html( $product['title'] ) ?></p>
-				<div class="fot">
-					<a class="bb-byu" href="<?= esc_url( $product['permalink'] ) ?>"><?= __( 'Go', 'tehnokrat' ) ?></a>
-					<div class="pr">
-						<p><?= $product['price_uah'] ?> грн</p>
-						<span><?= $product['price_usd'] ?> $</span>
-					</div>
-				</div>
-			</div>
-		<?php endforeach; ?>
-	</div>
-</section>
+        <?php
+					if (is_array($product['description']) && count($product['description']) > 0) { ?>
+        <div class="features">
+          <ul>
+            <?php
+								for ($i = 0; $i < count($product['description']); $i += 2) {
+									echo '<li><span>' . $product['description'][$i] . ': </span>' . $product['description'][$i + 1] . '</li>';
+								} ?>
+          </ul>
+        </div>
+        <?php }	?>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+</div>

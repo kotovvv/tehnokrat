@@ -253,7 +253,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
         <div className="filter-section">
           <p className="title">
             <svg width="22" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.33333H5" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M1 18.6667H9" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M21 18.6667H25" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M17 5.33333H25" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M5 5.33333C5 4.09083 5 3.46957 5.20299 2.97951C5.47364 2.32611 5.99277 1.80697 6.64617 1.53632C7.13624 1.33333 7.75749 1.33333 9 1.33333C10.2425 1.33333 10.8637 1.33333 11.3539 1.53632C12.0072 1.80697 12.5264 2.32611 12.7971 2.97951C13 3.46957 13 4.09083 13 5.33333C13 6.57584 13 7.19709 12.7971 7.68716C12.5264 8.34056 12.0072 8.85969 11.3539 9.13035C10.8637 9.33333 10.2425 9.33333 9 9.33333C7.75749 9.33333 7.13624 9.33333 6.64617 9.13035C5.99277 8.85969 5.47364 8.34056 5.20299 7.68716C5 7.19709 5 6.57584 5 5.33333Z" fill="#77bd00" stroke="#222222" strokeWidth="1.5"></path><path d="M13 18.6667C13 17.4241 13 16.8029 13.2029 16.3128C13.4736 15.6595 13.9928 15.1403 14.6461 14.8696C15.1363 14.6667 15.7575 14.6667 17 14.6667C18.2425 14.6667 18.8637 14.6667 19.3539 14.8696C20.0072 15.1403 20.5264 15.6595 20.7971 16.3128C21 16.8029 21 17.4241 21 18.6667C21 19.9092 21 20.5304 20.7971 21.0205C20.5264 21.6739 20.0072 22.1931 19.3539 22.4637C18.8637 22.6667 18.2425 22.6667 17 22.6667C15.7575 22.6667 15.1363 22.6667 14.6461 22.4637C13.9928 22.1931 13.4736 21.6739 13.2029 21.0205C13 20.5304 13 19.9092 13 18.6667Z" fill="#77bd00" stroke="#222222" strokeWidth="1.5"></path></svg>
-            Фільтр
+            {tehnokrat.strings['Filter']}
           </p>
           {/* <div className="filter-item price">
             <p className="filter-title">Ціна</p>
@@ -350,6 +350,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
           </div>
         </div>
       </div>
+      <div className="other-side"></div>
     </div>
   );
 });

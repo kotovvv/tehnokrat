@@ -10,7 +10,7 @@ const App = () => {
 	new URL(window.location.href).searchParams.get('pl')
 	const pl = new URLSearchParams(window.location.search).get('pl');
 
-	const [inSort, setInSort] = useState('')
+	const [inSort, setInSort] = useState('upcost')
 	const switchInSort = (e) => {
 		setInSort(e.target.value)
 	}
@@ -26,8 +26,10 @@ const App = () => {
 
 	const [inDisplay, setInDisplay] = useState(
 		pl ?? (Cookies.get('onlyInDisplay') ?? 'lines'))
-	if (pl && inDisplay != 'lines') {
+	if (inDisplay === 'bloks') {
 		document.body.classList.add('bloks')
+	} else {
+		document.body.classList.remove('bloks')
 	}
 	const switchInDisplay = (e) => {
 		Cookies.set('onlyInDisplay', e.target.value, { expires: 365 })

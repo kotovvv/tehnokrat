@@ -35,9 +35,9 @@ Number.prototype.format = function (n, x, s, c) {
 		$(document.body).on('updated_wc_div updated_checkout', function () {
 			jcf.replaceAll();
 		});
-jcf.destroy( '[name="typedisplay"]')
-jcf.destroy( '[name="sortcost"]')
-
+jcf.destroy( '[name="typedisplay"]') 
+jcf.destroy( '[name="sortcost"]') 
+jcf.destroyAll( '.prod')
 		$('.exit').on('click', function () {
 			$('.menuMibi').removeClass('active');
 			$('body').removeClass('popup');
