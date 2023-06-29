@@ -7,6 +7,7 @@ import Sort from './Sort'
 import Cookies from 'js-cookie'
 
 const App = () => {
+
 	new URL(window.location.href).searchParams.get('pl')
 	const pl = new URLSearchParams(window.location.search).get('pl');
 

@@ -190,7 +190,7 @@ abstract class Abstract_Page
 			],
 			"{$this->identifier}-main"                    => [
 				"{$this->url}/js/main{$this->suffix}.js",
-				['jquery', 'wp-i18n', "{$this->identifier}-script"],
+				['jquery', 'wp-i18n', "{$this->identifier}-script", "{$this->identifier}-jcf", "{$this->identifier}-jcf.radio", "{$this->identifier}-jcf.checkbox"],
 			],
 			"{$this->identifier}-recaptcha"               => [
 				'https://www.google.com/recaptcha/api.js',
@@ -253,11 +253,11 @@ abstract class Abstract_Page
 			],
 			"{$this->identifier}-jcf.radio"               => [
 				"{$this->url}/js/jcf.radio.min.js",
-				["{$this->identifier}-jcf", "{$this->identifier}-main-js"],
+				["{$this->identifier}-jcf"],
 			],
 			"{$this->identifier}-jcf.range"               => [
 				"{$this->url}/js/jcf.range.min.js",
-				["{$this->identifier}-jcf", "{$this->identifier}-main-js"],
+				["{$this->identifier}-jcf"],
 			],
 			"{$this->identifier}-checkout"                => [
 				"{$this->url}/js/checkout{$this->suffix}.js",
