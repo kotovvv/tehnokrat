@@ -166,7 +166,7 @@ abstract class Abstract_Page
 				"{$this->url}/js/vue-app{$this->suffix}.js",
 				["{$this->identifier}-vue"],
 			],
-			"{$this->identifier}-jcf"                     => ["{$this->url}/js/jcf.min.js", ['jquery']],
+			"{$this->identifier}-jcf"                     => ["{$this->url}/js/jcf.min.js", ['jquery', "{$this->identifier}-main-js"]],
 			"{$this->identifier}-jcf.select"              => [
 				"{$this->url}/js/jcf.select.min.js",
 				["{$this->identifier}-jcf"],
@@ -290,7 +290,7 @@ abstract class Abstract_Page
 			),
 			"{$this->identifier}-jcf.checkbox"            => array(
 				"{$this->url}/js/jcf.checkbox.min.js",
-				array("{$this->identifier}-jcf"),
+				array("{$this->identifier}-jcf", "{$this->identifier}-main-js"),
 			),
 			"{$this->identifier}-jquery.mask"             => array(
 				"{$this->url}/js/jquery.mask.min.js",

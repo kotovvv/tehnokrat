@@ -13,7 +13,7 @@ Number.prototype.format = function (n, x, s, c) {
 	return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 };
 
-;(function ($, window, document, undefined) {
+; (function ($, window, document, undefined) {
 	jQuery(document).ready(function ($) {
 
 		$('.bask').on('click', function () {
@@ -35,9 +35,9 @@ Number.prototype.format = function (n, x, s, c) {
 		$(document.body).on('updated_wc_div updated_checkout', function () {
 			jcf.replaceAll();
 		});
-jcf.destroy( '[name="typedisplay"]') 
-jcf.destroy( '[name="sortcost"]') 
-jcf.destroyAll( '.prod')
+		jcf.destroy('[name="typedisplay"]')
+		jcf.destroy('[name="sortcost"]')
+		jcf.destroyAll('#only-in-stock-products-switcher')
 		$('.exit').on('click', function () {
 			$('.menuMibi').removeClass('active');
 			$('body').removeClass('popup');
