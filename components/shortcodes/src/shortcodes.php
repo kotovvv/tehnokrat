@@ -119,9 +119,9 @@ class Shortcodes
 						break;
 				}
 			}
-
+			$id = $product->get_id();
 			$products[] = [
-				'id'          => $product->get_id(),
+				'id'          => $id,
 				'title'       => $this->trim_title($product->get_title()),
 				'permalink'   => $product->get_permalink(),
 				'image_src'   => $product_image[0],
@@ -129,6 +129,8 @@ class Shortcodes
 				'price_usd'   => $tehnokrat->get_price_in_usd($product->get_price()),
 				'label'       => $product->get_attribute('pa_yarlik-tovara'),
 				'label_color' => $label_color,
+				'part'				=> intval(get_field('part', $id)),
+				'partprivat' => intval(get_field('partprivat', $id)),
 				'description' => $this->get_description($product),
 			];
 		}

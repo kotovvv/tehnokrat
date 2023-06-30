@@ -78,7 +78,7 @@ global $tehnokrat;
               <li>
                 <?php
 								printf(
-									'<a href="tel:+%s">%s</a>',
+									'<a href="tel:%s">%s</a>',
 									preg_replace( '/[^0-9]/', '', $phone_numbers[0]['phone_number'] ),
 									$phone_numbers[0]['phone_number']
 								);
@@ -88,7 +88,7 @@ global $tehnokrat;
                 <ul>
                   <?php foreach ( $phone_numbers as $phone_number ) :
 											printf(
-												'<li><a href="tel:+%s">%s</a></li>',
+												'<li><a href="tel:%s">%s</a></li>',
 												preg_replace( '/[^0-9]/', '', $phone_number['phone_number'] ),
 												$phone_number['phone_number']
 											);
@@ -135,6 +135,8 @@ global $tehnokrat;
           </div>
         </div>
         <div class="right">
+			<a class="contact-link" href="https://tehnokrat.ua/ua/contacts/"><img src="https://dev.tehnokrat.ua/wp-content/uploads/2023/06/google-place-icon.png">Контакти та
+режим роботи</a>
           <div class="stock-delivery">
             <?php if ( $phone_numbers = $tehnokrat->get_setting( 'main', 'phone_numbers' ) ) : ?>
             <div class="delivery">
@@ -142,7 +144,7 @@ global $tehnokrat;
                 <li>
                   <?php
 									printf(
-										'<a href="tel:+%s">%s<span>%s</span></a>',
+										'<a href="tel:%s">%s<span>%s</span></a>',
 										preg_replace( '/[^0-9]/', '', $phone_numbers[0]['phone_number'] ),
 										$phone_numbers[0]['phone_number'],
 										$phone_numbers[0]['phone_description']
@@ -153,7 +155,7 @@ global $tehnokrat;
                   <ul>
                     <?php foreach ( $phone_numbers as $phone_number ) :
 												printf(
-													'<li><a href="tel:+%s">%s<span>%s</span></a></li>',
+													'<li><a href="tel:%s">%s<span>%s</span></a></li>',
 													preg_replace( '/[^0-9]/', '', $phone_number['phone_number'] ),
 													$phone_number['phone_number'],
 													$phone_number['phone_description']
