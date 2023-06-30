@@ -30,6 +30,7 @@ defined('ABSPATH') || exit;
 		</svg>
 		<?= __('all models', 'tehnokrat') ?>
 	</a>
-	<!-- <h1><?= esc_html($category_name) ?></h1> -->
-	<h1><?= esc_html($product_name) ?></h1>
+	<!-- <h1><?php //echo  esc_html($category_name) 
+						?></h1> -->
+	<h1><?= $product_name == '' ?  esc_html($category_name) : esc_html($product_name) ?></h1>
 </div>

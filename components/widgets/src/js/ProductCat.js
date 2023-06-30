@@ -13,6 +13,7 @@ const ProductCat = ({ product }) => {
 
   return <div className={product.in_stock === 1 ? 'product-item ' : 'product-item not-available'}>
     <div className="product-cont">
+      <a href={product.url} class="big-link"></a>
       {product.label.length > 0 &&
         <span className="pl" style={{ backgroundColor: tehnokrat.label_colors[product.label] }}>{product.label}</span>
       }

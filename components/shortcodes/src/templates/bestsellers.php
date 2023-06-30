@@ -14,7 +14,7 @@
         <a href="<?= esc_url($product['permalink']) ?>" class="name"><?= esc_html($product['title']) ?></a>
         <div class="sum-link clearfix">
           <div class="link w-cr">
-            <a class="buy">
+            <a class="buy" href="<?= esc_url($product['permalink']) ?>">
               <p><?= __('Go', 'tehnokrat') ?></p>
             </a>
           </div>
@@ -25,16 +25,16 @@
         </div>
 
         <?php
-					if (is_array($product['description']) && count($product['description']) > 0) { ?>
+          if (is_array($product['description']) && count($product['description']) > 0) { ?>
         <div class="features">
           <ul>
             <?php
-								for ($i = 0; $i < count($product['description']); $i += 2) {
-									echo '<li><span>' . $product['description'][$i] . ': </span>' . $product['description'][$i + 1] . '</li>';
-								} ?>
+                for ($i = 0; $i < count($product['description']); $i += 2) {
+                  echo '<li><span>' . $product['description'][$i] . ': </span>' . $product['description'][$i + 1] . '</li>';
+                } ?>
           </ul>
         </div>
-        <?php }	?>
+        <?php }  ?>
       </div>
     </div>
     <?php endforeach; ?>
