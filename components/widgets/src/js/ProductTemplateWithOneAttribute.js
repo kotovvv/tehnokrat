@@ -26,6 +26,7 @@ const ProductTemplateWithOneAttribute = memo(({
 			label={currentVariation ? currentVariation.label : ''}
 			imageSrc={currentVariation ? currentVariation.image : firstVariation.image}
 			gallery={currentVariation ? currentVariation.gallery : firstVariation.gallery}
+			currentVariation={currentVariation}
 		/>
 		<div className="description clearfix">
 			<div className="title-accses">
@@ -33,14 +34,14 @@ const ProductTemplateWithOneAttribute = memo(({
 					<p className="h4">
 						{productName}
 						{undefined !== currentVariation && currentVariation.modification && currentVariation.modification.length &&
-						<span>{currentVariation.modification}</span>}
+							<span>{currentVariation.modification}</span>}
 					</p>
 					<MoreDetailed
 						productName={productName}
 						productIndex={productIndex}
 						currentVariation={currentVariation}
 						variationIndex={0}
-						// variationIndex={currentVariationID}
+					// variationIndex={currentVariationID}
 					/>
 					<div>
 						<Selectors
@@ -51,19 +52,19 @@ const ProductTemplateWithOneAttribute = memo(({
 						/>
 						<p className="h6">{tehnokrat.strings['Description']}</p>
 						<p>
-							<span dangerouslySetInnerHTML={{ __html: currentVariation?.description2 }}/>
+							<span dangerouslySetInnerHTML={{ __html: currentVariation?.description2 }} />
 							<MoreDetailed
 								productName={productName}
 								productIndex={productIndex}
 								currentVariation={currentVariation}
 								variationIndex={0}
-								// variationIndex={currentVariationID}
+							// variationIndex={currentVariationID}
 							/>
 						</p>
 					</div>
 				</div>
 
-				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock}/>
+				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock} />
 
 			</div>
 		</div>

@@ -20,6 +20,7 @@ const ProductTemplateWithoutAttributes = memo(({
 			label={currentVariation.label}
 			imageSrc={currentVariation.image}
 			gallery={currentVariation.gallery}
+			currentVariation={currentVariation}
 		/>
 		<div className="description clearfix">
 			<div className="title-accses">
@@ -27,31 +28,31 @@ const ProductTemplateWithoutAttributes = memo(({
 					<p className="h4">
 						{productName}
 						{currentVariation.modification && currentVariation.modification.length &&
-						<span>{currentVariation.modification}</span>}
+							<span>{currentVariation.modification}</span>}
 					</p>
 					<MoreDetailed
 						productName={productName}
 						productIndex={productIndex}
 						currentVariation={currentVariation}
 						variationIndex={0}
-						// variationIndex={currentVariationID}
+					// variationIndex={currentVariationID}
 					/>
 					<div>
 						<p className="h6">{tehnokrat.strings['Description']}</p>
 						<p>
-							<span dangerouslySetInnerHTML={{ __html: currentVariation.description2 }}/>
+							<span dangerouslySetInnerHTML={{ __html: currentVariation.description2 }} />
 							<MoreDetailed
 								productName={productName}
 								productIndex={productIndex}
 								currentVariation={currentVariation}
 								variationIndex={0}
-								// variationIndex={currentVariationID}
+							// variationIndex={currentVariationID}
 							/>
 						</p>
 					</div>
 				</div>
 
-				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock}/>
+				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock} />
 
 			</div>
 		</div>

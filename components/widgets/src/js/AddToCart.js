@@ -11,7 +11,7 @@ import React, { useState, memo } from 'react'
 import NotifyProductInStockPopup from './NotifyProductInStockPopup'
 import BlockUI from './BlockUI'
 import BuyInInstallments from './BuyInInstallments'
-import Part from './Part'
+
 
 const classNames = require('classnames')
 
@@ -187,7 +187,6 @@ const AddToCart = memo(({ productName, currentVariation, inStock }) => {
 					closePopup={() => setIsBuyInInstallmentsPopupVisible(false)}
 				/>
 			}
-			<Part part={currentVariation.part} partprivat={currentVariation.partprivat} />
 		</>
 	}
 })
