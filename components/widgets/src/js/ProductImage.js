@@ -6,19 +6,21 @@
 // phpcs:disable WordPress.WhiteSpace.OperatorSpacing
 
 import React, { useState } from 'react'
+import Part from './Part'
 import SliderPopup from './SliderPopup'
 
-const ProductImage = ({ label, imageSrc, gallery }) => {
+const ProductImage = ({ label, imageSrc, gallery, currentVariation }) => {
 	const [showGallery, setShowGallery] = useState(false)
 
 	return <>
 		<div className="product-img" onClick={() => setShowGallery(true)}>
-			<img loading="lazy" decoding="async" alt="" src={imageSrc}/>
+			<img loading="lazy" decoding="async" alt="" src={imageSrc} />
 			{label.length > 0 &&
-				<span className="pl" style={{backgroundColor: tehnokrat.label_colors[label]}}>{label}</span>
+				<span className="pl" style={{ backgroundColor: tehnokrat.label_colors[label] }}>{label}</span>
 			}
+			<Part part={currentVariation.part} partprivat={currentVariation.partprivat} />
 		</div>
-		{true === showGallery && <SliderPopup gallery={gallery} closeGallery={() => setShowGallery(false)}/>}
+		{true === showGallery && <SliderPopup gallery={gallery} closeGallery={() => setShowGallery(false)} />}
 	</>
 }
 

@@ -31,17 +31,18 @@ const ProductTemplateWithMultipleAttributes = memo(({
 			label={currentVariation ? currentVariation.label : ''}
 			imageSrc={currentVariation ? currentVariation.image : firstVariation.image}
 			gallery={currentVariation ? currentVariation.gallery : firstVariation.gallery}
+			currentVariation={currentVariation}
 		/>
 		<div className="description clearfix">
 			<div className="model">
 				<ul className="model-item">
 					<li>
 						{models.length > 0 &&
-						<ModelSelector
-							models={models}
-							selectedModel={selectedModel.current}
-							setSelectedModel={select}
-						/>
+							<ModelSelector
+								models={models}
+								selectedModel={selectedModel.current}
+								setSelectedModel={select}
+							/>
 						}
 					</li>
 					<li>
@@ -54,7 +55,7 @@ const ProductTemplateWithMultipleAttributes = memo(({
 							productIndex={productIndex}
 							currentVariation={currentVariation}
 							variationIndex={0}
-							// variationIndex={currentVariationID}
+						// variationIndex={currentVariationID}
 						/>
 					</li>
 					<li>
@@ -70,14 +71,14 @@ const ProductTemplateWithMultipleAttributes = memo(({
 				<p className="h2">
 					{productName}
 					{undefined !== currentVariation && currentVariation.modification && currentVariation.modification.length &&
-					<span>{currentVariation.modification}</span>}
+						<span>{currentVariation.modification}</span>}
 				</p>
 				<MoreDetailed
 					productName={productName}
 					productIndex={productIndex}
 					currentVariation={currentVariation}
 					variationIndex={0}
-					// variationIndex={currentVariationID}
+				// variationIndex={currentVariationID}
 				/>
 				<Selectors
 					variationsAttributes={variationsAttributes}
@@ -86,7 +87,7 @@ const ProductTemplateWithMultipleAttributes = memo(({
 					setSelectedAttributesValues={select}
 				/>
 
-				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock}/>
+				<AddToCart productName={productName} currentVariation={currentVariation} inStock={inStock} />
 
 			</div>
 		</div>

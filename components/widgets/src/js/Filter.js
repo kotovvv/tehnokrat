@@ -48,11 +48,15 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
 
   function selCat(e) {
     e.preventDefault();
+    // Deselect all attribute for new category
     let attrs = document.querySelectorAll("input[name=attr]:checked");
     [...attrs].map((el) => (el.checked = false));
+    console.log('stateFilter.catName', stateFilter.catName)
+    let catName = e.target.getAttribute("data-name")
+    if (catName === stateFilter.catName) { catName = '' }
     changeFilter({
       ...stateFilter,
-      catName: e.target.getAttribute("data-name"),
+      catName: catName,
       selected: [],
     });
   }

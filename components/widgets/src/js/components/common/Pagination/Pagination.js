@@ -31,29 +31,78 @@ const Pagination = ({
             &laquo;
           </button>
         </li>
-        {pages.map((page) => (
-          <li key={"page_" + page} className={"page-item"}>
+        {currentPage > 2 ?
+          <li className="page-item">
             <button
-              className={
-                currentPage === page
-                  ? "page-link page-link__active"
-                  : "page-link"
-              }
-              onClick={() => onChangePage(page)}
+              className="page-link"
+              onClick={() => onChangePage(1)}
             >
-              {page}
+              {1}
             </button>
-          </li>
-        ))}
+          </li> : ''
+        }
+
+        {currentPage > 3 ?
+          <li className="page-item">
+            ...
+          </li> : ''
+        }
+        {(currentPage - 1) > 0 ?
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={() => onChangePage(currentPage - 1)}
+            >
+              {currentPage - 1}
+            </button>
+          </li> : ''
+        }
         <li className="page-item">
           <button
-            className="page-link"
-            disabled={currentPage >= pages.length}
-            onClick={() => onChangePageByArrows(1)}
+            className="page-link page-link__active"
           >
-            &raquo;
+            {currentPage}
           </button>
         </li>
+        {(currentPage + 1 < pageCount) ?
+          <li className="page-item">
+            <button
+              className="page-link"
+              onClick={() => onChangePage(currentPage + 1)}
+            >
+              {currentPage + 1}
+            </button>
+          </li> : ''
+        }
+        {(currentPage < pageCount) ?
+          <>
+            {
+              (currentPage < pageCount - 2) ?
+                <li className="page-item">
+                  ...
+                </li> : ''
+            }
+            <li className="page-item">
+              <button
+                className="page-link"
+                onClick={() => onChangePage(pageCount)}
+              >
+                {pageCount}
+              </button>
+            </li>
+            <li li className="page-item">
+              <button
+                className="page-link"
+                disabled={currentPage >= pages.length}
+                onClick={() => onChangePageByArrows(1)}
+              >
+                &raquo;
+              </button>
+            </li>
+          </>
+          : ''
+        }
+
       </ul>
     </nav>
   );
