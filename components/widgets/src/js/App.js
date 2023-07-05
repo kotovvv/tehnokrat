@@ -55,11 +55,11 @@ const App = () => {
 					switchInStock={switchInStock}
 					container={document.getElementById('only-in-stock-products-switcher')}
 				/>
-				<OnlyInStockProductsSwitcher
+				{/* <OnlyInStockProductsSwitcher
 					inStock={inStock}
 					switchInStock={switchInStock}
 					container={document.getElementById('only-in-stock-products-switcher-mobile')}
-				/>
+				/> */}
 				<Products
 					inStock={inStock}
 					container={document.getElementById('widget-product-variation-selector')} />
