@@ -1748,6 +1748,7 @@ final class Tehnokrat
 			'You chose' => __('You chose','tehnokrat'),
 			'Model range' => __('Model range','tehnokrat'),
 			'Filter' => __('Filter','tehnokrat'),
+			'Reset' => __('Reset','tehnokrat'),
 		);
 	}
 
