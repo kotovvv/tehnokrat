@@ -26,7 +26,7 @@ const ProductTemplateWithOneAttribute = memo(({
 			label={currentVariation ? currentVariation.label : ''}
 			imageSrc={currentVariation ? currentVariation.image : firstVariation.image}
 			gallery={currentVariation ? currentVariation.gallery : firstVariation.gallery}
-			currentVariation={currentVariation}
+			currentVariation={currentVariation ?? firstVariation}
 		/>
 		<div className="description clearfix">
 			<div className="title-accses">
