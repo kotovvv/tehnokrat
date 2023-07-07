@@ -79,6 +79,13 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
       ? filtered_products[0].description2.filter((title, index) => index % 2 === 0)
       : [tehnokrat.strings["color"]];
 
+    const prepareAttributeForSort = attribute => {
+      attribute = tehnokrat.product_attributes.reduce((attribute, attributeData) => {
+        return attribute.replace(attributeData.search, attributeData.replace)
+      }, attribute.toString())
+
+      return attribute.replace(/[^0-9]/g, '')
+    }
 
     for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
       let attrs = [];
@@ -103,6 +110,9 @@ const Blocks = memo(({ inStock, inSort, container, inDisplay }) => {
 
       });
       if (attrs.length) {
+        attrs = attrs.sort((a, b) => {
+          return parseInt(prepareAttributeForSort(a)) - parseInt(prepareAttributeForSort(b))
+        })
         titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs, colors: colors });
       }
     }
