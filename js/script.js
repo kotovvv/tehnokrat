@@ -21,17 +21,18 @@ jQuery(document).ready(function($){
 
     $('.all-product .filter .filter-open').on('click', function () {
         $('.all-product .filter .filter-cont').addClass('active');
-		$('.all-product .filter .other-side').addClass('active');
+		$('body').css('overflow','hidden')
+	
     });
 
     $('.all-product .filter .close').on('click', function () {
         $('.all-product .filter .filter-cont').removeClass('active');
-		$('.all-product .filter .other-side').removeClass('active');
+		$('body').css('overflow','initial')
     });
 	
 	$('.all-product .filter .other-side').on('click', function () {
         $('.all-product .filter .filter-cont').removeClass('active');
-		$('.all-product .filter .other-side').removeClass('active');
+		$('body').css('overflow','initial')
     });
 
 
@@ -242,6 +243,22 @@ jQuery(document).ready(function($){
             }
         });
     }
+	
+	var qacc = document.getElementsByClassName("faq-item-title");
+	var allpanel = document.getElementsByClassName("faq-item-content");
+	var q;
+
+	for (q = 0; q < qacc.length; q++) {
+		qacc[q].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight) {
+				panel.style.maxHeight = null;
+			} else {
+				panel.style.maxHeight = panel.scrollHeight + "px";
+			}
+		});
+	}
 	
 	$( ".accordion" ).accordion({
 		active: false,

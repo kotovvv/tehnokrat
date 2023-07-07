@@ -123,9 +123,7 @@
 }
 
 .text article {
-    max-height: 135px;
-    overflow: hidden;
-    transition: all 0.4s;
+    
 }
 
 .text .readmore {

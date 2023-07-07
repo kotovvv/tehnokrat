@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2023-04-03 15:38+0000\n"
-"Last-Translator: \n"
-"Language-Team: Ukrainian\n"
+"PO-Revision-Date: 2023-07-06 19:49+0000\n"
+"Last-Translator: BigRise\n"
+"Language-Team: Українська\n"
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
 "n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
@@ -13,10 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.2\n"
+"X-Loco-Version: 2.6.4; wp-6.2.2\n"
 "X-Domain: tehnokrat"
 
-#: functions.php:1506
+#: functions.php:1532
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr ""
@@ -29,15 +29,19 @@ msgstr "ПРО КОМПАНІЮ"
 msgid "Aleksandr Levashov "
 msgstr "Олександр Левашов"
 
-#: functions.php:1711 woocommerce/single-product/title.php:32
+#: functions.php:1741 woocommerce/single-product/title.php:31
 msgid "all models"
 msgstr "всі моделі"
 
-#: functions.php:1703
+#: functions.php:1733
 msgid "all products"
-msgstr "усі товари"
+msgstr "всі товари"
 
-#: functions.php:1697
+#: functions.php:1753
+msgid "ASC"
+msgstr "за зростанням ціни"
+
+#: functions.php:1727
 msgid "Buy item"
 msgstr "Купити товар"
 
@@ -50,23 +54,33 @@ msgstr "КАТЕГОРІЇ"
 msgid "Characteristics"
 msgstr "Характеристики"
 
-#: functions.php:1702
+#: functions.php:1732
 msgid "Choose a bank"
 msgstr "Виберіть банк"
 
-#: functions.php:1708
+#: functions.php:1738
 msgid "Choose a model"
 msgstr "Виберіть модель"
 
-#: functions.php:1712
+#: functions.php:1742
 msgid "color"
 msgstr "колiр"
 
-#: functions.php:1710
+#: functions.php:1740
 msgid "Configuration"
 msgstr "Конфігурація"
 
-#: functions.php:1709 woocommerce/single-product/description.php:21
+#: header-home.php:99 header-home.php:136 header.php:136 header.php:171
+msgid "Contact and time work"
+msgstr ""
+"Контакти та\n"
+"режим роботи компанії"
+
+#: functions.php:1754
+msgid "DESC"
+msgstr "за зменшенням ціни"
+
+#: functions.php:1739 woocommerce/single-product/description.php:21
 msgid "Description"
 msgstr "Опис"
 
@@ -74,7 +88,11 @@ msgstr "Опис"
 msgid "Done."
 msgstr ""
 
-#: components/shortcodes/src/templates/bestsellers.php:21
+#: functions.php:1750
+msgid "Filter"
+msgstr "Фільтр"
+
+#: components/shortcodes/src/templates/bestsellers.php:56
 msgid "Go"
 msgstr "Перейти"
 
@@ -98,15 +116,15 @@ msgstr ""
 "Якщо Ви вже оформляли замовлення на нашому сайті, будь ласка, авторизуйтесь. "
 "Якщо ви є новим клієнтом, будь ласка, заповніть \"Форму замовлення\"."
 
-#: functions.php:1698
+#: functions.php:1728
 msgid "In installments"
 msgstr "В розстрочку"
 
-#: functions.php:1704
+#: functions.php:1734
 msgid "in stock"
 msgstr "в наявності"
 
-#: functions.php:1701
+#: functions.php:1731
 msgid "Installment plan"
 msgstr "Розстрочка"
 
@@ -135,11 +153,15 @@ msgstr ""
 msgid "Line %d. Product name field is empty."
 msgstr ""
 
-#: functions.php:1707
+#: functions.php:1737
 msgid "Model"
 msgstr "Модель"
 
-#: functions.php:1714
+#: functions.php:1749
+msgid "Model range"
+msgstr "Модельний ряд"
+
+#: functions.php:1744
 msgid "Mono Pay part"
 msgstr ""
 "<div class=\"i\">\n"
@@ -154,11 +176,11 @@ msgstr ""
 "<a href=\"https://tehnokrat.ua/ua/shipping-and-payment/\">Детальніше</a>\n"
 "</div>\n"
 
-#: functions.php:1700
+#: functions.php:1730
 msgid "more"
 msgstr "докладніше"
 
-#: functions.php:1706
+#: functions.php:1736
 msgid "Not available"
 msgstr "Немає в наявності"
 
@@ -166,7 +188,7 @@ msgstr "Немає в наявності"
 msgid "Order form"
 msgstr "Форма замовлення"
 
-#: functions.php:1713
+#: functions.php:1743
 msgid "Pay part"
 msgstr "Доступна оплата частинами"
 
@@ -174,11 +196,11 @@ msgstr "Доступна оплата частинами"
 msgid "Plugin \"E-Commerce Data Interchange\" is not active."
 msgstr ""
 
-#: functions.php:1715
+#: functions.php:1745
 msgid "Privat Pay part"
 msgstr "Приват «Миттєва розстрочка»"
 
-#: functions.php:1705
+#: functions.php:1735
 msgid "Product in stock"
 msgstr "Товар в наявності"
 
@@ -191,17 +213,25 @@ msgstr ""
 msgid "PRODUCTS AND SERVICES"
 msgstr "ТОВАРИ ТА ПОСЛУГИ"
 
-#: woocommerce/content-single-product.php:52
+#: woocommerce/content-single-product.php:53
 msgid "Recommended products"
 msgstr "Рекомендовані товари"
 
-#: functions.php:1699
+#: functions.php:1729
 msgid "Report Admission"
-msgstr "Повідомити про надходження"
+msgstr "Cповістити про надходження"
 
-#: header.php:105 header.php:178 header-home.php:56 header-home.php:129
+#: functions.php:1751
+msgid "Reset"
+msgstr "Скасувати"
+
+#: header-home.php:61 header-home.php:132 header.php:98 header.php:167
 msgid "search"
 msgstr "пошук"
+
+#: functions.php:1752
+msgid "Sort"
+msgstr "Сортування"
 
 #. Name of the theme
 msgid "TEHNOKRAT"
@@ -215,6 +245,10 @@ msgstr ""
 #: components/upload-product-translations/src/class-upload-product-translations.php:78
 msgid "Updating translation..."
 msgstr ""
+
+#: functions.php:1748
+msgid "You chose"
+msgstr "Ви обрали"
 
 #: components/woocommerce/src/class-woocommerce-shortlinks.php:85
 msgid "Короткая ссылка на заказ"

@@ -60,9 +60,6 @@ global $tehnokrat;
             </svg>
             <span><?= __( 'search', 'tehnokrat' ) ?></span>
           </div>
-          <?php if ( is_archive() ) : ?>
-          <div id="only-in-stock-products-switcher-mobile"></div>
-          <?php endif; ?>
           <?php
 				wp_nav_menu( [
 					'theme_location' => 'header_categories',
@@ -73,7 +70,7 @@ global $tehnokrat;
 				] );
 				?>
           <?php if ( $phone_numbers = $tehnokrat->get_setting( 'main', 'phone_numbers' ) ) : ?>
-          <div class="delivery">
+          <!--<div class="delivery">
             <ul>
               <li>
                 <?php
@@ -97,8 +94,9 @@ global $tehnokrat;
                 <?php endif; ?>
               </li>
             </ul>
-          </div>
+          </div>-->
           <?php endif; ?>
+			<a href="https://tehnokrat.ua/ua/contacts/" class="contact-link"><img src="/wp-content/uploads/2023/07/google-place-icon.png"><?php _e('Contact and time work','tehnokrat')?></a>
           <?php $tehnokrat->display_link_to_account_page(); ?>
           <?php $tehnokrat->language_selector(); ?>
         </div>
@@ -135,8 +133,7 @@ global $tehnokrat;
           </div>
         </div>
         <div class="right">
-			<a class="contact-link" href="https://tehnokrat.ua/ua/contacts/"><img src="https://dev.tehnokrat.ua/wp-content/uploads/2023/06/google-place-icon.png">Контакти та
-режим роботи</a>
+			<a class="contact-link" href="https://tehnokrat.ua/ua/contacts/"><img src="/wp-content/uploads/2023/07/google-place-icon.png"><?php _e('Contact and time work','tehnokrat')?></a>
           <div class="stock-delivery">
             <?php if ( $phone_numbers = $tehnokrat->get_setting( 'main', 'phone_numbers' ) ) : ?>
             <div class="delivery">

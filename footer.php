@@ -35,8 +35,8 @@ $detect = new Mobile_Detect;
 								</a>
 							</li>
 							<li>
-								<a target="_blank" href="https://www.facebook.com/tehnokrat.com.ua/">
-									<img src="/wp-content/uploads/2022/12/fb-1.png">
+								<a target="_blank" href="https://www.threads.net/@tehnokrat.ua">
+									<img src="/wp-content/uploads/2023/07/Threads_app.png">
 								</a>
 							</li>
 							<li>

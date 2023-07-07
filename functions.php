@@ -476,12 +476,12 @@ final class Tehnokrat
 	public function put_html_in_order($order)
 	{
 		if ($order->payment_method == "monobank") { ?>
-<div class="mono-vid"><img class="iphone-mask" style="" src="/wp-content/uploads/2023/03/iphone-teh.png">
-  <video style="width: 100%;z-index: 0;position: relative;" autoplay="" loop="" muted="" playsinline="" controls="">
-    <source src="/wp-content/uploads/2023/03/Mono.mp4" type="video/mp4">
-  </video>
-</div>
-<?php }
+			<div class="mono-vid"><img class="iphone-mask" style="" src="/wp-content/uploads/2023/03/iphone-teh.png">
+				<video style="width: 100%;z-index: 0;position: relative;" autoplay="" loop="" muted="" playsinline="" controls="">
+					<source src="/wp-content/uploads/2023/03/Mono.mp4" type="video/mp4">
+				</video>
+			</div>
+			<?php }
 	}
 
 	public function setup_theme()
@@ -1054,18 +1054,18 @@ final class Tehnokrat
 					//$item_meta      = new WC_Order_Item_Meta( $item, $product );
 					//$item_meta_html = $item_meta->display( true, true );
 			?>
-<tr class="<?php echo apply_filters(
+					<tr class="<?php echo apply_filters(
 												'woocommerce_admin_order_item_class',
 												'',
 												$item,
 												$the_order
 											); ?>">
-  <td class="qty"><?php echo esc_html($item->get_quantity()); ?></td>
-  <td class="name">
-    <?php if ($product) : ?>
-    <?php echo (wc_product_sku_enabled() && $product->get_sku()) ? $product->get_sku() . ' - ' : ''; ?>
-    <a href="<?php echo get_edit_post_link($product->get_id()); ?>">
-      <?php
+						<td class="qty"><?php echo esc_html($item->get_quantity()); ?></td>
+						<td class="name">
+							<?php if ($product) : ?>
+								<?php echo (wc_product_sku_enabled() && $product->get_sku()) ? $product->get_sku() . ' - ' : ''; ?>
+								<a href="<?php echo get_edit_post_link($product->get_id()); ?>">
+									<?php
 									echo apply_filters(
 										'woocommerce_order_item_name',
 										$item->get_name(),
@@ -1073,20 +1073,20 @@ final class Tehnokrat
 										false
 									);
 									?>
-    </a>
-    <?php else : ?>
-    <?php echo apply_filters(
+								</a>
+							<?php else : ?>
+								<?php echo apply_filters(
 									'woocommerce_order_item_name',
 									$item->get_name(),
 									$item,
 									false
 								); ?>
-    <?php endif; ?>
-    <?php if (!empty($item_meta_html)) : ?>
-    <?php echo wc_help_tip($item_meta_html); ?>
-    <?php endif; ?>
-  </td>
-</tr>
+							<?php endif; ?>
+							<?php if (!empty($item_meta_html)) : ?>
+								<?php echo wc_help_tip($item_meta_html); ?>
+							<?php endif; ?>
+						</td>
+					</tr>
 <?php
 				}
 
@@ -1745,10 +1745,13 @@ final class Tehnokrat
 			'Privat Pay part'         => __('Privat Pay part', 'tehnokrat'),
 			//'curLang' => qtrans_getLanguage(),
 			'underProduct' => '<ul class="info-links"><li><a target="_blank" href="' . get_permalink(22560) . '">' . get_the_title(22560) . '</a></li><li><a target="_blank" href="' . get_permalink(3843) . '">' . get_the_title(3843) . '</a></li></ul>',
-			'You chose' => __('You chose','tehnokrat'),
-			'Model range' => __('Model range','tehnokrat'),
-			'Filter' => __('Filter','tehnokrat'),
-			'Reset' => __('Reset','tehnokrat'),
+			'You chose' => __('You chose', 'tehnokrat'),
+			'Model range' => __('Model range', 'tehnokrat'),
+			'Filter' => __('Filter', 'tehnokrat'),
+			'Reset' => __('Reset', 'tehnokrat'),
+			'Sort' => __('Sort', 'tehnokrat'),
+			'ASC' => __('ASC', 'tehnokrat'),
+			'DESC' => __('DESC', 'tehnokrat'),
 		);
 	}
 

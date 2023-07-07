@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2023-03-14 13:18+0000\n"
+"PO-Revision-Date: 2023-07-06 11:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -13,10 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+"X-Loco-Version: 2.6.4; wp-6.2.2\n"
 "X-Domain: tehnokrat"
 
-#: functions.php:1506
+#: functions.php:1532
 #, php-format
 msgid "%s is not a valid phone number."
 msgstr ""
@@ -29,15 +29,19 @@ msgstr "О КОМПАНИИ"
 msgid "Aleksandr Levashov "
 msgstr "Александр Левашов"
 
-#: functions.php:1711 woocommerce/single-product/title.php:32
+#: functions.php:1741 woocommerce/single-product/title.php:31
 msgid "all models"
 msgstr "все модели"
 
-#: functions.php:1703
+#: functions.php:1733
 msgid "all products"
 msgstr "все товары"
 
-#: functions.php:1697
+#: functions.php:1753
+msgid "ASC"
+msgstr "с увеличением цены"
+
+#: functions.php:1727
 msgid "Buy item"
 msgstr "Купить товар"
 
@@ -50,23 +54,33 @@ msgstr "КАТЕГОРИИ"
 msgid "Characteristics"
 msgstr "Характеристики"
 
-#: functions.php:1702
+#: functions.php:1732
 msgid "Choose a bank"
 msgstr "Выберите банк"
 
-#: functions.php:1708
+#: functions.php:1738
 msgid "Choose a model"
 msgstr "Выберите модель"
 
-#: functions.php:1712
+#: functions.php:1742
 msgid "color"
 msgstr "цвет"
 
-#: functions.php:1710
+#: functions.php:1740
 msgid "Configuration"
 msgstr "Конфигурация"
 
-#: functions.php:1709 woocommerce/single-product/description.php:21
+#: header-home.php:99 header-home.php:136 header.php:136 header.php:171
+msgid "Contact and time work"
+msgstr ""
+"Контакты и\n"
+"режим работы компании"
+
+#: functions.php:1754
+msgid "DESC"
+msgstr "с уменьшением цены"
+
+#: functions.php:1739 woocommerce/single-product/description.php:21
 msgid "Description"
 msgstr "Описание"
 
@@ -74,7 +88,11 @@ msgstr "Описание"
 msgid "Done."
 msgstr ""
 
-#: components/shortcodes/src/templates/bestsellers.php:21
+#: functions.php:1750
+msgid "Filter"
+msgstr "Фильтр"
+
+#: components/shortcodes/src/templates/bestsellers.php:56
 msgid "Go"
 msgstr "Перейти"
 
@@ -98,15 +116,15 @@ msgstr ""
 "Если вы уже оформляли заказ на нашем сайте, пожалуйста, авторизуйтесь. Если "
 "вы являетесь новым клиентом, пожалуйста, заполните «Форму заказа»."
 
-#: functions.php:1698
+#: functions.php:1728
 msgid "In installments"
 msgstr "В рассрочку"
 
-#: functions.php:1704
+#: functions.php:1734
 msgid "in stock"
 msgstr "в наличии"
 
-#: functions.php:1701
+#: functions.php:1731
 msgid "Installment plan"
 msgstr "Рассрочка"
 
@@ -135,20 +153,24 @@ msgstr ""
 msgid "Line %d. Product name field is empty."
 msgstr ""
 
-#: functions.php:1707
+#: functions.php:1737
 msgid "Model"
 msgstr "Модель"
 
-#: functions.php:1714
+#: functions.php:1749
+msgid "Model range"
+msgstr "Модельный ряд"
+
+#: functions.php:1744
 msgid "Mono Pay part"
 msgstr ""
 "Монобанк «Покупка частями»\n"
 
-#: functions.php:1700
+#: functions.php:1730
 msgid "more"
 msgstr "подробнее"
 
-#: functions.php:1706
+#: functions.php:1736
 msgid "Not available"
 msgstr "Нет в наличии"
 
@@ -156,7 +178,7 @@ msgstr "Нет в наличии"
 msgid "Order form"
 msgstr "Форма заказа"
 
-#: functions.php:1713
+#: functions.php:1743
 msgid "Pay part"
 msgstr "Доступна оплата частями"
 
@@ -164,11 +186,11 @@ msgstr "Доступна оплата частями"
 msgid "Plugin \"E-Commerce Data Interchange\" is not active."
 msgstr ""
 
-#: functions.php:1715
+#: functions.php:1745
 msgid "Privat Pay part"
 msgstr "Приват «Мгновенная рассрочка»"
 
-#: functions.php:1705
+#: functions.php:1735
 msgid "Product in stock"
 msgstr "Товар в наличии"
 
@@ -181,17 +203,25 @@ msgstr ""
 msgid "PRODUCTS AND SERVICES"
 msgstr "ТОВАРЫ И УСЛУГИ"
 
-#: woocommerce/content-single-product.php:52
+#: woocommerce/content-single-product.php:53
 msgid "Recommended products"
 msgstr "Рекомендуемые товары"
 
-#: functions.php:1699
+#: functions.php:1729
 msgid "Report Admission"
 msgstr "Сообщить о поступлении"
 
-#: header.php:105 header.php:178 header-home.php:56 header-home.php:129
+#: functions.php:1751
+msgid "Reset"
+msgstr "Сбросить"
+
+#: header-home.php:61 header-home.php:132 header.php:98 header.php:167
 msgid "search"
 msgstr "поиск"
+
+#: functions.php:1752
+msgid "Sort"
+msgstr "Сотировка"
 
 #. Name of the theme
 msgid "TEHNOKRAT"
@@ -205,6 +235,10 @@ msgstr ""
 #: components/upload-product-translations/src/class-upload-product-translations.php:78
 msgid "Updating translation..."
 msgstr ""
+
+#: functions.php:1748
+msgid "You chose"
+msgstr "Вы выбрали"
 
 #: components/woocommerce/src/class-woocommerce-shortlinks.php:85
 msgid "Короткая ссылка на заказ"
