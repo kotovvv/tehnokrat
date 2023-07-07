@@ -18,7 +18,8 @@ const ProductImage = ({ label, imageSrc, gallery, currentVariation }) => {
 			{label.length > 0 &&
 				<span className="pl" style={{ backgroundColor: tehnokrat.label_colors[label] }}>{label}</span>
 			}
-			<Part part={currentVariation.part} partprivat={currentVariation.partprivat} />
+			{currentVariation != {} &&
+				<Part part={currentVariation.part} partprivat={currentVariation.partprivat} />}
 		</div>
 		{true === showGallery && <SliderPopup gallery={gallery} closeGallery={() => setShowGallery(false)} />}
 	</>

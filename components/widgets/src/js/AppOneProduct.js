@@ -31,6 +31,7 @@ const App = () => {
 			label={currentVariation.label}
 			imageSrc={currentVariation.image}
 			gallery={currentVariation.gallery}
+			currentVariation={{}}
 		/>
 		{currentVariation.model.length > 0 && <span className="model">{currentVariation.model}</span>}
 		<p className="title">
