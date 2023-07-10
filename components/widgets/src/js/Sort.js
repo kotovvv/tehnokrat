@@ -20,7 +20,7 @@ const Sort = memo(({ inSort, switchInSort, container }) => {
           d="M4 6.91667C4.52429 6.32668 5.91976 4 6.66667 4M6.66667 4C7.41357 4 8.80904 6.32668 9.33333 6.91667M6.66667 4V12"
           stroke="#343434" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
       </svg>
-      Сортування
+      {tehnokrat.strings['Sort']}
       <svg className="icon-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path
@@ -30,9 +30,9 @@ const Sort = memo(({ inSort, switchInSort, container }) => {
     </span>
     <ul>
       <input id="upcost" type="radio" name="sortcost" value="upcost" checked={inSort === 'upcost'} onChange={switchInSort} />
-      <label htmlFor="upcost" >за зростанням ціни</label>
+      <label htmlFor="upcost" >{tehnokrat.strings['ASC']}</label>
       <input id="downcost" type="radio" name="sortcost" value="downcost" checked={inSort === 'downcost'} onChange={switchInSort} />
-      <label htmlFor="downcost" >за зменшенням ціни</label>
+      <label htmlFor="downcost" >{tehnokrat.strings['DESC']}</label>
     </ul>
   </div>,
     container)
