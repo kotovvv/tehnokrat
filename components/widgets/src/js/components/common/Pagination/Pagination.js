@@ -1,5 +1,4 @@
 import React from "react";
-// import "./pagination.css";
 
 const Pagination = ({
   itemsCount,
@@ -90,7 +89,7 @@ const Pagination = ({
                 {pageCount}
               </button>
             </li>
-            <li li className="page-item">
+            <li className="page-item">
               <button
                 className="page-link"
                 disabled={currentPage >= pages.length}

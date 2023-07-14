@@ -1,9 +1,7 @@
-import React, { memo, useRef, useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react';
 
 const Filter = memo(({ stateFilter, changeFilter, products }) => {
-
-  // To make controlled inputs
-  const [inputValues, setInputValues] = useState({
+  const [inputs, setInputs] = useState({
     input1: stateFilter.min || 0,
     input2: stateFilter.max || 0,
     range1: stateFilter.min,
@@ -11,154 +9,72 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
   });
 
   useEffect(() => {
-    changeFilter(({
+    changeFilter({
       ...stateFilter,
-      setMin: inputValues.input1,
-      setMax: inputValues.input2
-    }))
-  }, [inputValues]);
+      setMin: inputs.input1,
+      setMax: inputs.input2,
+    });
+  }, [inputs]);
 
-  const handleTextChange = (e, inputNumber) => {
-    const { value } = e.target;
-    setInputValues((prevState) => ({
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevState) => ({
       ...prevState,
-      [`input${inputNumber}`]: parseInt(value),
-      // [`range${inputNumber}`]: parseInt(value),
-    }));
-
-  };
-
-  const handleRangeChange = (e, rangeNumber) => {
-    const { value } = e.target;
-    setInputValues((prevState) => ({
-      ...prevState,
-      [`range${rangeNumber}`]: parseInt(value),
-      [`input${rangeNumber}`]: parseInt(value),
+      [name]: parseInt(value),
     }));
   };
-  const { input1, input2, range1, range2 } = inputValues;
+
+  const handleRangeChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevState) => ({
+      ...prevState,
+      [`range${name}`]: parseInt(value),
+      [`input${name}`]: parseInt(value),
+    }));
+  };
 
   function setPrice(e) {
     e.preventDefault();
-    const setmin = document.getElementById("setmin").value;
-    const setmax = document.getElementById("setmax").value;
-
+    const setmin = inputs.input1;
+    const setmax = inputs.input2;
     changeFilter({ ...stateFilter, setMin: setmin, setMax: setmax });
   }
 
   function selCat(e) {
     e.preventDefault();
-    // Deselect all attribute for new category
-    let attrs = document.querySelectorAll("input[name=attr]:checked");
-    [...attrs].map((el) => (el.checked = false));
-    console.log('stateFilter.catName', stateFilter.catName)
-    let catName = e.target.getAttribute("data-name")
-    if (catName === stateFilter.catName) { catName = '' }
+    let catName = e.target.getAttribute('data-name');
     changeFilter({
       ...stateFilter,
       catName: catName,
       selected: [],
     });
   }
+
   function reset() {
     changeFilter({ ...stateFilter, selected: [] });
-    let attrs = document.querySelectorAll("input[name=attr]:checked");
-    [...attrs].map((el) => (el.checked = false));
   }
 
   function checkAttr() {
-    let selectedAttr = [];
-    let attrs = document.querySelectorAll("input[name=attr]:checked");
-    [...attrs].forEach((el) => {
-      let atr = el.getAttribute("atr");
-      let value = el.value;
-      if (selectedAttr.length === 0) {
-        selectedAttr.push({
+    const selectedAttr = [...document.querySelectorAll('input[name=attr]:checked')].reduce((acc, el) => {
+      const atr = el.getAttribute('atr');
+      const value = el.value;
+      const foundAttr = acc.find((fe) => fe.id === atr);
+
+      if (foundAttr) {
+        foundAttr.values.push(value);
+      } else {
+        acc.push({
           id: atr,
           name: stateFilter.attrbs[atr].name,
           values: [value],
         });
-      } else {
-        let temp = selectedAttr.find((fe) => fe.id === atr);
-        if (temp !== undefined) {
-          temp.values.push(value);
-        } else {
-          selectedAttr.push({
-            id: atr,
-            name: stateFilter.attrbs[atr].name,
-            values: [value],
-          });
-        }
       }
-    });
+
+      return acc;
+    }, []);
+
     changeFilter({ ...stateFilter, selected: selectedAttr });
   }
-
-  // useEffect(() => {
-
-  // }, [inputValues.input1, inputValues.input2])
-
-  useEffect(() => {
-
-    jcf.replace(jQuery(".filter-item .checkbox-item input[type=checkbox]"));
-
-    const rangeInput = document.querySelectorAll(".price .range-input input"),
-      priceInput = document.querySelectorAll(".price .price-input input"),
-      range = document.querySelector(".price .slider .progress");
-    let priceGap = 10;
-
-    // priceInput.forEach((input) => {
-    //   input.addEventListener("input", (e) => {
-
-    //     let minPrice = parseInt(priceInput[0].value),
-    //       maxPrice = parseInt(priceInput[1].value);
-
-    // if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-    //   if (e.target.className === "input-min") {
-    //     rangeInput[0].value = minPrice;
-    //     range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
-    //   } else {
-    //     rangeInput[1].value = maxPrice;
-    //     range.style.right =
-    //       100 - (maxPrice / rangeInput[1].max) * 100 + "%";
-    //   }
-    // }
-    //   });
-    // });
-
-    rangeInput.forEach((input) => {
-      input.addEventListener("input", (e) => {
-        let minVal = parseInt(rangeInput[0].value),
-          maxVal = parseInt(rangeInput[1].value);
-
-        if (maxVal - minVal < priceGap) {
-          if (e.target.className === "range-min") {
-            rangeInput[0].value = maxVal - priceGap;
-          } else {
-            rangeInput[1].value = minVal + priceGap;
-          }
-        } else {
-          const value1 = rangeInput[0].value;
-          const value2 = rangeInput[1].value;
-
-          priceInput[0].value = minVal;
-          priceInput[1].value = maxVal;
-          range.style.left =
-            ((value1 - rangeInput[0].min) /
-              (rangeInput[0].max - rangeInput[0].min)) *
-            100 +
-            "%";
-          range.style.right =
-            100 -
-            ((value2 - rangeInput[1].min) /
-              (rangeInput[1].max - rangeInput[1].min)) *
-            100 +
-            "%";
-        }
-      });
-    });
-
-  }, [stateFilter]);
 
 
   return (
@@ -185,7 +101,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
       </span>
       <div className="filter-cont">
         <div className="close">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 12L12 19.9995M20 20L12 12.0005" stroke="#77bd00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M3.33398 16C3.33398 10.0289 3.33398 7.04332 5.18897 5.18832C7.04397 3.33334 10.0295 3.33334 16.0007 3.33334C21.9717 3.33334 24.9573 3.33334 26.8124 5.18832C28.6673 7.04332 28.6673 10.0289 28.6673 16C28.6673 21.9711 28.6673 24.9567 26.8124 26.8117C24.9573 28.6667 21.9717 28.6667 16.0007 28.6667C10.0295 28.6667 7.04397 28.6667 5.18897 26.8117C3.33398 24.9567 3.33398 21.9711 3.33398 16Z" stroke="#77bd00" strokeWidth="1.5"></path></svg>
+          <span>Готово</span>
         </div>
         <div className="filter-section">
           <p className="title">{tehnokrat.strings['Model range']}</p>
@@ -221,11 +137,6 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
                     <li key={el.id + v}>
                       {el.name}:&nbsp;
                       {v.startsWith("#") ? stateFilter.attrbs[0].colors.find((el) => el[v])[v] : v}
-
-                      {/* {v.startsWith("#") ? <i style={{
-                        backgroundColor: v.startsWith('#')
-                          ? v : 'inherit'
-                      }}></i> : v} */}
 
 
                       <button
@@ -266,55 +177,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
             <svg width="22" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5.33333H5" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M1 18.6667H9" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M21 18.6667H25" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M17 5.33333H25" stroke="#141B34" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M5 5.33333C5 4.09083 5 3.46957 5.20299 2.97951C5.47364 2.32611 5.99277 1.80697 6.64617 1.53632C7.13624 1.33333 7.75749 1.33333 9 1.33333C10.2425 1.33333 10.8637 1.33333 11.3539 1.53632C12.0072 1.80697 12.5264 2.32611 12.7971 2.97951C13 3.46957 13 4.09083 13 5.33333C13 6.57584 13 7.19709 12.7971 7.68716C12.5264 8.34056 12.0072 8.85969 11.3539 9.13035C10.8637 9.33333 10.2425 9.33333 9 9.33333C7.75749 9.33333 7.13624 9.33333 6.64617 9.13035C5.99277 8.85969 5.47364 8.34056 5.20299 7.68716C5 7.19709 5 6.57584 5 5.33333Z" fill="#77bd00" stroke="#222222" strokeWidth="1.5"></path><path d="M13 18.6667C13 17.4241 13 16.8029 13.2029 16.3128C13.4736 15.6595 13.9928 15.1403 14.6461 14.8696C15.1363 14.6667 15.7575 14.6667 17 14.6667C18.2425 14.6667 18.8637 14.6667 19.3539 14.8696C20.0072 15.1403 20.5264 15.6595 20.7971 16.3128C21 16.8029 21 17.4241 21 18.6667C21 19.9092 21 20.5304 20.7971 21.0205C20.5264 21.6739 20.0072 22.1931 19.3539 22.4637C18.8637 22.6667 18.2425 22.6667 17 22.6667C15.7575 22.6667 15.1363 22.6667 14.6461 22.4637C13.9928 22.1931 13.4736 21.6739 13.2029 21.0205C13 20.5304 13 19.9092 13 18.6667Z" fill="#77bd00" stroke="#222222" strokeWidth="1.5"></path></svg>
             {tehnokrat.strings['Filter']}
           </p>
-          {/* <div className="filter-item price">
-            <p className="filter-title">Ціна</p>
-            <div className="price-input">
-              <input
-                type="number"
-                className="input-min"
-                id="setmin"
-                min={stateFilter.min}
-                value={input1}
-                max={stateFilter.max}
-                step="10"
-                onChange={(e) => handleTextChange(e, 1)}
-              />
-              <input
-                type="number"
-                className="input-max"
-                id="setmax"
-                min={stateFilter.min}
-                value={input2}
-                max={stateFilter.max}
-                step="10"
-                onChange={(e) => handleTextChange(e, 2)}
-              />
-              <input type="button" value="Ok" onClick={setPrice} />
-            </div>
-            <div className="slider">
-              <div className="progress"></div>
-            </div>
-            <div className="range-input">
-              <input
-                type="range"
-                className="range-min"
-                min={stateFilter.min}
-                max={stateFilter.max}
-                value={range1}
-                step="10"
-                onChange={(e) => handleRangeChange(e, 1)}
-              />
-              <input
-                type="range"
-                className="range-max"
-                min={stateFilter.min}
-                max={stateFilter.max}
-                value={range2}
-                step="10"
-                onChange={(e) => handleRangeChange(e, 2)}
-              />
-            </div>
-          </div> */}
+
           <div className="filter-item">
             {stateFilter.attrbs !== undefined &&
               stateFilter.attrbs.map((ats, inx) => {
@@ -339,6 +202,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
                               atr={inx}
                               value={value}
                               onChange={checkAttr}
+                              style={{ 'display': 'none' }}
                             />
                             <label
                               htmlFor={"a" + inx + "v" + i}

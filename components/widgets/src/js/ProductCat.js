@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 import AddToCart from './AddToCart'
 import Part from './Part'
 
@@ -7,10 +7,41 @@ const ProductCat = ({ product }) => {
     Array.isArray(product.description2)
       ? product.description2.filter((title, index) => (index % 2 === 0))
       : [tehnokrat.strings['color']]
-  const attributes = product.title2.substr(1, product.title2.length - 2).split('|')
+  useEffect(() => {
+    const handleProductItemTouchStart = (event) => {
+      event.target.classList.add('active');
+    };
 
+    const handleProductItemTouchEnd = (event) => {
+      event.target.classList.remove('active');
+    };
 
+    const handleProductItemMouseEnter = (event) => {
+      event.target.classList.add('active');
+    };
 
+    const handleProductItemMouseLeave = (event) => {
+      event.target.classList.remove('active');
+    };
+
+    const productItems = document.querySelectorAll(".product-item");
+
+    productItems.forEach((item) => {
+      item.addEventListener('touchstart', handleProductItemTouchStart);
+      item.addEventListener('touchend', handleProductItemTouchEnd);
+      item.addEventListener('mouseenter', handleProductItemMouseEnter);
+      item.addEventListener('mouseleave', handleProductItemMouseLeave);
+    });
+
+    return () => {
+      productItems.forEach((item) => {
+        item.removeEventListener('touchstart', handleProductItemTouchStart);
+        item.removeEventListener('touchend', handleProductItemTouchEnd);
+        item.removeEventListener('mouseenter', handleProductItemMouseEnter);
+        item.removeEventListener('mouseleave', handleProductItemMouseLeave);
+      });
+    };
+  })
   return <div className={product.in_stock === 1 ? 'product-item ' : 'product-item not-available'}>
     <div className="product-cont">
       <a href={product.url} className="big-link"></a>

@@ -10,7 +10,7 @@
 import React, { useState, memo } from 'react'
 import NotifyProductInStockPopup from './NotifyProductInStockPopup'
 import BlockUI from './BlockUI'
-import BuyInInstallments from './BuyInInstallments'
+// import BuyInInstallments from './BuyInInstallments'
 import Part from './Part'
 
 
@@ -20,8 +20,8 @@ const AddToCart = memo(({ productName, currentVariation, inStock }) => {
 	const isTouchEnable = (undefined !== document.body.ontouchstart)
 
 	const [isNotifyProductInStockPopupVisible, setIsNotifyProductInStockPopupVisible] = useState(false)
-	const [isBuyInInstallmentsButtonVisible, setIsBuyInInstallmentsButtonVisible] = useState(false)
-	const [isBuyInInstallmentsPopupVisible, setIsBuyInInstallmentsPopupVisible] = useState(false)
+	// const [isBuyInInstallmentsButtonVisible, setIsBuyInInstallmentsButtonVisible] = useState(false)
+	// const [isBuyInInstallmentsPopupVisible, setIsBuyInInstallmentsPopupVisible] = useState(false)
 	const [isSelectAttributesNotificationVisible, setIsSelectAttributesNotificationVisible] = useState(false)
 
 	const addToCart = () => {
@@ -98,26 +98,26 @@ const AddToCart = memo(({ productName, currentVariation, inStock }) => {
 			alert('Что-то пошло не так.. Повторите, пожалуйста, запрос.')
 		}
 	}
-	const onTouchStart = () => {
-		if (isBuyInInstallmentsButtonVisible) {
-			setIsBuyInInstallmentsButtonVisible(false)
-			setIsBuyInInstallmentsPopupVisible(true)
-		} else {
-			setIsBuyInInstallmentsButtonVisible(true)
-			setTimeout(() => {
-				setIsBuyInInstallmentsButtonVisible(false)
-			}, 3000)
-		}
-	}
-	const buyInInstallmentsClick = () => {
-		setIsBuyInInstallmentsPopupVisible(true)
-	}
-	const buyInInstallmentsEnter = () => {
-		setIsBuyInInstallmentsButtonVisible(true)
-	}
-	const buyInInstallmentsLeave = () => {
-		setIsBuyInInstallmentsButtonVisible(false)
-	}
+	// const onTouchStart = () => {
+	// 	if (isBuyInInstallmentsButtonVisible) {
+	// 		setIsBuyInInstallmentsButtonVisible(false)
+	// 		setIsBuyInInstallmentsPopupVisible(true)
+	// 	} else {
+	// 		setIsBuyInInstallmentsButtonVisible(true)
+	// 		setTimeout(() => {
+	// 			setIsBuyInInstallmentsButtonVisible(false)
+	// 		}, 3000)
+	// 	}
+	// }
+	// const buyInInstallmentsClick = () => {
+	// 	setIsBuyInInstallmentsPopupVisible(true)
+	// }
+	// const buyInInstallmentsEnter = () => {
+	// 	setIsBuyInInstallmentsButtonVisible(true)
+	// }
+	// const buyInInstallmentsLeave = () => {
+	// 	setIsBuyInInstallmentsButtonVisible(false)
+	// }
 	const [blockUI, setBlockUI] = useState(false)
 
 	if (undefined === currentVariation) {
@@ -143,7 +143,7 @@ const AddToCart = memo(({ productName, currentVariation, inStock }) => {
 			<div className="sum-link clearfix">
 				<div className="link w-cr">
 					{1 === currentVariation.in_stock && <>
-						<a className={classNames('buy', { 'hid': isBuyInInstallmentsButtonVisible })}
+						<a className="buy"
 							onClick={addToCart}>
 							<p>{tehnokrat.strings['Buy item']}</p>
 						</a>

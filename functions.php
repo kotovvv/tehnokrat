@@ -283,7 +283,7 @@ final class Tehnokrat
 				-PHP_INT_MAX
 			);
 		} else {
-			add_action('wp_footer', [$this, 'load_vue_templates'], -PHP_INT_MAX);
+			//add_action('wp_footer', [$this, 'load_vue_templates'], -PHP_INT_MAX);
 			remove_action(
 				'wp_footer',
 				'woocommerce_demo_store'
