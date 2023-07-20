@@ -34,7 +34,7 @@ const Blocks = memo(({ inSort, container }) => {
   });
   const [isLoading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 9;
+  const pageSize = 18;
 
   const changeFilter = (obj) => {
     setFilter(prevState => ({
