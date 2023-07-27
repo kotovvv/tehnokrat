@@ -3348,7 +3348,7 @@
         color: #222222
     }
 
-    .page-title .back-button {
+    .product .product-item .one-product .back-button {
         display: flex;
         align-items: center;
         margin: 0;
@@ -3357,24 +3357,22 @@
         font-size: 14px;
         line-height: 18px;
         color: #222222;
-        transition: all 0.3s;
-        position: absolute;
-        bottom: -30px;
-    }
-
-    .page-title .back-button svg {
-        margin-right: 10px
-    }
-
-    .page-title .back-button svg path {
         transition: all 0.3s
     }
 
-    .page-title .back-button:hover {
+    .product .product-item .one-product .back-button svg {
+        margin-right: 10px
+    }
+
+    .product .product-item .one-product .back-button svg path {
+        transition: all 0.3s
+    }
+
+    .product .product-item .one-product .back-button:hover {
         color: #77BC01
     }
 
-    .page-title .back-button:hover svg path {
+    .product .product-item .one-product .back-button:hover svg path {
         fill: #77BC01
     }
 
@@ -3438,9 +3436,9 @@
 
     .product .product-item .one-product .about-product .about-product-desc .what p {
         font-style: normal;
-        font-weight: 300;
-        font-size: 14px;
-        line-height: 16px;
+            font-weight: 300;
+    		font-size: 14px;
+    		line-height: 22px;
         margin-bottom:10px;
         color: #222222
     }
@@ -3965,7 +3963,7 @@
         width: 24px;
         height: 24px;
         margin-right:5px;
-        cursor: pointer;
+        cursor:poiner;
     }
     .product .product-item .one-product .about-product .part span i,.product .product-item .one-product .about-product .part span .i{
         opacity:0;
@@ -4016,11 +4014,12 @@
         width: 24px;
     }
 
-    .info-links{
+.info-links{
         margin-top: 30px;
     }
-    .info-links li{
-        width: fit-content;
+  
+    .info-links li a{
+		width: fit-content;
         background: #F6F6F6;
         border-radius: 22px;
         display: flex;
@@ -4029,8 +4028,6 @@
         padding: 10px 13px;
         transition: all 0.3s;
         margin-bottom: 10px;
-    }
-    .info-links li a{
         text-align: left;
         font-style: normal;
         font-weight: 500;
@@ -4039,11 +4036,9 @@
         color: #61779D;
         transition: all 0.3s;
     }
-    .info-links li:hover{
+    .info-links li a:hover {
         background: #61779D;
-    }
-    .info-links li:hover a{
-        color: #fff;
+		color: #fff;
     }
 
     .top-prod {
@@ -4090,7 +4085,7 @@
         .product .product-item .one-product .about-product .img {
             flex-basis: 35%;
             width: 100%;
-            margin: -30px 0 0 0
+            margin: -140px 0 0 0
         }
 
         .product .product-item .one-product .about-product .img .items {
@@ -4110,7 +4105,7 @@
             left: 0;
             width: 1px;
             height: 100%;
-            background: #cecece
+            background: #E6E7E9
         }
     }
 
@@ -4132,7 +4127,7 @@
         }
 
         .product .product-item {
-            margin-top: 70px;
+            margin-top: 40px;
             margin-bottom: 40px;
             padding: 0 80px
         }
@@ -4154,9 +4149,6 @@
         .product .product-item .one-product .about-product .img {
             flex-basis: 30%
         }
-        .page-title .back-button{
-            left: 70px;
-        }
     }
 
     @media screen and (min-width: 1024px) {
@@ -4170,6 +4162,10 @@
 
         .product .product-item {
             padding: 0 100px
+        }
+
+        .product .product-item .one-product {
+            margin-top: 70px
         }
 
         .product .product-item .one-product h1 {
@@ -4192,10 +4188,6 @@
         .product .product-item .one-product .about-product .img .items {
             top: 120px;
         }
-
-        .page-title .back-button{
-            left: 90px;
-        }
     }
 
     @media screen and (min-width: 1280px) {
@@ -4204,8 +4196,7 @@
         }
 
         .product .product-item {
-            padding: 0 270px;
-            margin-top: 40px;
+            padding: 0 270px
         }
 
         .product .product-item .one-product {
@@ -4221,9 +4212,10 @@
             margin-top: 0
         }
 
-        .page-title .back-button {
-            bottom: 24px;
-            left: 100px;
+        .product .product-item .one-product .back-button {
+            position: absolute;
+            left: -160px;
+            margin-top: 6px
         }
     }
 
@@ -4236,3 +4228,14 @@
             padding: 0 285px
         }
     }
+.breadcrumbs li:last-child{
+	display:none !important
+}
+.breadcrumbs svg:nth-child(8){
+	display:none !important
+}
+@media screen and (max-width: 400px){
+	.breadcrumbs{
+		max-width:300px;
+	}
+}

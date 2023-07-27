@@ -16,6 +16,13 @@ $posts_pagination = paginate_links(
 get_header( 'home' ); ?>
 
 <section class="blog-page">
+<section class="page-title">
+        <div class="container">
+            <div class="page-title-cont">
+                <h1><?php _e('News', 'tehnokrat') ?></h1>
+            </div>
+        </div>
+    </section>
     <div class="item-bg"></div>
     <div class="blog-items">
         <a href="<?= site_url( '/' ) ?>" class="back-button">

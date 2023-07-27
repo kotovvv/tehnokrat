@@ -30,7 +30,7 @@ $detect = new Mobile_Detect;
 						</div>
 						<ul class="social">
 							<li>
-								<a target="_blank" href="https://tehnokrat.olx.ua/uk/">
+								<a target="_blank" href="https://tehnokrat.olx.ua/uk/"> 
 									<img src="/wp-content/uploads/2022/12/olx-1.png">
 								</a>
 							</li>
@@ -58,12 +58,14 @@ $detect = new Mobile_Detect;
 </div><!-- <div id="vue-app">-->
 
 <?php wp_footer();?>
-<!-- <script data-skip-moving="true">
-	(function(w,d,u,b){
-		s=d.createElement('script');r=(Date.now()/1000|0);s.async=1;s.src=u+'?'+r;
-		h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-	})(window,document,'https://cdn.bitrix24.ua/b4365611/crm/site_button/loader_2_j7t3ol.js');
-</script> -->
+<script type="text/javascript">
+(function(d, w, s) {
+    var widgetHash = 'JPk2OMKBQ80utnqs1ADV', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+    bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+    var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+})(document, window, 'script');
+</script>
+
 <?php if ( ! $detect->isMobile() ) : ?>
 	<script>var telerWdWidgetId="49255634-9672-457d-9fb0-66618209d650";var telerWdDomain="pro100mac.pbx.vega.ua";</script> <script src="//pro100mac.pbx.vega.ua/public/widget/call-catcher/lib-v3.js"></script>
 <?php endif; ?>

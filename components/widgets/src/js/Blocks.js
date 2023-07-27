@@ -4,13 +4,14 @@ import ProductCat from './ProductCat'
 import Filter from './Filter'
 import Pagination from "./components/common/Pagination";
 
-import { paginate } from "./utils";
+import { paginate, range } from "./utils";
 
 function absentDown(prod) {
   return prod.sort((a, b) => b.in_stock - a.in_stock);
 }
 
 const Blocks = memo(({ inSort, container }) => {
+  // get all products and sort name
   const products = useRef(
     JSON.parse(tehnokrat.products).sort((a, b) => {
       const nameA = a.name.toUpperCase(); // ignore upper and lowercase
@@ -25,41 +26,56 @@ const Blocks = memo(({ inSort, container }) => {
     })
   ).current;
 
-  const [stateFilter, setFilter] = useState({
-    catName: products[0].name,
-    selected: [],
-    min: 0,
-    max: 0,
-    attrbs: []
-  });
+  // Transform in_stock prop in productsList
+  // function transformData(data) {
+  //   const newProds = [];
+  //   data.forEach(item => {
+  //     const variations = item.variations.map((el, i) => {
+  //       if (i % 2 === 0) {
+  //         el.in_stock = 0;
+  //         return el;
+  //       }
+  //       return el;
+  //     })
+  //     newProds.push({ name: item.name, variations });
+  //   })
+
+  //   return newProds;
+  // }
+  // const products = transformData(prods);
+  // --- end
+
+  //state for filter
+  const [stateFilter, setFilter] = useState(
+    //store first category products
+    { catName: products[0].name, selected: [] }
+  );
   const [isLoading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 18;
+  // const [titleAttr, setAttr] = useState();
+  const pageSize = 9;
 
   const changeFilter = (obj) => {
-    setFilter(prevState => ({
-      ...prevState,
-      ...obj,
-      selected: obj.selected,
-      min: obj.min,
-      max: obj.max,
-      attrbs: obj.attrbs
-    }));
+    setFilter(obj);
     setCurrentPage(1);
   };
 
-  let filtered_products = [];
+  //get products for store category selected
+  let filtered_products = []
   let titleAttr = [];
   if (stateFilter.catName === '') {
     products.forEach((cat) => {
       cat.variations.forEach(el => {
         filtered_products.push(el)
       });
-    });
+    })
   } else {
-    filtered_products = products.find((e) => e.name === stateFilter.catName)?.variations || [];
+    filtered_products = products.filter((e) => {
+      return e.name === stateFilter.catName;
+    })[0].variations;
 
-    const variationsAttributesTitles = Array.isArray(filtered_products[0]?.description2)
+    //atributes for products
+    const variationsAttributesTitles = Array.isArray(filtered_products[0].description2)
       ? filtered_products[0].description2.filter((title, index) => index % 2 === 0)
       : [tehnokrat.strings["color"]];
 
@@ -71,121 +87,163 @@ const Blocks = memo(({ inSort, container }) => {
       return attribute.replace(/[^0-9]/g, '')
     }
 
-    for (let i = 0; i < filtered_products[0]?.attributes2?.length; i++) {
+    for (let i = 0; i < filtered_products[0].attributes2.length; i++) {
       let attrs = [];
-      let colors = [];
-      filtered_products.forEach((variation) => {
+      let colors = []
+      filtered_products.map((variation) => {
         if (!attrs.includes(variation.attributes2[i])) {
           attrs.push(variation.attributes2[i]);
         }
         if (variation.attributes2[i].startsWith("#")) {
-          let colorName;
           if (variation.title2.includes('|')) {
-            colorName = variation.title2.split("|")[0].slice(1);
+            let colorName = variation.title2.split("|")[0].slice(1)
+            if (!colors.find((el) => { el[colorName] })) {
+              colors.push({ [variation.attributes2[i]]: colorName });
+            }
           } else {
-            colorName = variation.title2.slice(1, -1);
-          }
-          if (!colors.find((el) => el[colorName])) {
-            colors.push({ [variation.attributes2[i]]: colorName });
+            let colorName = variation.title2.slice(1, -1)
+            if (!colors.find((el) => { el[colorName] })) {
+              colors.push({ [variation.attributes2[i]]: colorName });
+            }
           }
         }
-      });
 
+      });
       if (attrs.length) {
-        attrs = attrs.sort((a, b) => parseInt(prepareAttributeForSort(a)) - parseInt(prepareAttributeForSort(b)));
+        attrs = attrs.sort((a, b) => {
+          return parseInt(prepareAttributeForSort(a)) - parseInt(prepareAttributeForSort(b))
+        })
         titleAttr.push({ name: variationsAttributesTitles[i], attrs: attrs, colors: colors });
       }
     }
+
   }
 
-  let ranged_products = filtered_products;
 
-  if (stateFilter.selected.length > 0) {
+  // Ranged by progress bar
+  let ranged_products = filtered_products
+  // range(filtered_products, {
+  //   minPrice: stateFilter?.setMin,
+  //   maxPrice: stateFilter?.setMax,
+  // });
+
+  //if need filter products
+  if (stateFilter.selected !== undefined && stateFilter.selected.length > 0) {
+    let store = [];
     stateFilter.selected.forEach((atr) => {
-      let store = [];
+      store = [];
       atr.values.forEach((v) => {
-        const items = ranged_products.filter((el) => el.attributes2.includes(v));
-        store.push(...items);
+        const items = ranged_products.filter((el) =>
+          el.attributes2.includes(v)
+        );
+        store = [...store, ...items];
       });
 
       let newStore = Array.from(new Set(store));
+
+      // const capacityItem = stateFilter.attrbs[1].name;
+
+      // if (atr.name === capacityItem) {
+      //   newStore = newStore.filter((item) =>
+      //     atr.values.includes(item.attributes2[1])
+      //   );
+      // }
       ranged_products = newStore;
+
     });
   }
+  useEffect(() => {
+    jQuery('.all-product .filter .filter-open').on('click', function () {
+      jQuery('.all-product .filter .filter-cont').addClass('active');
+    });
+
+    jQuery('.all-product .filter .close').on('click', function () {
+      jQuery('.all-product .filter .filter-cont').removeClass('active');
+    });
+
+    // jcf.replace(jQuery('.filter-item .checkbox-item input[type=checkbox]'));
+
+    // const proditem_height = jQuery(".product-item .product-cont").height();
+    // jQuery('.product-item').css('height', proditem_height + 40);
+
+    jQuery(".product-item").on({
+      touchstart: function () {
+        jQuery(this).addClass('active');
+      },
+      touchend: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    jQuery(".product-item").on({
+      mouseenter: function () {
+        jQuery(this).addClass('active');
+      },
+      mouseleave: function () {
+        jQuery(this).removeClass('active');
+      }
+    });
+
+    const pi = document.getElementsByClassName("product-item");
+    let j;
+    // for (j = 0; j < pi.length; j++) {
+    //   pi[j].addEventListener("mouseover", function () {
+    //     this.classList.toggle("active");
+    //     let pichild = this.querySelector('.features');
+    //     if (pichild.style.maxHeight) {
+    //       pichild.style.maxHeight = null;
+    //     } else {
+    //       pichild.style.maxHeight = pichild.scrollHeight + "px";
+    //     }
+    //   });
+    // }
+  })
 
   useEffect(() => {
-    const handleFilterOpen = () => {
-      const filterCont = document.querySelector('.all-product .filter .filter-cont');
-      if (filterCont) {
-        filterCont.classList.add('active');
-      }
-    };
+    jcf.destroyAll('.range-input')
+    // if need sort products
+    //   if (inSort) {
+    //     ranged_products = ranged_products.sort((a, b) => {
+    //       if (inSort === "upcost") {
+    //         return a.priceUAH - b.priceUAH;
+    //       } else {
+    //         return b.priceUAH - a.priceUAH;
+    //       }
+    //     });
+    //   }
 
-    const handleFilterClose = () => {
-      const filterCont = document.querySelector('.all-product .filter .filter-cont');
-      if (filterCont) {
-        filterCont.classList.remove('active');
-      }
-    };
+    // get min max price selected products
 
-    const filterOpen = document.querySelector('.all-product .filter .filter-open');
-    const filterClose = document.querySelector('.all-product .filter .close');
-
-
-    if (filterOpen) {
-      filterOpen.addEventListener('click', handleFilterOpen);
-    }
-
-    if (filterClose) {
-      filterClose.addEventListener('click', handleFilterClose);
-    }
-
-    return () => {
-      if (filterOpen) {
-        filterOpen.removeEventListener('click', handleFilterOpen);
-      }
-
-      if (filterClose) {
-        filterClose.removeEventListener('click', handleFilterClose);
-      }
-
-    };
-  }, []);
-
-
-  useEffect(() => {
-    const destroyRangeInputs = () => {
-      jcf.destroyAll('.range-input');
-    };
-
-    const getMinPrice = (array) => {
+    function getMinPrice(array) {
       return Math.min(...array.map((item) => item.priceUAH));
-    };
+    }
 
-    const getMaxPrice = (array) => {
+    function getMaxPrice(array) {
       return Math.max(...array.map((item) => item.priceUAH));
-    };
+    }
 
-    const min = ranged_products.length ? getMinPrice(ranged_products) : getMinPrice(filtered_products);
-    const max = ranged_products.length ? getMaxPrice(ranged_products) : getMaxPrice(filtered_products);
+    const min = ranged_products.length
+      ? getMinPrice(ranged_products)
+      : getMinPrice(filtered_products);
+    const max = ranged_products.length
+      ? getMaxPrice(ranged_products)
+      : getMaxPrice(filtered_products);
 
-    setFilter(prevState => ({
-      ...prevState,
+    setFilter({
+      ...stateFilter,
       min: min,
       max: max,
-      attrbs: titleAttr
-    }));
+      attrbs: titleAttr,
+    });
     setLoading(false);
-    destroyRangeInputs();
 
-    return () => {
-      destroyRangeInputs();
-    }
+    //   //outstock products bottom of list
+    //   ranged_products = absentDown(ranged_products);
   }, [stateFilter.catName]);
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [stateFilter.min, stateFilter.max, stateFilter.selected]);
+  }, [stateFilter?.setMin, stateFilter?.setMax, stateFilter.selected]);
 
   if (inSort) {
     ranged_products = ranged_products.sort((a, b) => {
@@ -196,10 +254,11 @@ const Blocks = memo(({ inSort, container }) => {
       }
     });
   }
-
+  //outstock products bottom of list
   ranged_products = absentDown(ranged_products);
 
   const count = ranged_products.length;
+
   const productsCrop = paginate(ranged_products, currentPage, pageSize);
 
   const handleChangePage = (pageIndex) => {

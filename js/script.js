@@ -21,18 +21,20 @@ jQuery(document).ready(function($){
 
     $('.all-product .filter .filter-open').on('click', function () {
         $('.all-product .filter .filter-cont').addClass('active');
-		$('body').css('overflow','hidden')
-	
+		$('body').addClass('popup');
+	 	$('.wrapper').addClass('popup');
     });
 
     $('.all-product .filter .close').on('click', function () {
         $('.all-product .filter .filter-cont').removeClass('active');
-		$('body').css('overflow','initial')
+		$('body').removeClass('popup');
+		$('.wrapper').removeClass('popup');
     });
 	
 	$('.all-product .filter .other-side').on('click', function () {
         $('.all-product .filter .filter-cont').removeClass('active');
-		$('body').css('overflow','initial')
+		$('body').removeClass('popup');
+		$('.wrapper').removeClass('popup');
     });
 
 
@@ -208,26 +210,33 @@ jQuery(document).ready(function($){
     });
 
 
-    $('.buy_pred').on('click', function () {
+    /*$('.buy_pred').on('click', function () {
         $('.product_pred_popup').addClass('active');
+		$('body').addClass('popup');
+	 	$('.wrapper').addClass('popup');
     });
 
     $('.product_pred_popup .close').on('click', function () {
         $('.product_pred_popup').removeClass('active');
         $('body').removeClass('popup');
+		$('.wrapper').removeClass('popup');
     });
  
     $('.product_pred_popup .back').on('click', function () {
         $('.product_pred_popup').removeClass('active');
         $('body').removeClass('popup');
-    });
+		$('.wrapper').removeClass('popup');
+    });*/
 
     var header_height = $('header').height();
     if($(window).width() >= 768){
         $('.wrapper-js').css('padding-top', header_height);
+		 $('.multi-search').css('top', header_height);
     } else {
         $('.wrapper-js').css('padding-top', header_height+20);
+		 $('.multi-search').css('top', header_height-41);
     }
+	
 	
 	var acc = document.getElementsByClassName("more-but");
     var i;

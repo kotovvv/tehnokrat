@@ -186,9 +186,6 @@ global $tehnokrat;
 
     <div class="wrapper wrapper-js">
 
-      <div class="img-ban">
-        <img src="<?= get_template_directory_uri() . '/img/ban-blog.png' ?>">
-      </div>
 
       <?php if ( is_front_page() || ( is_woocommerce() && ! is_product() ) ) : ?>
       <div class="product">

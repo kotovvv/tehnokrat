@@ -83,4 +83,88 @@ jQuery(document).ready(function (a) {
             g.stop()
         }, 1300), a("#icon6 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
     }),  a(".icon-item .for-icon").matchHeight({byRow: !1})
+	var b = lottie.loadAnimation({
+        container: document.getElementById("icon11"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_1.json"
+    });
+    a(".hov11").on("mouseover", function () {
+        b.play(), a("#icon11 svg path").css({fill: "#8ebb2b", stroke: "#8ebb2b"})
+    }), a(".hov11").on("mouseout", function () {
+        setTimeout(function () {
+            b.stop()
+        }, 1700), a("#icon11 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    });
+    var c = lottie.loadAnimation({
+        container: document.getElementById("icon22"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_2.json"
+    });
+    a(".hov22").on("mouseover", function () {
+        c.play(), a("#icon22 svg path").css({stroke: "#8ebb2b", fill: "#8ebb2b"})
+    }), a(".hov22").on("mouseout", function () {
+        setTimeout(function () {
+            c.stop()
+        }, 1700), a("#icon22 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    });
+    var d = lottie.loadAnimation({
+        container: document.getElementById("icon33"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_3.json"
+    });
+    a(".hov33").on("mouseover", function () {
+        d.play(), a("#icon33 svg path").css({stroke: "#8ebb2b", fill: "#8ebb2b"})
+    }), a(".hov33").on("mouseout", function () {
+        setTimeout(function () {
+            d.stop()
+        }, 1300), a("#icon33 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    });
+    var e = lottie.loadAnimation({
+        container: document.getElementById("icon44"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_4.json"
+    });
+    a(".hov44").on("mouseover", function () {
+        e.play(), a("#icon44 svg path").css({stroke: "#8ebb2b", fill: "#8ebb2b"})
+    }), a(".hov44").on("mouseout", function () {
+        setTimeout(function () {
+            e.stop()
+        }, 1200), a("#icon44 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    });
+    var f = lottie.loadAnimation({
+        container: document.getElementById("icon55"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_5.json"
+    });
+    a(".hov55").on("mouseover", function () {
+        f.play(), a("#icon55 svg path").css({stroke: "#8ebb2b", fill: "#8ebb2b"})
+    }), a(".hov55").on("mouseout", function () {
+        setTimeout(function () {
+            f.stop()
+        }, 1400), a("#icon55 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    });
+    var g = lottie.loadAnimation({
+        container: document.getElementById("icon66"),
+        renderer: "svg",
+        loop: !0,
+        autoplay: !1,
+        path: "/wp-content/themes/tehnokrat/js/icon_6.json"
+    });
+    a(".hov66").on("mouseover", function () {
+        g.play(), a("#icon66 svg path").css({stroke: "#8ebb2b", fill: "#8ebb2b"})
+    }), a(".hov66").on("mouseout", function () {
+        setTimeout(function () {
+            g.stop()
+        }, 1300), a("#icon66 svg path").css({stroke: "rgb(145,135,128)", fill: "rgb(145,135,128)"})
+    }),  a(".icon-item .for-icon").matchHeight({byRow: !1})
 });

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2023-07-06 11:11+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2023-07-26 11:53+0000\n"
+"Last-Translator: BigRise\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
@@ -31,11 +31,19 @@ msgstr "Александр Левашов"
 
 #: functions.php:1741 woocommerce/single-product/title.php:31
 msgid "all models"
-msgstr "все модели"
+msgstr "Все модели"
+
+#: components/shortcodes/src/templates/more-articles.php:27
+msgid "All news"
+msgstr "Все новости"
 
 #: functions.php:1733
 msgid "all products"
 msgstr "все товары"
+
+#: single-post.php:55
+msgid "All publications"
+msgstr "Все публикации"
 
 #: functions.php:1753
 msgid "ASC"
@@ -170,6 +178,10 @@ msgstr ""
 msgid "more"
 msgstr "подробнее"
 
+#: home.php:22
+msgid "News"
+msgstr "Новости"
+
 #: functions.php:1736
 msgid "Not available"
 msgstr "Нет в наличии"
@@ -177,6 +189,10 @@ msgstr "Нет в наличии"
 #: woocommerce/checkout/form-billing.php:20
 msgid "Order form"
 msgstr "Форма заказа"
+
+#: single-post.php:57
+msgid "Other publication"
+msgstr "Другие публикации"
 
 #: functions.php:1743
 msgid "Pay part"
@@ -222,6 +238,10 @@ msgstr "поиск"
 #: functions.php:1752
 msgid "Sort"
 msgstr "Сотировка"
+
+#: single-post.php:25
+msgid "Subscribe"
+msgstr "Подписаться"
 
 #. Name of the theme
 msgid "TEHNOKRAT"

@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2023-07-06 19:49+0000\n"
+"PO-Revision-Date: 2023-07-26 11:53+0000\n"
 "Last-Translator: BigRise\n"
-"Language-Team: Українська\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
 "n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
@@ -33,9 +33,17 @@ msgstr "Олександр Левашов"
 msgid "all models"
 msgstr "всі моделі"
 
+#: components/shortcodes/src/templates/more-articles.php:27
+msgid "All news"
+msgstr "Усі новини"
+
 #: functions.php:1733
 msgid "all products"
-msgstr "всі товари"
+msgstr "усі товари"
+
+#: single-post.php:55
+msgid "All publications"
+msgstr "Всі публікації"
 
 #: functions.php:1753
 msgid "ASC"
@@ -180,6 +188,10 @@ msgstr ""
 msgid "more"
 msgstr "докладніше"
 
+#: home.php:22
+msgid "News"
+msgstr "Новини"
+
 #: functions.php:1736
 msgid "Not available"
 msgstr "Немає в наявності"
@@ -187,6 +199,10 @@ msgstr "Немає в наявності"
 #: woocommerce/checkout/form-billing.php:20
 msgid "Order form"
 msgstr "Форма замовлення"
+
+#: single-post.php:57
+msgid "Other publication"
+msgstr "Інші публікації"
 
 #: functions.php:1743
 msgid "Pay part"
@@ -223,7 +239,7 @@ msgstr "Cповістити про надходження"
 
 #: functions.php:1751
 msgid "Reset"
-msgstr "Скасувати"
+msgstr "Скинути"
 
 #: header-home.php:61 header-home.php:132 header.php:98 header.php:167
 msgid "search"
@@ -232,6 +248,10 @@ msgstr "пошук"
 #: functions.php:1752
 msgid "Sort"
 msgstr "Сортування"
+
+#: single-post.php:25
+msgid "Subscribe"
+msgstr "Підписатися"
 
 #. Name of the theme
 msgid "TEHNOKRAT"

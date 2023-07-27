@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-06 11:02+0000\n"
+"POT-Creation-Date: 2023-07-26 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -33,8 +33,16 @@ msgstr ""
 msgid "all models"
 msgstr ""
 
+#: components/shortcodes/src/templates/more-articles.php:27
+msgid "All news"
+msgstr ""
+
 #: functions.php:1733
 msgid "all products"
+msgstr ""
+
+#: single-post.php:55
+msgid "All publications"
 msgstr ""
 
 #: functions.php:1753
@@ -165,12 +173,20 @@ msgstr ""
 msgid "more"
 msgstr ""
 
+#: home.php:22
+msgid "News"
+msgstr ""
+
 #: functions.php:1736
 msgid "Not available"
 msgstr ""
 
 #: woocommerce/checkout/form-billing.php:20
 msgid "Order form"
+msgstr ""
+
+#: single-post.php:57
+msgid "Other publication"
 msgstr ""
 
 #: functions.php:1743
@@ -216,6 +232,10 @@ msgstr ""
 
 #: functions.php:1752
 msgid "Sort"
+msgstr ""
+
+#: single-post.php:25
+msgid "Subscribe"
 msgstr ""
 
 #. Name of the theme

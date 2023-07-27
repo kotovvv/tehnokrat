@@ -283,7 +283,7 @@ final class Tehnokrat
 				-PHP_INT_MAX
 			);
 		} else {
-			//add_action('wp_footer', [$this, 'load_vue_templates'], -PHP_INT_MAX);
+			add_action('wp_footer', [$this, 'load_vue_templates'], -PHP_INT_MAX);
 			remove_action(
 				'wp_footer',
 				'woocommerce_demo_store'
@@ -293,7 +293,7 @@ final class Tehnokrat
 
 			add_filter('loop_shop_per_page', '__return_zero');
 
-			add_filter('wp_robots', array($this, 'set_meta_robots_for_ua_pages'), PHP_INT_MAX);
+			//add_filter('wp_robots', array($this, 'set_meta_robots_for_ua_pages'), PHP_INT_MAX);
 		}
 		add_filter('woocommerce_add_to_cart_fragments', [$this, 'woocommerce_add_to_cart_fragments']);
 		//		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
