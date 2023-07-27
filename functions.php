@@ -243,6 +243,7 @@ final class Tehnokrat
 		add_filter('woocommerce_breadcrumb_defaults', [$this, 'wcc_change_breadcrumb_delimiter']);
 		add_filter('woocommerce_available_payment_gateways', [$this, 'payment_gateway_disable_product']);
 		add_action('woocommerce_before_thankyou', [$this, 'put_html_in_order'], 50);
+		add_action('woocommerce_checkout_before_order_review', [$this, 'ts_checkout_before_order_review'], 10);
 
 		//		add_filter( 'sanitize_title', [ $this, 'remove_cyrillic_symbols' ], - PHP_INT_MAX );
 		add_action('after_setup_theme', [$this, 'setup_theme']);
@@ -609,7 +610,10 @@ final class Tehnokrat
 			]);
 		}
 	}
-
+	public function ts_checkout_before_order_review()
+	{
+		echo '<a href="' . wc_get_cart_url() . '" class="gotocart">' . __("Return to cart", "woocommerce") . '</a>';
+	}
 	public function color_to_hex($color)
 	{
 		$hex_code = '#000000';

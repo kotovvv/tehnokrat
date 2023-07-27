@@ -119,6 +119,10 @@ class Shortcodes
 						break;
 				}
 			}
+			if ($product->get_stock_quantity() < 1) {
+				continue;
+			}
+
 			$id = $product->get_id();
 			$products[] = [
 				'id'          => $id,
@@ -133,6 +137,9 @@ class Shortcodes
 				'partprivat' => intval(get_field('partprivat', $id)),
 				'description' => $this->get_description($product),
 			];
+			if (count($products) == 15) {
+				break;
+			}
 		}
 
 		wp_enqueue_style(
