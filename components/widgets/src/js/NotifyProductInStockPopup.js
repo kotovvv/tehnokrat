@@ -55,6 +55,18 @@ const NotifyProductInStockPopup = ({ productName, currentVariation, closePopup }
 			alert(wp.i18n.__('Something went wrong. Please repeat your request.', 'tehnokrat'))
 		}
 	}
+	useEffect(() => {
+		// Добавление классов
+		document.getElementsByTagName('body')[0].classList.add('popup');
+		document.getElementsByClassName('wrapper')[0].classList.add('popup');
+
+		// Функция очистки эффекта
+		return () => {
+			// Удаление классов
+			document.getElementsByTagName('body')[0].classList.remove('popup');
+			document.getElementsByClassName('wrapper')[0].classList.remove('popup');
+		};
+	}, []);
 
 	return createPortal(<>
 		{undefined === result &&

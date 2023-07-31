@@ -91,6 +91,7 @@ class Shortcodes
 			if ($label) {
 				switch ($label) {
 					case 'Лучшая цена':
+					case 'Найкраща ціна':
 						$label_color = '#E1306C';
 						break;
 					case 'Новинка':
@@ -100,12 +101,14 @@ class Shortcodes
 						$label_color = '#FD5958';
 						break;
 					case 'Топ продаж':
+					case 'Топ продажів':
 						$label_color = '#00AE43';
 						break;
 					case 'Акция':
 						$label_color = '#F80126';
 						break;
 					case 'Рекомендуем':
+					case 'Рекомендуємо':
 						$label_color = '#F6C000';
 						break;
 					case 'Восстановленный':
