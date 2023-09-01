@@ -4477,9 +4477,8 @@ Copyright (c) 2015 Daniel Eden
     color: #767676;
     font-size: 14px;
     font-weight: 500;
-    line-height: 22px
+    line-height: 22px;
 }
-
 .product .product-item .items .description .title .sum-link .sum i {
     font-style: normal;
     display: block;
@@ -5785,6 +5784,43 @@ Copyright (c) 2015 Daniel Eden
 .all-product .product-item.not-available .sum-link .sum i {
     color: #f04545;
 }
+.all-product .product-item.sale .sum p{
+    line-height: 14px;
+    font-size: 14px;
+    color: #FF5400;
+    font-weight: 500;
+}
+.all-product .product-item.sale .sum span{
+    line-height: 14px;
+    font-size: 14px;
+    color: #FF5400;
+    font-weight: 300;
+}
+.all-product .product-item.sale .sum-link .sum small{
+    line-height: 14px;
+    font-size: 14px;
+    color: #343434;
+    font-weight: 500;
+    text-decoration: none !important;
+    position: relative;
+}
+.all-product .product-item.sale .sum-link .sum small:after{
+    content: '';
+    position: absolute;
+    top: 54%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translate(0,-50%);
+    background: #343434;
+}
+.all-product .product-item.sale .sum-link .sum small span{
+    font-size: 12px;
+    line-height: 20px;
+    color: #767676;
+    font-weight: 300;
+}
+
 .all-product .product-item .features{
     height: 0;
     overflow: hidden;

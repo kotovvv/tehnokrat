@@ -170,18 +170,20 @@ const AddToCart = memo(({ productName, currentVariation, inStock }) => {
 				}
 				<div className="sum">
 					<p>{currentVariation.priceUAH.toLocaleString('ru-RU')}<span> грн</span></p>
-					<span>${currentVariation.priceUSD.toLocaleString('ru-RU')}</span>
+					{currentVariation.priceRegular > currentVariation.priceUAH && <small style={{ 'textDecoration': 'line-through' }} >{currentVariation.priceRegular.toLocaleString('ru-RU')} <span> грн</span></small>}
 
 					{inStock === false &&
 						<i>{1 === currentVariation.in_stock ? tehnokrat.strings['Product in stock'] : tehnokrat.strings['Not available']}</i>}
 				</div>
-			</div>
-			{true === isNotifyProductInStockPopupVisible &&
+			</div >
+			{
+				true === isNotifyProductInStockPopupVisible &&
 				<NotifyProductInStockPopup
 					productName={productName}
 					currentVariation={currentVariation}
 					closePopup={() => setIsNotifyProductInStockPopupVisible(false)}
-				/>}
+				/>
+			}
 			{/* {true === isBuyInInstallmentsPopupVisible &&
 				<BuyInInstallments
 					currentVariation={currentVariation}
