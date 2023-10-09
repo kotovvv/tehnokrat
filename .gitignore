@@ -10,3 +10,4 @@
 *.mo
 /vendor
 node_modules
+.phpintel
