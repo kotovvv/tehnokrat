@@ -989,6 +989,20 @@ h1 {
     background: #7b8691;
     border: 4px solid #f5f5f5;
 }
+.gotocart{
+	font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #77bd00;
+	margin-bottom: 20px;
+    transition: all 0.3s;
+    text-decoration: underline;
+	transition: all 0.3s;
+}
+.gotocart:hover{
+	color: #575757;
+	
+}
 @media screen and (min-width: 568px) {
     .order-page form .prod .prod-items .item .for-img {
         flex-basis: 20%
@@ -1024,8 +1038,20 @@ h1 {
     }
     .woocommerce-page .woocommerce .col2-set, .woocommerce-page .woocommerce-page .col2-set{
         grid-column: 1/2;
-        grid-row: 1/4;
+        grid-row: 1/5;
     }
+	.woocommerce-page .gotocart{
+		grid-column: 2/3;
+    	grid-row: 2/3;
+	}
+	.woocommerce-page #order_review{
+		    grid-column: 2/3;
+    		grid-row: 4/5;
+	}
+	.woocommerce-page .woocommerce-NoticeGroup{
+		    grid-column: 2/3;
+    		grid-row: 3/4;
+	}
     .woocommerce-page #order_review_heading{
         grid-column: 2/3;
         grid-row: 1/2;

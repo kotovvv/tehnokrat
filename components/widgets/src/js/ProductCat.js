@@ -11,7 +11,7 @@ const ProductCat = ({ product }) => {
 
 
 
-  return <div className={product.in_stock === 1 ? 'product-item ' : 'product-item not-available'}>
+  return <div className={`product-item ${product.in_stock != 1 ? 'not-available' : ''} ${product.priceRegular > product.priceUAH ? 'sale' : ''}`}>
     <div className="product-cont">
       <a href={product.url} className="big-link"></a>
       {product.label.length > 0 &&

@@ -393,7 +393,11 @@ final class Tehnokrat
 
 		add_filter('acf/load_field/name=label_colors', array($this, 'set_label_colors_field'));
 		add_filter('acf/load_value/name=label_colors', array($this, 'set_label_colors_value'));
+		
+add_action( 'wp_enqueue_scripts', 'enqueue_wc_cart_fragments' );
 	}
+
+public function enqueue_wc_cart_fragments() { wp_enqueue_script( 'wc-cart-fragments' ); }
 
 	public function send_customer_note_sms($customer_note_data)
 	{
@@ -1847,7 +1851,8 @@ final class Tehnokrat
 }
 
 $GLOBALS['tehnokrat'] = Tehnokrat::instance();
-
+function enqueue_wc_cart_fragments() { wp_enqueue_script( 'wc-cart-fragments' ); }
+add_action( 'wp_enqueue_scripts', 'enqueue_wc_cart_fragments' );
 /*array(
 	'email_heading'              => $this->get_heading(),
 	'user_id'                    => $this->user_id,

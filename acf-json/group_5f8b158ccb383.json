@@ -3,9 +3,16 @@
     "title": "Технократ. Основные настройки.",
     "fields": [
         {
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_5894409e22f37",
             "label": "Курс USD\/UAH",
             "name": "usd_to_uah",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 1,
@@ -25,9 +32,16 @@
             "step": "0.001"
         },
         {
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_58ac347cd88ea",
             "label": "Надбавка за безналичный расчет, %",
             "name": "bank_transfer_fee",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 1,
@@ -47,9 +61,16 @@
             "step": ""
         },
         {
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_5899b64312084",
             "label": "Номера телефонов",
             "name": "phone_numbers",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 1,
@@ -64,12 +85,19 @@
             "min": 1,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Добавить",
             "sub_fields": [
                 {
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_5899b67d12085",
                     "label": "Номер телефона",
                     "name": "phone_number",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -84,12 +112,20 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5899b64312084"
                 },
                 {
+                    "show_column_filter": false,
+                    "allow_bulkedit": false,
+                    "allow_quickedit": false,
+                    "show_column": false,
+                    "show_column_weight": 1000,
+                    "show_column_sortable": false,
                     "key": "field_5c514c8ba8584",
                     "label": "Описание",
                     "name": "phone_description",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -104,14 +140,23 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5899b64312084"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
             "key": "field_58983742f1490",
             "label": "Показать настройки ACF",
             "name": "show_acf",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -127,6 +172,34 @@
             "ui": 1,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "show_column_filter": false,
+            "allow_bulkedit": false,
+            "allow_quickedit": false,
+            "show_column": false,
+            "show_column_weight": 1000,
+            "show_column_sortable": false,
+            "key": "field_64f49d5117a99",
+            "label": "[:ru]Процент[:]",
+            "name": "procent_product",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "0.2",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -147,5 +220,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1662104316
+    "modified": 1693752743
 }

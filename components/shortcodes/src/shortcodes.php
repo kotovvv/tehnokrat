@@ -91,6 +91,7 @@ class Shortcodes
 			if ($label) {
 				switch ($label) {
 					case 'Лучшая цена':
+					case 'Найкраща ціна':
 						$label_color = '#E1306C';
 						break;
 					case 'Новинка':
@@ -100,12 +101,14 @@ class Shortcodes
 						$label_color = '#FD5958';
 						break;
 					case 'Топ продаж':
+					case 'Топ продажів':
 						$label_color = '#00AE43';
 						break;
 					case 'Акция':
 						$label_color = '#F80126';
 						break;
 					case 'Рекомендуем':
+					case 'Рекомендуємо':
 						$label_color = '#F6C000';
 						break;
 					case 'Восстановленный':
@@ -130,7 +133,8 @@ class Shortcodes
 				'permalink'   => $product->get_permalink(),
 				'image_src'   => $product_image[0],
 				'price_uah'   => $product->get_price(),
-				'price_usd'   => $tehnokrat->get_price_in_usd($product->get_price()),
+				'price_regular'   => $product->get_regular_price(),
+				'price_usd'   => '', //$tehnokrat->get_price_in_usd($product->get_price()),
 				'label'       => $product->get_attribute('pa_yarlik-tovara'),
 				'label_color' => $label_color,
 				'part'				=> intval(get_field('part', $id)),

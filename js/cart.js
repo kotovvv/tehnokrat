@@ -63,7 +63,7 @@ jQuery(document).ready(function($){
 
 	jcf.replaceAll();
 
-	window.addEventListener('scroll', maybePushImpressions);
+	//window.addEventListener('scroll', maybePushImpressions);
 
 	slick.on('afterChange', maybePushImpressions);
 

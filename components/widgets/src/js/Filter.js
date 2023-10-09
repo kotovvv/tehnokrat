@@ -197,7 +197,7 @@ const Filter = memo(({ stateFilter, changeFilter, products }) => {
                   key={e.name}
                   className={act}
                   data-name={e.name}
-                  onClick={selCat}
+                // onClick={selCat}
                 >
                   {e.name}
                 </a>

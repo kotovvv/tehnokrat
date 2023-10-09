@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TEHNOKRAT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-04 08:48+0000\n"
-"PO-Revision-Date: 2023-07-26 11:53+0000\n"
+"PO-Revision-Date: 2023-09-08 10:51+0000\n"
 "Last-Translator: BigRise\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.2.2\n"
+"X-Loco-Version: 2.6.4; wp-6.3.1\n"
 "X-Domain: tehnokrat"
 
 #: functions.php:1532
@@ -23,7 +23,7 @@ msgstr ""
 
 #: footer.php:22
 msgid "ABOUT THE COMPANY"
-msgstr "ПРО КОМПАНІЮ"
+msgstr "ІНШІ РЕСУРСИ"
 
 #. Author of the theme
 msgid "Aleksandr Levashov "
@@ -227,7 +227,8 @@ msgstr ""
 
 #: footer.php:14
 msgid "PRODUCTS AND SERVICES"
-msgstr "ТОВАРИ ТА ПОСЛУГИ"
+msgstr ""
+"ІНФОРМАЦІЯ\n"
 
 #: woocommerce/content-single-product.php:53
 msgid "Recommended products"

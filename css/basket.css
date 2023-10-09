@@ -105,7 +105,7 @@ header .hed-cont .right .for-ba .bask img {
 
 .woocommerce{
     width: 100%;
-    padding: 0 10px;
+    padding: 0 30px;
     margin: 0 auto
 }
 
@@ -1184,6 +1184,11 @@ h1 {
 }
 
 @media screen and (min-width: 768px) {
+	
+	
+	.woocommerce{
+    padding: 0 10px;
+}
     .woocommerce table.shop_table thead{
         display: block;
         margin-bottom: 10px;
